@@ -8,14 +8,14 @@ function Profile() {
   const phoneView = useContext(PhoneViewContext)
 
   //   const [editBio, setEditBio] = useState(false)
-  const [bioText, setBioText] = useState('I love cake')
+  const [bioText] = useState('I love cake')
   const [logoutButtonText, setLogoutButtonText] = useState('Logout')
   const [editprofileTextButton, setEditProfileTextButton] = useState(
     'Edit Profile',
   )
 
-  const [bio, setBio] = useState('')
-  const [counter, setCounter] = useState(0)
+  const [, setBio] = useState('')
+  const [counter] = useState(0)
   const [logoutCounter, setLogoutCounter] = useState(0)
   const [editBio, setEditBio] = useState(false)
 

@@ -14,6 +14,7 @@ function PostModal() {
   const [, setModalView] = useContext(ModalViewContext)
   const [postModalIsOpen, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts, setPosts] = useContext(PostsContext)
+
   const user = useContext(UserContext)
 
   const [title, setTitle] = useState('')
@@ -30,6 +31,7 @@ function PostModal() {
       description: picture,
       picture: picture,
       id: counter,
+      category: category,
     }
 
     setPosts([...posts, post])
