@@ -1,0 +1,15 @@
+@import '../../Styles/Variables.scss';
+
+.upcoming-card-holder {
+  padding: 5px 10px;
+  border: 1px solid $darkGreyColor;
+  border-radius: 6px;
+  background-color: $lightGreyColor;
+  .upcoming-time {
+    color: $primaryColor;
+  }
+  .upcoming-title {
+    font-weight: 600;
+    color: $blackColor;
+  }
+}

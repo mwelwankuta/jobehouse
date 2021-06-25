@@ -1,0 +1,25 @@
+@import '../Variables.scss';
+
+.upcoming-holder {
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-title {
+    color: $blackColor;
+  }
+  .add-upcoming-btn {
+    @include button($lightGreyColor, $blackColor);
+    padding: 2px 4px;
+  }
+  .upcoming-jobs-list {
+    //code
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    button {
+      @include button($primaryColor, white);
+    }
+  }
+}

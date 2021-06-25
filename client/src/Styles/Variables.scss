@@ -1,0 +1,30 @@
+$primaryColor: #fd4d4d;
+$blueColor: #2f96d1;
+$blackColor: #252525;
+$darkBlackColor: #1a1a1a;
+$textColor: #5d7290;
+$lightGreyColor: #f2f2f2;
+$darkGreyColor: #dedede;
+$redColor: rgba(209, 22, 22, 0.507);
+$greyColor: rgb(128, 128, 128);
+
+// button
+
+@mixin button($bgColor, $textColor) {
+  background-color: $bgColor;
+  padding: 8px 20px;
+  border: $lightGreyColor;
+  border-radius: 6px;
+  color: $textColor;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@mixin textinput {
+  background-color: $lightGreyColor;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: $blackColor;
+  font-weight: 500;
+}

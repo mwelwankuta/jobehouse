@@ -1,0 +1,31 @@
+@import '../Variables.scss';
+
+.home-container {
+  small {
+    color: $textColor;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .page-title {
+      color: $blackColor;
+    }
+    button {
+      @include button($primaryColor, white);
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home-container {
+    display: grid;
+  }
+}

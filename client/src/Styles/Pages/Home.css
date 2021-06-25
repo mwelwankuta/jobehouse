@@ -1,0 +1,48 @@
+.home-container small {
+  color: #5d7290;
+}
+
+.home-container .posts-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.home-container .header-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-container .header-holder .page-title {
+  color: #252525;
+}
+
+.home-container .header-holder button {
+  background-color: #fd4d4d;
+  padding: 8px 20px;
+  border: #f2f2f2;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .home-container {
+    display: -ms-grid;
+    display: grid;
+  }
+}
+/*# sourceMappingURL=Home.css.map */

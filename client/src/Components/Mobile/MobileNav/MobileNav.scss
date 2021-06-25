@@ -1,0 +1,13 @@
+@import '../../../Styles/Variables.scss';
+
+nav {
+  border-bottom: 0.4px solid $darkGreyColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 90;
+  .jobe-house-logo {
+    margin-right: 0;
+    color: $primaryColor;
+  }
+}

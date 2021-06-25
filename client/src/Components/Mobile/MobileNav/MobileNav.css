@@ -1,0 +1,19 @@
+nav {
+  border-bottom: 0.4px solid #dedede;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 90;
+}
+
+nav .jobe-house-logo {
+  margin-right: 0;
+  color: #fd4d4d;
+}
+/*# sourceMappingURL=MobileNav.css.map */
