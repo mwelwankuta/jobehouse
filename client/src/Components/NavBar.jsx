@@ -4,6 +4,7 @@ import { useHistory, Link } from 'react-router-dom'
 import { DesktopViewContext, PhoneViewContext } from '../Contexts/viewContext'
 import MobileNav from './Mobile/MobileNav/MobileNav'
 
+import logo from '../Resources/icon-only.png'
 import '../Styles/Components/NavBar.css'
 
 function NavBar({ user, session, modalView }) {
@@ -17,6 +18,7 @@ function NavBar({ user, session, modalView }) {
       {modalView === false && desktopView && (
         <nav>
           <Link to="/">
+            <img src={logo} alt="logo" className="job-house-logo-icon" />
             <h2 className="jobe-house-logo">JobeHouse</h2>
           </Link>
 

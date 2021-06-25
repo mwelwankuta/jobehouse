@@ -21,6 +21,7 @@ function CreateUpcomingModal() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [date, setDate] = useState('')
+  const [category, setCategory] = useState('')
 
   const addUpcomingJob = (e) => {
     console.log(date)
@@ -31,6 +32,7 @@ function CreateUpcomingModal() {
       time: date.split('T')[0],
       date: date.split('T')[1],
       description: description,
+      category: category,
     }
 
     setUpcomings([...upcomings, upcoming])
@@ -78,7 +80,11 @@ function CreateUpcomingModal() {
             <label htmlFor="title">
               <small>title</small>
             </label>
-            <input name="title" onChange={(e) => setTitle(e.target.value)} />
+            <input
+              name="title"
+              autoComplete="off"
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
 
           <div className="input-holder">
@@ -89,12 +95,28 @@ function CreateUpcomingModal() {
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
+
+          <div className="input-holder">
+            <label htmlFor="picture">
+              <small>Category</small>
+            </label>
+            <select
+              onChange={(e) => setCategory(e.target.value)}
+              className="modal-select"
+            >
+              <option value=""></option>
+              <option value="">Engineering</option>
+              <option value="">Garden</option>
+              <option value="">Computers</option>
+            </select>
+          </div>
           <div className="input-holder">
             <label htmlFor="description">
               <small>desciption</small>
             </label>
             <input
               name="description"
+              autoComplete="off"
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
