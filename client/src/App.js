@@ -38,7 +38,15 @@ function App() {
   const [modalView, setModalView] = useState(false)
   const [postModalIsOpen, setPostModalIsOpen] = useState(false)
   const [upcomingModalIsOpen, setUpcomingModalIsOpen] = useState(false)
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      description: 'des',
+      title: 'title',
+      status: 'Taken',
+      requests: [1, 4],
+    },
+  ])
   const [upcomings, setUpcomings] = useState([])
   const [jobRequests, setJobRequests] = useState([])
 

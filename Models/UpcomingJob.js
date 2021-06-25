@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const { Schema, model } = mongoose
 
-const User = Schema({
+const UpcomingJob = Schema({
   authorid: String,
   title: String,
   description: String,
@@ -12,4 +12,4 @@ const User = Schema({
   date: String,
 })
 
-export default model('posts', User)
+export default model('upcomingjobs', UpcomingJob)

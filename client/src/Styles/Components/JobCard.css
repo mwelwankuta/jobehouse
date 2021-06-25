@@ -1,0 +1,66 @@
+.job-card-holder {
+  padding: 5px 10px 10px 10px;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+}
+
+.job-card-holder .job-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.job-card-holder .job-header .job-title {
+  font-weight: 700;
+  font-size: 17px;
+  color: #252525;
+  width: 60%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.job-card-holder .job-header .job-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: gray;
+  gap: 4px;
+}
+
+.job-card-holder .job-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.job-card-holder .job-bottom button {
+  background-color: #fd4d4d;
+  padding: 8px 20px;
+  border: #f2f2f2;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+}
+
+.job-card-holder .job-description {
+  color: #252525;
+}
+/*# sourceMappingURL=JobCard.css.map */

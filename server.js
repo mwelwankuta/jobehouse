@@ -1,22 +1,28 @@
 import express from 'express'
-import cors from 'cors'
 import mongoose from 'mongoose'
+import cors from 'cors'
+import 'dotenv/config'
 
-import PostModel from './Models/PostModel.js'
-import UserModel from './Models/UserModel.js'
+import PostModel from './models/JobModel.js'
+import JobModel from './models/JobModel.js'
+import UpcomingJob from './models/JobModel.js'
 
-import dotenv from 'dotenv'
-dotenv.config()
+import authenticate from './routes/authenticate.js'
+import requestwork from './routes/requestwork.js'
 
+// Init app
 const app = express()
 const port = process.env.PORT || 7000
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
-// process.env.MONGODB_CONNECTION_URI
-mongoose.connect('mongodb://localhost:27017/jobeHouse', {
+// Databse Connection
+const databaseUri =
+  'mongodb://localhost:27017/jobeHouse' || process.env.MONGODB_CONNECTION_URI
+mongoose.connect(databaseUri, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 })
 mongoose.connection.once('open', () => console.log('Database connected...'))
 mongoose.connection.on('error', () =>
@@ -27,58 +33,56 @@ mongoose.connection.on('error', () =>
 app.use(cors())
 app.use(express.json())
 
-//  POST /login
-app.post('/login', (req, res) => {
-  // code goes here
-  UserModel.find({ userid: req.body.userid }, (err, data) => {
-    console.log(data)
-    if (err)
-      res.status(500).json({ msg: 'Server error, please try again later' })
-    if (data) {
-      res.status(200).json(data)
-    } else {
-      res
-        .status(201)
-        .json([data, { msg: "Welcome to JobeHouse, hope you'll lve it here" }])
+app.use(authenticate) // signup and login user
+
+app.use(requestwork) // request to work and unrequest
+
+app
+  .route('/jobs')
+  .post((request, response) => {
+    const job = {
+      title: request.body.title,
+      description: request.body.description,
+      requestuests: [],
+      status: request.body.status,
+      image: request.body.image,
+      authorid: request.body.authorid,
+      date: Date.now(),
     }
+
+    PostModel.create(job, (err, jobs) => {
+      if (err) throw err
+      response.status(201).send(jobs)
+    })
   })
+  .get((request, response) => {
+    JobModel.find({}, (err, jobs) => {
+      if (err) throw err
+      response.status(200).send(jobs)
+    })
+  })
+
+// Delete Jobs
+app.post('/deletejob', (request, response) => {
+  JobModel.deleteOne(
+    {
+      authorid: request.fbID,
+      _id: request.id,
+    },
+    () => {
+      response.status(200).send({ msg: 'deleted job' })
+    },
+  )
 })
 
-//  POST /signup
-app.post('/signup', (req, res) => {
-  // code goes here
-  UserModel.find({ userid: req.body.userid }, (err, data) => {
-    console.log(data)
-    if (data) {
-      res
-        .status(201)
-        .send([data, { msg: "Welcome to JobeHouse, hope you'll lve it here" }])
-    } else {
-      UserModel.create(req.body, (err, data) => {
-        if (err) {
-          res.status(500).send({ msg: 'Server error, please try again later' })
-        }
-        res.status(200).send(data)
-      })
-    }
-  })
-})
-
-//  POST /posts
-app.post('/posts', (req, res) => {
-  // code goes here
-  const post = {
-    title: req.body.title,
-    description: req.body.description,
-    requests: [],
-    status: req.body.status,
-    image: req.body.image,
-    authorid: req.body.authorid,
-  }
-
-  PostModel.create(post, (err, data) => {
-    console.log(data)
-    res.send(data)
-  })
-  // saves to database
+app.post('/deleteupcoming', (request, response) => {
+  UpcomingJob.deleteOne(
+    {
+      authorid: request.fbID,
+      _id: request.id,
+    },
+    () => {
+      response.status(200).send({ msg: 'deleted scheduled job' })
+    },
+  )
 })

@@ -28,7 +28,7 @@ function PostModal() {
     setCounter(counter + 1)
     const post = {
       title: title,
-      description: picture,
+      description: description,
       picture: picture,
       id: counter,
       category: category,

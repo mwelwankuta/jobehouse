@@ -9,9 +9,9 @@ import {
 } from '../Contexts/viewContext.js'
 
 import MobileSelect from '../Components/Mobile/MobileSelect/MobileSelect'
-import PostCard from '../Components/PostCard'
+import JobCard from '../Components/JobCard'
 import '../Styles/Pages/Home.css'
-import PostModal from '../Components/PostModal.jsx'
+import JobModal from '../Components/JobModal'
 
 function Home() {
   const phoneView = useContext(PhoneViewContext)
@@ -50,12 +50,14 @@ function Home() {
         {session && posts.length > 0 ? (
           posts.map((post) => {
             return (
-              <PostCard
+              <JobCard
                 key={post.title}
                 description={post.description}
                 title={post.title}
                 id={post.id}
                 user={user}
+                status={post.status}
+                requests={post.requests}
               />
             )
           })
@@ -71,7 +73,7 @@ function Home() {
           </small>
         )}
       </div>
-      <PostModal />
+      <JobModal />
     </div>
   )
 }

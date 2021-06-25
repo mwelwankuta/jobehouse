@@ -1,0 +1,41 @@
+@import '../Variables.scss';
+
+.job-card-holder {
+  padding: 5px 10px 10px 10px;
+  border: 1px solid $darkGreyColor;
+  border-radius: 6px;
+  background-color: $lightGreyColor;
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    .job-title {
+      font-weight: 700;
+      font-size: 17px;
+      color: $blackColor;
+      width: 60%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .job-time {
+      display: flex;
+      align-items: center;
+      color: $greyColor;
+      gap: 4px;
+    }
+  }
+
+  .job-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      @include button($primaryColor, white);
+      display: flex;
+      gap: 4px;
+    }
+  }
+
+  .job-description {
+    color: $blackColor;
+  }
+}
