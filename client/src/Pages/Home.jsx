@@ -48,19 +48,39 @@ function Home() {
           {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
         </small>
         {session && posts.length > 0 ? (
-          posts.map((post) => {
-            return (
-              <JobCard
-                key={post.title}
-                description={post.description}
-                title={post.title}
-                id={post.id}
-                user={user}
-                status={post.status}
-                requests={post.requests}
-              />
-            )
-          })
+          posts.length > 1 ? (
+            posts
+              .sort((a, b) => b.date - a.date)
+              .map((post) => {
+                return (
+                  <JobCard
+                    key={post._id}
+                    description={post.description}
+                    title={post.title}
+                    id={post._id}
+                    status={post.status}
+                    requests={post.requests}
+                    date={post.date}
+                    user={user}
+                  />
+                )
+              })
+          ) : (
+            posts.map((post) => {
+              return (
+                <JobCard
+                  key={post._id}
+                  description={post.description}
+                  title={post.title}
+                  id={post._id}
+                  status={post.status}
+                  requests={post.requests}
+                  date={post.date}
+                  user={user}
+                />
+              )
+            })
+          )
         ) : (
           <small style={{ textAlign: 'center' }}>
             There are no posts at the moment, consider adding one

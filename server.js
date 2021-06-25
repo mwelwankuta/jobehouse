@@ -17,7 +17,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 
 // Databse Connection
 const databaseUri =
-  'mongodb://localhost:27017/jobeHouse' || process.env.MONGODB_CONNECTION_URI
+  process.env.MONGODB_CONNECTION_URI || 'mongodb://localhost:27017/jobeHouse'
 mongoose.connect(databaseUri, {
   useCreateIndex: true,
   useNewUrlParser: true,

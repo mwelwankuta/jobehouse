@@ -1,7 +1,7 @@
 @import '../Variables.scss';
 
 .job-card-holder {
-  padding: 5px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
   border: 1px solid $darkGreyColor;
   border-radius: 6px;
   background-color: $lightGreyColor;
@@ -28,14 +28,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    button {
-      @include button($primaryColor, white);
-      display: flex;
-      gap: 4px;
-    }
   }
 
+  button {
+    @include button($primaryColor, white);
+    display: flex;
+    float: right;
+    gap: 4px;
+  }
   .job-description {
     color: $blackColor;
+    margin-top: -10px;
   }
 }

@@ -39,12 +39,12 @@ function PostModal() {
     setPostModalIsOpen(false)
 
     axios
-      .post('http://localhost:4000/posts', {
+      .post('http://localhost:7000/jobs', {
         title: title,
         description: description,
         picture: picture,
-        authorid: user.id,
-        status: 'available',
+        authorid: user.fbID,
+        status: 'Available',
       })
       .then((res) => {
         setPosts(res.data)

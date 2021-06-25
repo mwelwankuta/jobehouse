@@ -4,16 +4,19 @@ import FacebookAuth from 'react-facebook-auth'
 
 import '../Styles/Pages/Auth.css'
 import { DesktopViewContext, PhoneViewContext } from '../Contexts/viewContext'
+import axios from 'axios'
 
 ReactModal.setAppElement(document.getElementById('root'))
 
 function Auth() {
+  const [loginUser, setLoginUser] = useState([])
+
   const [modalIsOpen, setModalIsOpen] = useState(true)
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
 
   useEffect(() => {
-    console.log(JSON.parse(sessionStorage.getItem('client')))
+    console.log(JSON.parse(sessionStorage.getItem('client'))) // without this run auth gets two instances
   }, [])
 
   const MyFacebookButton = ({ onClick }) => (
@@ -31,9 +34,15 @@ function Auth() {
     }
 
     if (!response.status) {
-      sessionStorage.setItem('client', JSON.stringify(user))
-      setModalIsOpen(false)
-      window.location.reload()
+      localStorage.setItem('client', JSON.stringify(user))
+
+      axios.post('http://localhost:7000/authenticate', user).then((res) => {
+        setLoginUser(res.data)
+        sessionStorage.setItem('client', JSON.stringify(res.data))
+        window.location.reload()
+        setModalIsOpen(false)
+        alert(loginUser)
+      })
     } else {
       window.location = '/error'
     }
@@ -56,9 +65,11 @@ function Auth() {
             <FacebookAuth
               appId="1782110335329820"
               callback={authenticate}
+              // autoLoad={true}
               component={MyFacebookButton}
             />
           </div>
+          {/* <p>{loginUser[1].msg ? loginUser[1].msg : ''}</p> */}
         </div>
       </div>
     </ReactModal>

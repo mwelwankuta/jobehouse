@@ -38,15 +38,7 @@ function App() {
   const [modalView, setModalView] = useState(false)
   const [postModalIsOpen, setPostModalIsOpen] = useState(false)
   const [upcomingModalIsOpen, setUpcomingModalIsOpen] = useState(false)
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      description: 'des',
-      title: 'title',
-      status: 'Taken',
-      requests: [1, 4],
-    },
-  ])
+  const [posts, setPosts] = useState([])
   const [upcomings, setUpcomings] = useState([])
   const [jobRequests, setJobRequests] = useState([])
 
@@ -63,12 +55,12 @@ function App() {
   useEffect(() => {
     if (session) {
       const sessionUser = JSON.parse(sessionStorage.getItem('client'))
-      setUser(sessionUser)
+      setUser(sessionUser[0])
     }
   }, [session, desktopView, phoneView])
 
   useEffect(() => {
-    axios.get('http://localhost:4000/posts').then((res) => setPosts(res.data))
+    axios.get('http://localhost:7000/jobs').then((res) => setPosts(res.data))
   }, [posts])
 
   const Terms = () => {
