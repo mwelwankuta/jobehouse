@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express()
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 7000
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
 // process.env.MONGODB_CONNECTION_URI
@@ -50,7 +50,9 @@ app.post('/signup', (req, res) => {
   UserModel.find({ userid: req.body.userid }, (err, data) => {
     console.log(data)
     if (data) {
-      res.status(201).send([data, { msg: "Welcome to JobeHouse, hope you'll lve it here" },])
+      res
+        .status(201)
+        .send([data, { msg: "Welcome to JobeHouse, hope you'll lve it here" }])
     } else {
       UserModel.create(req.body, (err, data) => {
         if (err) {
@@ -59,7 +61,6 @@ app.post('/signup', (req, res) => {
         res.status(200).send(data)
       })
     }
-
   })
 })
 

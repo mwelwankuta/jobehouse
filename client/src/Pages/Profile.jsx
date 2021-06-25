@@ -7,13 +7,11 @@ function Profile() {
   const user = useContext(UserContext)
   const phoneView = useContext(PhoneViewContext)
 
-  //   const [editBio, setEditBio] = useState(false)
   const [bioText] = useState('I love cake')
   const [logoutButtonText, setLogoutButtonText] = useState('Logout')
   const [editprofileTextButton, setEditProfileTextButton] = useState(
     'Edit Profile',
   )
-
   const [, setBio] = useState('')
   const [counter] = useState(0)
   const [logoutCounter, setLogoutCounter] = useState(0)
