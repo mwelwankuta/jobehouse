@@ -1,15 +1,12 @@
+<a href="https://jobehouse.vercel.app"><p align="center">
+<img height=100 src="./DogeHouseBanner.svg"/>
+
+</p></a>
 <p align="center">
-  <h1 align="center">JobeHouse 🔥</h1>
+  <strong>Taking small jobs to the moon 🚀</strong>
 </p>
 
-# Getting Started with Ben Social
+## Branches
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- staging -> pull request this branch for everything
+- prod -> don't touch, this is what's running in prod
