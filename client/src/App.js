@@ -26,7 +26,7 @@ import {
   PostsContext,
   UpcomingModalContext,
   UpcomingContext,
-  jobRequestContext
+  jobRequestContext,
 } from './Contexts/viewContext'
 
 import './index.css'
@@ -38,7 +38,25 @@ function App() {
   const [modalView, setModalView] = useState(false)
   const [postModalIsOpen, setPostModalIsOpen] = useState(false)
   const [upcomingModalIsOpen, setUpcomingModalIsOpen] = useState(false)
-  const [posts, setPosts] = useState([1, 3, 4, 5, 6, 4, 6, 4, 68, 9, 19, 6, 2, 6, 79, 596, 6])
+  const [posts, setPosts] = useState([
+    1,
+    3,
+    4,
+    5,
+    6,
+    4,
+    6,
+    4,
+    68,
+    9,
+    19,
+    6,
+    2,
+    6,
+    79,
+    596,
+    6,
+  ])
   const [upcomings, setUpcomings] = useState([])
   const [jobRequests, setJobRequests] = useState([])
 
@@ -104,7 +122,9 @@ function App() {
                     value={[upcomingModalIsOpen, setUpcomingModalIsOpen]}
                   >
                     <UpcomingContext.Provider value={[upcomings, setUpcomings]}>
-                      <jobRequestContext.Provider value={[jobRequests, setJobRequests]}>
+                      <jobRequestContext.Provider
+                        value={[jobRequests, setJobRequests]}
+                      >
                         <Router>
                           <div className="home-container">
                             {session && (
@@ -115,11 +135,11 @@ function App() {
                               />
                             )}
                             <div className="sections">
-                              {desktopView &&
+                              {desktopView && (
                                 <div style={{ position: 'sticky' }}>
-                                  <LinksBar />
+                                  {session && <LinksBar />}
                                 </div>
-                              }
+                              )}
 
                               <main className="main-content">
                                 <Switch>
@@ -135,7 +155,11 @@ function App() {
                                     path="/settings"
                                     component={Settings}
                                   />
-                                  <Route exact path="/job/:id" component={Job} />
+                                  <Route
+                                    exact
+                                    path="/job/:id"
+                                    component={Job}
+                                  />
                                   <Route
                                     exact
                                     path="/upcoming"
@@ -146,7 +170,11 @@ function App() {
                                     path="/requests"
                                     component={Requests}
                                   />
-                                  <Route exact path="/terms" component={Terms} />
+                                  <Route
+                                    exact
+                                    path="/terms"
+                                    component={Terms}
+                                  />
                                   <Route
                                     exact
                                     path="/privacy"
