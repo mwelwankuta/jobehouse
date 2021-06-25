@@ -8,7 +8,7 @@ function Profile() {
   const phoneView = useContext(PhoneViewContext)
 
   //   const [editBio, setEditBio] = useState(false)
-  const [editBioButtonText, setEditBioButtonText] = useState('Edit Bio')
+  const [bioText, setBioText] = useState('I love cake')
   const [logoutButtonText, setLogoutButtonText] = useState('Logout')
   const [editprofileTextButton, setEditProfileTextButton] = useState(
     'Edit Profile',
@@ -17,18 +17,7 @@ function Profile() {
   const [bio, setBio] = useState('')
   const [counter, setCounter] = useState(0)
   const [logoutCounter, setLogoutCounter] = useState(0)
-
-  useEffect(() => {
-    if (counter === 1) {
-      setEditBioButtonText('Done')
-    }
-    if (counter === 2) {
-      setEditBioButtonText('Edit Bio')
-    }
-    if (counter === 0) {
-      setEditBioButtonText('Edit Bio')
-    }
-  }, [counter])
+  const [editBio, setEditBio] = useState(false)
 
   useEffect(() => {
     if (logoutCounter === 1) {
@@ -59,21 +48,21 @@ function Profile() {
         </p>
       </div>
       {counter === 0 || counter !== 1 ? (
-        <small className="bio-text">{bio} </small>
+        <small className="bio-text">{bioText} </small>
       ) : (
         ''
       )}
-      {counter === 1 && (
+      {editBio && (
         <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
       )}
       <button
         type="submit"
         onClick={() => {
-          setCounter(counter + 1)
+          setEditBio(!editBio)
         }}
         className="bio-btn"
       >
-        {editBioButtonText}
+        {editBio ? 'Done' : 'Edit Bio'}
       </button>
       {phoneView && (
         <div className="buttons-holder">

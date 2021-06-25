@@ -27,12 +27,23 @@ nav .login-link:hover {
 nav a {
   text-decoration: none;
   color: #fd4d4d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
 }
 
 nav a .jobe-house-logo {
   margin-right: 55px;
   cursor: pointer;
   color: #fd4d4d;
+}
+
+nav a .job-house-logo-icon {
+  height: 35px;
 }
 
 nav .blue-text {

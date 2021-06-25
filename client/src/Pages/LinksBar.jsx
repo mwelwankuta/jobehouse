@@ -15,7 +15,7 @@ function LinksBar() {
     { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },
     {
       icon: <CalendarIcon height="35px" />,
-      label: 'Scheduled Jobs',
+      label: 'Scheduled',
       path: '/upcoming',
     },
     {
@@ -44,7 +44,7 @@ function LinksBar() {
               {linkdata.icon}
               <p
                 style={{
-                  fontWeight: router.pathname === linkdata.path && '600',
+                  fontWeight: router.pathname === linkdata.path && '700',
                 }}
               >
                 {linkdata.label}

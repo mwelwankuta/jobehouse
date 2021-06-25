@@ -6,6 +6,7 @@ nav {
   padding: 0 10px;
   position: relative;
   border: none;
+
   .login-link {
     @include button($darkGreyColor, $blackColor);
     font-weight: 300;
@@ -17,10 +18,16 @@ nav {
   a {
     text-decoration: none;
     color: $primaryColor;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     .jobe-house-logo {
       margin-right: 55px;
       cursor: pointer;
       color: $primaryColor;
+    }
+    .job-house-logo-icon {
+      height: 35px;
     }
   }
   .blue-text {
