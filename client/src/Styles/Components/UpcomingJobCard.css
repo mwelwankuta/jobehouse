@@ -1,0 +1,16 @@
+.upcoming-card-holder {
+  padding: 5px 10px;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+}
+
+.upcoming-card-holder .upcoming-time {
+  color: #fd4d4d;
+}
+
+.upcoming-card-holder .upcoming-title {
+  font-weight: 600;
+  color: #252525;
+}
+/*# sourceMappingURL=UpcomingJobCard.css.map */

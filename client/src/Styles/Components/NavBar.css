@@ -1,0 +1,101 @@
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 10px;
+  position: relative;
+  border: none;
+}
+
+nav .login-link {
+  background-color: #dedede;
+  padding: 8px 20px;
+  border: #f2f2f2;
+  border-radius: 6px;
+  color: #252525;
+  font-weight: 600;
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+nav .login-link:hover {
+  color: #1a1a1a;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fd4d4d;
+}
+
+nav a .jobe-house-logo {
+  margin-right: 55px;
+  cursor: pointer;
+  color: #fd4d4d;
+}
+
+nav .blue-text {
+  color: #fd4d4d;
+}
+
+nav .image-holder {
+  margin-right: 15px;
+}
+
+nav .image-holder img {
+  border-radius: 6px;
+  width: 32px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+
+nav .select-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+nav .nav-select-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #5d7290;
+  padding: 4px 10px;
+  min-width: 300px;
+  width: 100%;
+  margin-right: 34%;
+  background-color: #dedede;
+  border-radius: 6px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+nav .nav-select-holder select {
+  padding: 5px 10px;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #5d7290;
+  border: none;
+  background-color: transparent;
+  outline: 0;
+  cursor: pointer;
+}
+/*# sourceMappingURL=NavBar.css.map */

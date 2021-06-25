@@ -1,0 +1,57 @@
+@import '../../Styles/Variables.scss';
+
+.profile-holder {
+  margin: 40px auto;
+  max-width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  .username-text {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: $darkBlackColor;
+  }
+  img {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid $primaryColor;
+  }
+  .votes-holder {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 0 40px;
+  }
+  .bio-btn {
+    @include button($primaryColor, white);
+  }
+  .buttons-holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    .edit-btn {
+      @include button($greyColor, white);
+      height: 32px;
+      // padding: 8px 25px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .logout-btn {
+      @include button($redColor, white);
+    }
+  }
+  textarea {
+    border: none;
+    text-align: center;
+  }
+}

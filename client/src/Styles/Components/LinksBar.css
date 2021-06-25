@@ -1,0 +1,50 @@
+.links-bar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.links-bar ul li {
+  list-style-type: none;
+}
+
+.links-bar ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  color: #fd4d4d;
+}
+
+.links-bar ul li .requests-holder {
+  position: relative;
+}
+
+.links-bar ul li .requests-holder .notifications-counter {
+  position: absolute;
+  background-color: white;
+  border-radius: 100%;
+  z-index: 4;
+  bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 14px;
+  padding-left: 4px;
+  width: 17px;
+  right: 0;
+}
+/*# sourceMappingURL=LinksBar.css.map */

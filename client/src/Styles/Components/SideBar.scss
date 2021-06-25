@@ -1,0 +1,90 @@
+@import '../Variables.scss';
+
+.side-bar {
+  .profile-card {
+    background-color: $lightGreyColor;
+    margin-top: 20px;
+    padding: 10px 20px 20px 20px;
+    border-radius: 6px;
+  }
+  .logout-text {
+    color: rgba(209, 22, 22, 0.507);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  margin: 0 10px;
+  .bio-text {
+    color: $textColor;
+    font-size: 15px;
+  }
+  .account-button-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .logout-btn {
+      @include button(rgba(233, 20, 20, 0.39), rgb(51, 5, 5));
+    }
+    .logout-btn:hover {
+      background-color: $redColor;
+      transition: 0.3s;
+    }
+    button {
+      @include button($blackColor, white);
+    }
+    button:hover {
+      background-color: #111;
+      transition: 0.3s;
+    }
+    a {
+      @include button($lightGreyColor, $blackColor);
+      font-size: 14px;
+    }
+    a:hover {
+      background-color: rgb(207, 207, 207);
+      transition: 0.3s;
+    }
+  }
+
+  .profile-stats-holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      background-color: $lightGreyColor;
+      border-radius: 6px;
+    }
+    .profile {
+      display: flex;
+    }
+    .profile-name-stats {
+      display: flex;
+      flex-direction: column;
+      .user-name-holder {
+        p {
+          margin-bottom: 0px;
+        }
+        small {
+          color: $textColor;
+        }
+      }
+      .recommendations-holder {
+        display: flex;
+        gap: 10px;
+        div {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          span {
+            font-weight: 600;
+          }
+          p {
+            color: $textColor;
+          }
+        }
+      }
+    }
+  }
+}

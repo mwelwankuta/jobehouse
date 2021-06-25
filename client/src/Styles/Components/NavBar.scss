@@ -1,0 +1,74 @@
+@import '../Variables.scss';
+
+nav {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 10px;
+  position: relative;
+  border: none;
+  .login-link {
+    @include button($darkGreyColor, $blackColor);
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .login-link:hover {
+    color: $darkBlackColor;
+  }
+  a {
+    text-decoration: none;
+    color: $primaryColor;
+    .jobe-house-logo {
+      margin-right: 55px;
+      cursor: pointer;
+      color: $primaryColor;
+    }
+  }
+  .blue-text {
+    color: $primaryColor;
+  }
+
+  .image-holder {
+    margin-right: 15px;
+    img {
+      border-radius: 6px;
+      width: 32px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+
+  .select-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    // position: absolute;
+    align-self: center;
+  }
+
+  .nav-select-holder {
+    display: flex;
+
+    align-items: center;
+    color: $textColor;
+    padding: 4px 10px;
+    min-width: 300px;
+    width: 100%;
+    margin-right: 34%;
+    background-color: $darkGreyColor;
+    border-radius: 6px;
+    transition: 0.2s;
+    cursor: pointer;
+    select {
+      padding: 5px 10px;
+      width: 100%;
+      flex: 1;
+      color: $textColor;
+      border: none;
+      background-color: transparent;
+      outline: 0;
+      cursor: pointer;
+    }
+  }
+}

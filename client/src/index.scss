@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './Styles/Variables.scss';
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Fira Sans',
+    'Cantarell', 'Droid Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.home-container {
+  small {
+    color: $textColor;
+  }
+
+  display: grid;
+  grid-template-rows: 70px 1fr;
+  height: 100vh;
+  .sections {
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 200px 1fr 400px;
+    height: 100%;
+    .main-content {
+      .login-reminder {
+        text-align: center;
+        font-weight: 500;
+        color: $blackColor;
+      }
+
+      .posts-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home-container {
+    display: grid;
+    grid-template-rows: 60px 1fr 70px;
+    .sections {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: 0 0;
+      width: 100%;
+
+      .main-content {
+        padding: 0;
+        margin: 20px;
+
+        .button-holder {
+          margin-top: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .page-title {
+            color: $blackColor;
+          }
+
+          button {
+            @include button($primaryColor, white);
+          }
+
+          button:hover {
+            background-color: dodgerblue;
+            transition: 0.3s;
+          }
+        }
+
+        .posts-list {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}

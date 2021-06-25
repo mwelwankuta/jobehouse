@@ -1,0 +1,22 @@
+@import '../../../Styles/Variables.scss';
+
+.mobile-select-holder {
+  display: flex;
+  align-items: center;
+  color: $textColor;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  background-color: $lightGreyColor;
+  border-radius: 6px;
+  transition: 0.2s;
+  cursor: pointer;
+  select {
+    padding: 5px 10px;
+    width: 100%;
+    color: $textColor;
+    border: none;
+    background-color: transparent;
+    outline: 0;
+    cursor: pointer;
+  }
+}
