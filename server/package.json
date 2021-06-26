@@ -18,7 +18,6 @@
     "graphql": "^15.5.0",
     "mongoose": "^5.12.14",
     "node-mailer": "^0.1.1"
-    
   },
   "dev": {
     "nodemon": "^2.0.7"

@@ -18,15 +18,12 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 // Databse Connection
 const databaseUri =
   process.env.MONGODB_CONNECTION_URI || 'mongodb://localhost:27017/jobeHouse'
-  mongoose.connect(
-    databaseUri,
-    {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    },
-  )
+mongoose.connect(databaseUri, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+})
 mongoose.connection.once('open', () => console.log('Database connected...'))
 mongoose.connection.on('error', () =>
   console.log('Failed to connect to database...'),
