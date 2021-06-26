@@ -34,33 +34,35 @@ function Auth() {
     if (!response.status) {
       localStorage.setItem('client', JSON.stringify(user))
 
-      axios.post('http://localhost:7000/authenticate', user).then((res) => {
-        console.log(res)
-        const serverResponse = res.data
-        if (serverResponse) {
-          if (serverResponse[1]) {
-            sessionStorage.setItem(
-              'isNewUser',
-              JSON.stringify(serverResponse[1].msg),
-            )
-            if (sessionStorage.getItem('isNewUser')) {
-              // setLoginUser(serverResponse[0])
-              console.log(serverResponse)
+      axios
+        .post('https://jobe-house.herokuapp.com/authenticate', user)
+        .then((res) => {
+          console.log(res)
+          const serverResponse = res.data
+          if (serverResponse) {
+            if (serverResponse[1]) {
               sessionStorage.setItem(
-                'client',
-                JSON.stringify(serverResponse[0]),
+                'isNewUser',
+                JSON.stringify(serverResponse[1].msg),
               )
+              if (sessionStorage.getItem('isNewUser')) {
+                // setLoginUser(serverResponse[0])
+                console.log(serverResponse)
+                sessionStorage.setItem(
+                  'client',
+                  JSON.stringify(serverResponse[0]),
+                )
+                window.location.reload()
+                setModalIsOpen(false)
+              }
+            } else {
+              // setLoginUser(serverResponse)
+              sessionStorage.setItem('client', JSON.stringify(serverResponse))
               window.location.reload()
               setModalIsOpen(false)
             }
-          } else {
-            // setLoginUser(serverResponse)
-            sessionStorage.setItem('client', JSON.stringify(serverResponse))
-            window.location.reload()
-            setModalIsOpen(false)
           }
-        }
-      })
+        })
     } else {
       window.location = '/error'
     }

@@ -61,7 +61,9 @@ function App() {
 
   useEffect(() => {
     if (session) {
-      axios.get('http://localhost:7000/jobs').then((res) => setPosts(res.data))
+      axios
+        .get('https://jobe-house.herokuapp.com/jobs')
+        .then((res) => setPosts(res.data))
     }
   })
 
