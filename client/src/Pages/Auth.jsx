@@ -37,11 +37,31 @@ function Auth() {
       localStorage.setItem('client', JSON.stringify(user))
 
       axios.post('http://localhost:7000/authenticate', user).then((res) => {
-        setLoginUser(res.data)
-        sessionStorage.setItem('client', JSON.stringify(res.data))
-        window.location.reload()
-        setModalIsOpen(false)
-        alert(loginUser)
+        console.log(res)
+        const serverResponse = res.data
+        if (serverResponse) {
+          if (serverResponse[1]) {
+            sessionStorage.setItem(
+              'isNewUser',
+              JSON.stringify(serverResponse[1].msg),
+            )
+            if (sessionStorage.getItem('isNewUser')) {
+              setLoginUser(serverResponse[0])
+              console.log(serverResponse)
+              sessionStorage.setItem(
+                'client',
+                JSON.stringify(serverResponse[0].picture),
+              )
+              window.location.reload()
+              setModalIsOpen(false)
+            }
+          } else {
+            setLoginUser(serverResponse)
+            sessionStorage.setItem('client', JSON.stringify(serverResponse))
+            window.location.reload()
+            setModalIsOpen(false)
+          }
+        }
       })
     } else {
       window.location = '/error'

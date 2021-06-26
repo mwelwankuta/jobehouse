@@ -41,12 +41,6 @@ function NavBar({ user, session, modalView }) {
                 <img src={user.picture} alt="profile" />
               </div>
             )}
-
-            {!session && (
-              <a href="/login" className="login-link">
-                Login
-              </a>
-            )}
           </div>
         </nav>
       )}

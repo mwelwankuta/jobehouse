@@ -43,7 +43,7 @@ function CreateUpcomingModal() {
     setUpcomingModalIsOpen(false)
 
     axios
-      .post('http://localhost:4000/posts', {
+      .post('http://localhost:7000/posts', {
         title: title,
         description: description,
         date: date,

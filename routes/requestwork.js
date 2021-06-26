@@ -10,7 +10,6 @@ router.post('/requestwork', (request, response) => {
 
   JobModel.findById(jobId, (err, data) => {
     if (err) throw err
-    console.log(data, ' this is the data')
     if (data.length !== 0) {
       console.log(data)
 
@@ -22,6 +21,9 @@ router.post('/requestwork', (request, response) => {
           name: userName,
         },
       ]
+
+      // JobModel.find({}, (err, data) => {})
+
       JobModel.updateOne({ _id: jobId }, { requests: newWorkRequests }, () => {
         response.status(201).send({ msg: 'You have requested to work' })
       })
