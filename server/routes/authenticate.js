@@ -6,14 +6,11 @@ const router = Router()
 router.post('/authenticate', (req, res) => {
   // code goes here
   UserModel.find({ fbID: req.body.fbID }, (err, data) => {
-    console.log(data, 'first')
     if (err)
       res.status(500).send({ msg: 'Server error, please try again later' })
     if (data.length > 0) {
       res.status(200).send(data)
-      console.log(data, 'two')
     } else {
-      console.log(data, 'three')
       const user = {
         fbID: req.body.fbID,
         name: req.body.name,
@@ -26,7 +23,7 @@ router.post('/authenticate', (req, res) => {
       }
       UserModel.create(user, (err, data) => {
         if (err) throw err
-        res.status(201).send(data)
+        res.status(201).send([data, { msg: 'new user' }])
       })
     }
   })

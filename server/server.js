@@ -17,16 +17,13 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 
 // Databse Connection
 const databaseUri =
-  // process.env.MONGODB_CONNECTION_URI || 'mongodb://localhost:27017/jobeHouse'
-  mongoose.connect(
-    'mongodb://ugf4o8qp5phutxpw1yey:qzwFCt6FyzxlLfF2V1GL@bz5psmpwljwpn7b-mongodb.services.clever-cloud.com:27017/bz5psmpwljwpn7b',
-    {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    },
-  )
+  process.env.MONGODB_CONNECTION_URI || 'mongodb://localhost:27017/jobeHouse'
+mongoose.connect(databaseUri, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+})
 mongoose.connection.once('open', () => console.log('Database connected...'))
 mongoose.connection.on('error', () =>
   console.log('Failed to connect to database...'),

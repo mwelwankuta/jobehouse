@@ -39,7 +39,7 @@ function PostModal() {
     setPostModalIsOpen(false)
 
     axios
-      .post('http://localhost:7000/jobs', {
+      .post('https://jobe-house.herokuapp.com/jobs', {
         title: title,
         description: description,
         picture: picture,
