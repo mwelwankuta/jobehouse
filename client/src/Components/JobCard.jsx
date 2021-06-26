@@ -1,42 +1,47 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ClockIcon } from '@heroicons/react/solid'
 import { ReplyIcon } from '@heroicons/react/outline'
 import moment from 'moment'
+import axios from 'axios'
 import TimeStampToDate from 'timestamp-to-date'
 
+import { PostsContext } from '../Contexts/viewContext'
+
 import '../Styles/Components/JobCard.css'
-import axios from 'axios'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
-  const joblink = `/job/${id}`
-  const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd')
+  const [, setPosts] = useContext(PostsContext)
+  const [addedRequest, setAddedRequest] = useState(false)
 
+  const joblink = `/job/${id}`
+  const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm:ss')
   const readableDate = moment(dateFromTimeStamp).fromNow()
 
-  const addRequest = () => {
+  const workRequest = () => {
     axios
-      .post('http://localhost:7000/requestwork', {
+      .post('https://jobe-house.herokuapp.com/requestwork', {
         jobId: id,
-        userId: user.id,
+        userId: user.fbID,
         userName: user.name,
       })
       .then((res) => {
-        console.log(res)
+        setPosts(res.data)
       })
   }
 
-  const cancleRequest = () => {
-    axios
-      .post('http://localhost:7000/unrequestwork', {
-        jobId: id,
-        userId: user.id,
-        userName: user.name,
-      })
-      .then((res) => {
-        console.log(res)
-      })
+  const addRequest = () => {
+    //
+    setAddedRequest(true)
+    workRequest()
   }
+
+  const removeRequest = () => {
+    //
+    setAddedRequest(false)
+    workRequest()
+  }
+
   return (
     <div className="job-card-holder">
       <Link to={joblink}>
@@ -59,16 +64,16 @@ function PostCard({ id, title, description, status, date, user, requests }) {
           </small>
         </div>
       </Link>
-      {requests.filter((worker) => worker.userId === user.fbID) > 0 &&
-        status === 'Available' && (
-          <button onClick={() => cancleRequest}>
-            <ReplyIcon height="15px" />
-            Cancle
-          </button>
-        )}
 
-      {status === 'Available' && (
-        <button onClick={() => addRequest}>
+      {status === 'Available' && addedRequest === true && (
+        <button onClick={() => removeRequest()}>
+          <ReplyIcon height="15px" />
+          Cancle
+        </button>
+      )}
+
+      {status === 'Available' && addedRequest === false && (
+        <button onClick={() => addRequest()}>
           <ReplyIcon height="15px" />
           Request
         </button>

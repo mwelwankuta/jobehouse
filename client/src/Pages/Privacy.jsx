@@ -21,7 +21,7 @@ function Privacy() {
         We use your contact information, such as your email address or phone
         number, to authenticate your account and keep it - and our services -
         secure. We also use contact information to enable certain account
-        features (for example, for login verification ), and to send you
+        features, for example, for login verification , and to send you
         information about our services, and to personalize our services. If you
         provide us with your email, you agree to receive email messages from
         JobeHouse. You can use your settings for email notifications to control

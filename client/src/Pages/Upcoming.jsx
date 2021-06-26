@@ -29,7 +29,7 @@ function Upcoming() {
       </div>
       <div className="upcoming-jobs-list">
         {upcomings.map((job) => (
-          <UpcomingJobCard key={job} data={job} />
+          <UpcomingJobCard key={job._id} data={job} />
         ))}
         {upcomings.length === 0 && (
           <small style={{ textAlign: 'center' }}>

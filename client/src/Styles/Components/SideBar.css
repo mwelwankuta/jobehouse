@@ -4,6 +4,7 @@
 
 .side-bar .profile-card {
   background-color: #f2f2f2;
+  border: 1px solid #dedede;
   margin-top: 20px;
   padding: 10px 20px 20px 20px;
   border-radius: 6px;
@@ -93,11 +94,16 @@
           justify-content: space-between;
 }
 
-.side-bar .profile-stats-holder img {
+.side-bar .profile-stats-holder .image-holder {
+  cursor: pointer;
+}
+
+.side-bar .profile-stats-holder .image-holder img {
   width: 70px;
   height: 70px;
   -o-object-fit: contain;
      object-fit: contain;
+  cursor: pointer;
   background-color: #f2f2f2;
   border-radius: 6px;
 }
