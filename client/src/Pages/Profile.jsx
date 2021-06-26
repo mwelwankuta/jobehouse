@@ -62,28 +62,30 @@ function Profile() {
       >
         {editBio ? 'Done' : 'Edit Bio'}
       </button>
+      {logoutCounter === 1 && (
+        <small className="logout-confirmation-text">
+          Are you sure you want to logout
+        </small>
+      )}
       {phoneView && (
         <div className="buttons-holder">
-          <button
-            onClick={() => {
-              if (logoutCounter === 1) {
-                setLogoutCounter(0)
-              }
-            }}
-            className="edit-btn"
-          >
-            <p>{editprofileTextButton}</p>
-          </button>
-
           <button
             onClick={() => setLogoutCounter(logoutCounter + 1)}
             className="logout-btn"
           >
             {logoutButtonText}
           </button>
+
+          {logoutCounter === 1 && (
+            <button
+              onClick={() => logoutCounter === 1 && setLogoutCounter(0)}
+              className="nologout-btn"
+            >
+              {editprofileTextButton}
+            </button>
+          )}
         </div>
       )}
-      {logoutCounter === 1 && <small>Are you sure you want to logout</small>}
     </div>
   )
 }

@@ -10,7 +10,7 @@ import axios from 'axios'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
   const joblink = `/job/${id}`
-  const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd')
+  const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm')
 
   const readableDate = moment(dateFromTimeStamp).fromNow()
 
@@ -59,7 +59,8 @@ function PostCard({ id, title, description, status, date, user, requests }) {
           </small>
         </div>
       </Link>
-      {requests.filter((worker) => worker.userId === user.fbID) > 0 &&
+      {requests &&
+        requests.filter((worker) => worker.userId === user.fbID) > 0 &&
         status === 'Available' && (
           <button onClick={() => cancleRequest}>
             <ReplyIcon height="15px" />

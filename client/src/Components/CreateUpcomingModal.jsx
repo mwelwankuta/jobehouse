@@ -33,6 +33,9 @@ function CreateUpcomingModal() {
       date: date.split('T')[1],
       description: description,
       category: category,
+      authorid: user.fbID,
+      requests: [],
+      status: 'Available',
     }
 
     setUpcomings([...upcomings, upcoming])

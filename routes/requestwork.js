@@ -12,7 +12,8 @@ router.post('/requestwork', (request, response) => {
     if (err) throw err
     console.log(data, ' this is the data')
     if (data.length !== 0) {
-      console.log(data, 'datalog')
+      console.log(data)
+
       const previoseWorkRequests = data.requests
       const newWorkRequests = [
         ...previoseWorkRequests,

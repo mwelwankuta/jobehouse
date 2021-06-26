@@ -3,6 +3,7 @@
 .side-bar {
   .profile-card {
     background-color: $lightGreyColor;
+    border: 1px solid $darkGreyColor;
     margin-top: 20px;
     padding: 10px 20px 20px 20px;
     border-radius: 6px;
@@ -49,12 +50,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    img {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      background-color: $lightGreyColor;
-      border-radius: 6px;
+    .image-holder {
+      cursor: pointer;
+      img {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        cursor: pointer;
+        background-color: $lightGreyColor;
+        border-radius: 6px;
+      }
     }
     .profile {
       display: flex;

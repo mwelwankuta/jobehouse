@@ -17,9 +17,9 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 
 // Databse Connection
 const databaseUri =
-  // process.env.MONGODB_CONNECTION_URI || 'mongodb://localhost:27017/jobeHouse'
+  process.env.MONGODB_CONNECTION_URI || 'mongodb://localhost:27017/jobeHouse'
   mongoose.connect(
-    'mongodb://ugf4o8qp5phutxpw1yey:qzwFCt6FyzxlLfF2V1GL@bz5psmpwljwpn7b-mongodb.services.clever-cloud.com:27017/bz5psmpwljwpn7b',
+    databaseUri,
     {
       useCreateIndex: true,
       useNewUrlParser: true,
