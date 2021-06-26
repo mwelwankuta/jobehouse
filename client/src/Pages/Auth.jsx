@@ -9,8 +9,6 @@ import axios from 'axios'
 ReactModal.setAppElement(document.getElementById('root'))
 
 function Auth() {
-  const [loginUser, setLoginUser] = useState([])
-
   const [modalIsOpen, setModalIsOpen] = useState(true)
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
@@ -46,17 +44,17 @@ function Auth() {
               JSON.stringify(serverResponse[1].msg),
             )
             if (sessionStorage.getItem('isNewUser')) {
-              setLoginUser(serverResponse[0])
+              // setLoginUser(serverResponse[0])
               console.log(serverResponse)
               sessionStorage.setItem(
                 'client',
-                JSON.stringify(serverResponse[0].picture),
+                JSON.stringify(serverResponse[0]),
               )
               window.location.reload()
               setModalIsOpen(false)
             }
           } else {
-            setLoginUser(serverResponse)
+            // setLoginUser(serverResponse)
             sessionStorage.setItem('client', JSON.stringify(serverResponse))
             window.location.reload()
             setModalIsOpen(false)
