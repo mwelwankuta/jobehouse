@@ -46,17 +46,15 @@ function Auth() {
                 JSON.stringify(serverResponse[1].msg),
               )
               if (sessionStorage.getItem('isNewUser')) {
-                // setLoginUser(serverResponse[0])
                 console.log(serverResponse)
                 sessionStorage.setItem(
                   'client',
-                  JSON.stringify(serverResponse[0]),
+                  JSON.stringify([serverResponse[0]]),
                 )
                 window.location.reload()
                 setModalIsOpen(false)
               }
             } else {
-              // setLoginUser(serverResponse)
               sessionStorage.setItem('client', JSON.stringify(serverResponse))
               window.location.reload()
               setModalIsOpen(false)
