@@ -33,6 +33,9 @@ function CreateUpcomingModal() {
       date: date.split('T')[1],
       description: description,
       category: category,
+      authorid: user.fbID,
+      requests: [],
+      status: 'Available',
     }
 
     setUpcomings([...upcomings, upcoming])
@@ -40,7 +43,7 @@ function CreateUpcomingModal() {
     setUpcomingModalIsOpen(false)
 
     axios
-      .post('http://localhost:4000/posts', {
+      .post('https://jobe-house.herokuapp.com/posts', {
         title: title,
         description: description,
         date: date,

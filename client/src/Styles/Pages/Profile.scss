@@ -33,18 +33,16 @@
   .bio-btn {
     @include button($primaryColor, white);
   }
+  .logout-confirmation-text {
+    margin-top: 20px;
+  }
   .buttons-holder {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 20px;
-    .edit-btn {
+    .nologout-btn {
       @include button($greyColor, white);
       height: 32px;
-      // padding: 8px 25px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
     .logout-btn {
       @include button($redColor, white);

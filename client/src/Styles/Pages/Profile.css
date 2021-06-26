@@ -54,20 +54,22 @@
   cursor: pointer;
 }
 
+.profile-holder .logout-confirmation-text {
+  margin-top: 20px;
+}
+
 .profile-holder .buttons-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 20px;
 }
 
-.profile-holder .buttons-holder .edit-btn {
+.profile-holder .buttons-holder .nologout-btn {
   background-color: gray;
   padding: 8px 20px;
   border: #f2f2f2;
@@ -76,13 +78,6 @@
   font-weight: 600;
   cursor: pointer;
   height: 32px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 4px;
 }
 
 .profile-holder .buttons-holder .logout-btn {

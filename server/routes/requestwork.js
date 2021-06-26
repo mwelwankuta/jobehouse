@@ -3,29 +3,47 @@ import JobModel from '../models/JobModel.js'
 
 const router = Router()
 
-router.post('/requestwork', (request, response) => {
+router.post('/requestwork', (request, response, next) => {
   const jobId = request.body.jobId
   const userId = request.body.userId
-  const userName = request.body.name
+  const userName = request.body.userName
 
   JobModel.findById(jobId, (err, data) => {
     if (err) throw err
-    console.log(data, ' this is the data')
     if (data.length !== 0) {
-      console.log(data, 'datalog')
       const previoseWorkRequests = data.requests
-      const newWorkRequests = [
-        ...previoseWorkRequests,
-        {
-          id: userId,
-          name: userName,
-        },
-      ]
-      JobModel.updateOne({ _id: jobId }, { requests: newWorkRequests }, () => {
-        response.status(201).send({ msg: 'You have requested to work' })
-      })
-    } else {
-      response.send({ msg: 'error occured' })
+      console.log(JSON.stringify(previoseWorkRequests))
+      if (
+        previoseWorkRequests.filter((worker) => worker.fbID === userId)
+          .length >= 1
+      ) {
+        const newWorkRequests = previoseWorkRequests.filter(
+          (worker) => worker.fbID !== userId,
+        )
+        JobModel.updateOne(
+          { _id: jobId },
+          { requests: newWorkRequests },
+          () => {
+            response
+              .status(201)
+              .send([data, { msg: 'You have cancled to work' }])
+          },
+        )
+      } else {
+        const newWorkRequests = [
+          ...previoseWorkRequests,
+          { jobId: jobId, fbID: userId, name: userName },
+        ]
+        JobModel.updateOne(
+          { _id: jobId },
+          { requests: newWorkRequests },
+          () => {
+            response
+              .status(201)
+              .send([data, { msg: 'You have requested to work' }])
+          },
+        )
+      }
     }
   })
 })

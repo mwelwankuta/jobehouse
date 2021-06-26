@@ -19,6 +19,10 @@ function SideBar({ user }) {
 
   const [counter, setCounter] = useState(0)
   const [logoutButtonText, setLogoutButtonText] = useState('Logout')
+
+  const upvotes = user.upvotes
+  const downvotes = user.downvotes
+
   const router = useHistory()
 
   useEffect(() => {
@@ -38,27 +42,27 @@ function SideBar({ user }) {
     <div className="side-bar">
       <div className="profile-card">
         <div className="profile-stats-holder">
-          <div>
+          <div onClick={() => router.push('/profile')} className="image-holder">
             <img src={user.picture} alt="profile" />
           </div>
           <div className="profile-name-stats">
             <div className="user-name-holder">
               <p className="username-text">{user.name}</p>
-              <small>@Merlee4</small>
+              <small>#{user.fbID}</small>
             </div>
             <div className="recommendations-holder">
               <div className="upvotes-holder">
-                <span>32</span>
+                <span>{upvotes && upvotes.length}</span>
                 <p>Up votes</p>
               </div>
               <div className="downvotes-holder">
-                <span>32</span>
+                <span>{downvotes && downvotes.length}</span>
                 <p>Down votes</p>
               </div>
             </div>
           </div>
         </div>
-        <p className="bio-text">sample bio</p>
+        <p className="bio-text">{user.bio}</p>
         <div className="account-button-holder">
           {counter === 1 ? (
             <button onClick={() => setCounter(0)}>No</button>

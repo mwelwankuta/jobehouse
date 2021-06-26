@@ -9,8 +9,6 @@ import axios from 'axios'
 ReactModal.setAppElement(document.getElementById('root'))
 
 function Auth() {
-  const [loginUser, setLoginUser] = useState([])
-
   const [modalIsOpen, setModalIsOpen] = useState(true)
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
@@ -36,13 +34,35 @@ function Auth() {
     if (!response.status) {
       localStorage.setItem('client', JSON.stringify(user))
 
-      axios.post('http://localhost:7000/authenticate', user).then((res) => {
-        setLoginUser(res.data)
-        sessionStorage.setItem('client', JSON.stringify(res.data))
-        window.location.reload()
-        setModalIsOpen(false)
-        alert(loginUser)
-      })
+      axios
+        .post('https://jobe-house.herokuapp.com/authenticate', user)
+        .then((res) => {
+          console.log(res)
+          const serverResponse = res.data
+          if (serverResponse) {
+            if (serverResponse[1]) {
+              sessionStorage.setItem(
+                'isNewUser',
+                JSON.stringify(serverResponse[1].msg),
+              )
+              if (sessionStorage.getItem('isNewUser')) {
+                // setLoginUser(serverResponse[0])
+                console.log(serverResponse)
+                sessionStorage.setItem(
+                  'client',
+                  JSON.stringify(serverResponse[0]),
+                )
+                window.location.reload()
+                setModalIsOpen(false)
+              }
+            } else {
+              // setLoginUser(serverResponse)
+              sessionStorage.setItem('client', JSON.stringify(serverResponse))
+              window.location.reload()
+              setModalIsOpen(false)
+            }
+          }
+        })
     } else {
       window.location = '/error'
     }
