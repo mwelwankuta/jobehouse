@@ -1,5 +1,5 @@
 <a href="https://jobehouse.vercel.app"><p align="center">
-<img height=100 src="./DogeHouseBanner.svg"/>
+<img height=100 src="client/src/Resources/icon-with-text.svg"/>
 
 </p></a>
 <p align="center">

@@ -64,14 +64,14 @@ function App() {
   useEffect(() => {
     if (session) {
       axios
-        .get('http://localhost:7000/jobs')
+        .get('https://jobe-house.herokuapp.com/jobs')
         .then((res) => setPosts(res.data))
     }
   },[posts, session])
 
   useEffect(() => {
     axios
-      .post('http://localhost:7000/requestnotifications',{
+      .post('https://jobe-house.herokuapp.com/requestnotifications',{
         fbId: user.fbID
       })
       .then((res) => {
