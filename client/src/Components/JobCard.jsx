@@ -33,7 +33,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
 
   const workRequest = () => {
     axios
-      .post('http://localhost:7000/requestwork', {
+      .post('https://jobe-house.herokuapp.com/requestwork', {
         jobId: id,
         userId: user.fbID,
         userName: user.name,
