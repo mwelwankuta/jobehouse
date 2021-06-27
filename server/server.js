@@ -65,15 +65,14 @@ app
 app.post('/deletejob', (request, response) => {
   JobModel.deleteOne(
     {
-      authorid: request.fbID,
-      _id: request.id,
+      authorid: request.body.fbID,
+      _id: request.body.id,
     },
     () => {
       response.status(200).send({ msg: 'deleted job' })
     },
   )
 })
-
 
 app.post('/requestnotifications',(request, response) => {
     const fbId = request.body.fbId
