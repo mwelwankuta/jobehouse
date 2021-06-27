@@ -36,6 +36,9 @@
     float: right;
     gap: 4px;
   }
+  .cancle-request-btn{
+    @include button($greyColor, white);
+  }
   .job-description {
     color: $blackColor;
     margin-top: -10px;

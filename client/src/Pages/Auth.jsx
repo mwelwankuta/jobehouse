@@ -24,14 +24,14 @@ function Auth() {
   )
 
   const authenticate = (response) => {
-    const user = {
-      name: response.name,
-      fbID: response.id,
-      email: response.email ? response.email : '',
-      picture: response.picture.data.url,
-    }
+    if (response && !response.status) {
+      const user = {
+        name: response.name,
+        fbID: response.id,
+        email: response.email ? response.email : '',
+        picture: response.picture.data.url,
+      }
 
-    if (!response.status) {
       localStorage.setItem('client', JSON.stringify(user))
 
       axios
@@ -49,7 +49,7 @@ function Auth() {
                 console.log(serverResponse)
                 sessionStorage.setItem(
                   'client',
-                  JSON.stringify([serverResponse[0]]),
+                  JSON.stringify([serverResponse[0]]), //created user res expected array
                 )
                 window.location.reload()
                 setModalIsOpen(false)

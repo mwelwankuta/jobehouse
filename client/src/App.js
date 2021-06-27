@@ -65,7 +65,7 @@ function App() {
         .get('https://jobe-house.herokuapp.com/jobs')
         .then((res) => setPosts(res.data))
     }
-  })
+  },[posts, session])
 
   const Terms = () => {
     return <h1>Terms of Service coming Soon...</h1>

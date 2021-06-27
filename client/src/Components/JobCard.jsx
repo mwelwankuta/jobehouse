@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ClockIcon } from '@heroicons/react/solid'
 import { ReplyIcon } from '@heroicons/react/outline'
@@ -11,12 +11,26 @@ import { PostsContext } from '../Contexts/viewContext'
 import '../Styles/Components/JobCard.css'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
-  const [, setPosts] = useContext(PostsContext)
+  const [posts, setPosts] = useContext(PostsContext)
   const [addedRequest, setAddedRequest] = useState(false)
-
+  const [haveIRequested, setHaveIRequested] = useState(false)
+  
   const joblink = `/job/${id}`
   const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm:ss')
   const readableDate = moment(dateFromTimeStamp).fromNow()
+
+    useEffect(() => {
+      if(requests){
+        if(requests.length > 0){
+          if(requests.filter(request => request.fbID === user.fbID)[0].fbID){
+              setHaveIRequested(true)
+          }
+        }
+        else{
+          setHaveIRequested(false)
+        }
+    }
+    },[haveIRequested, requests, user.fbID, posts])
 
   const workRequest = () => {
     axios
@@ -26,19 +40,19 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         userName: user.name,
       })
       .then((res) => {
-        setPosts(res.data)
+        console.log(res)
       })
   }
 
   const addRequest = () => {
     //
-    setAddedRequest(true)
+    setHaveIRequested(true)
     workRequest()
   }
 
   const removeRequest = () => {
     //
-    setAddedRequest(false)
+    setHaveIRequested(false)
     workRequest()
   }
 
@@ -65,14 +79,15 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         </div>
       </Link>
 
-      {status === 'Available' && addedRequest === true && (
-        <button onClick={() => removeRequest()}>
+      {status === 'Available'  && haveIRequested === true && (
+        <button onClick={() => removeRequest()} className="cancle-request-btn">
           <ReplyIcon height="15px" />
           Cancle
         </button>
       )}
 
-      {status === 'Available' && addedRequest === false && (
+
+      {status === 'Available' && haveIRequested === false && (
         <button onClick={() => addRequest()}>
           <ReplyIcon height="15px" />
           Request
