@@ -7,15 +7,18 @@ function Profile() {
   const user = useContext(UserContext)
   const phoneView = useContext(PhoneViewContext)
 
-  const [bioText] = useState('I love cake')
+  
   const [logoutButtonText, setLogoutButtonText] = useState('Logout')
   const [editprofileTextButton, setEditProfileTextButton] = useState(
     'Edit Profile',
   )
   const [, setBio] = useState('')
+  const [bioText, ] = useState('')
+  
   const [counter] = useState(0)
   const [logoutCounter, setLogoutCounter] = useState(0)
-  const [editBio, setEditBio] = useState(false)
+  
+  const [editBio, setEditBio] = useState(false) // is user editing the bio ?
   //create edit bio route
 
   useEffect(() => {
@@ -40,10 +43,10 @@ function Profile() {
       <p className="username-text">{user.name}</p>
       <div className="votes-holder">
         <p>
-          <b>25</b> Upvotes
+          <b>{user.upvotes && user.upvotes.length}</b> Upvotes
         </p>
         <p>
-          <b>25</b> Downvotes
+          <b>{user.downvotes && user.downvotes.length}</b> Downvotes
         </p>
       </div>
       {counter === 0 || counter !== 1 ? (
@@ -68,6 +71,7 @@ function Profile() {
           Are you sure you want to logout
         </small>
       )}
+
       {phoneView && (
         <div className="buttons-holder">
           <button

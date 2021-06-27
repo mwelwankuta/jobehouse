@@ -20,6 +20,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
 
     useEffect(() => {
       if(requests){
+        console.log(requests)
         if(requests.length > 0){
           if(requests.filter(request => request.fbID === user.fbID)[0].fbID){
               setHaveIRequested(true)

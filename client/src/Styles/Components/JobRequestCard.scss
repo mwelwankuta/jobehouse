@@ -22,7 +22,8 @@
     margin-bottom: 0px;
     padding: 0;
     button{
-      @include button($darkGreyColor, $darkBlackColor)
+      @include button($darkGreyColor, $darkBlackColor);
+      width:60px;
     }
   }
   .requests-list{
@@ -34,7 +35,7 @@
       align-items: center;
       justify-content: space-between;
       button{
-          @include button($darkGreyColor, $blackColor)
+          @include button($darkGreyColor, $blackColor);
       }
     }
   }

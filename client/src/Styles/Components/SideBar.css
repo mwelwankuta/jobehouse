@@ -41,6 +41,7 @@
   color: #330505;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
 }
 
 .side-bar .account-button-holder .logout-btn:hover {
@@ -57,6 +58,7 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
 }
 
 .side-bar .account-button-holder button:hover {
@@ -73,6 +75,7 @@
   color: #252525;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
   font-size: 14px;
 }
 

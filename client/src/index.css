@@ -21,7 +21,7 @@ body {
 }
 
 .home-container .sections {
-  overflow-y: sc;
+  overflow-y: scroll;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 200px 1fr 360px;
@@ -54,7 +54,7 @@ body {
         grid-template-rows: 60px 1fr 70px;
   }
   .home-container .sections {
-    overflow-y: auto;
+    overflow-y: scroll;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -62,8 +62,6 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -ms-grid-columns: 0 0;
-        grid-template-columns: 0 0;
     width: 100%;
   }
   .home-container .sections .main-content {
@@ -93,6 +91,7 @@ body {
     color: white;
     font-weight: 600;
     cursor: pointer;
+    width: 50px;
   }
   .home-container .sections .main-content .button-holder button:hover {
     -webkit-transition: 0.3s;
