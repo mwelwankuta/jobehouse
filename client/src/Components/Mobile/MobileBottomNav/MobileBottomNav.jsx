@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   HomeIcon,
   CalendarIcon,
@@ -8,8 +8,10 @@ import {
 import { Link } from 'react-router-dom'
 
 import './MainBottomNav.css'
+import { jobRequestContext } from '../../../Contexts/viewContext'
 
 function MobileBottomNav() {
+  const notificationCounter = useContext(jobRequestContext)
   return (
     <div className="bottom-nav-holder">
       <ul className="bottom-nav">
@@ -31,7 +33,7 @@ function MobileBottomNav() {
         <li>
           <Link to="/requests">
             <BellIcon height="35px" />
-            <p className="notifications-counter">9+</p>
+            <p className="notifications-counter">{notificationCounter && notificationCounter[0].length}+</p>
           </Link>
         </li>
       </ul>

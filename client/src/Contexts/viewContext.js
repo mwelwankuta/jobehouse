@@ -19,3 +19,5 @@ export const PostsContext = createContext(null)
 export const UpcomingContext = createContext(null)
 
 export const jobRequestContext = createContext(null)
+
+export const haveIRequestedContext = createContext(null)

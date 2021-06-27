@@ -11,8 +11,7 @@ import { PostsContext } from '../Contexts/viewContext'
 import '../Styles/Components/JobCard.css'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
-  const [posts, setPosts] = useContext(PostsContext)
-  const [addedRequest, setAddedRequest] = useState(false)
+  const [posts, ] = useContext(PostsContext)
   const [haveIRequested, setHaveIRequested] = useState(false)
   
   const joblink = `/job/${id}`
@@ -34,7 +33,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
 
   const workRequest = () => {
     axios
-      .post('https://jobe-house.herokuapp.com/requestwork', {
+      .post('http://localhost:7000/requestwork', {
         jobId: id,
         userId: user.fbID,
         userName: user.name,

@@ -18,14 +18,8 @@
     .page-title {
       color: $blackColor;
     }
-    button {
+    button {  
       @include button($primaryColor, white);
     }
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .home-container {
-    display: grid;
   }
 }

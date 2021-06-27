@@ -40,10 +40,7 @@ nav a .jobe-house-logo {
   margin-right: 20px;
   cursor: pointer;
   color: #fd4d4d;
-}
-
-nav a .job-house-logo-icon {
-  height: 35px;
+  height: 48px;
 }
 
 nav .blue-text {
@@ -89,7 +86,7 @@ nav .nav-select-holder {
   padding: 4px 10px;
   min-width: 300px;
   width: 100%;
-  margin-right: 34%;
+  margin-right: 32%;
   background-color: #dedede;
   border-radius: 6px;
   -webkit-transition: 0.2s;

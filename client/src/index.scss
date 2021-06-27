@@ -19,9 +19,9 @@ body {
   grid-template-rows: 70px 1fr;
   height: 100vh;
   .sections {
-    overflow-y: auto;
+    overflow-y: sc;
     display: grid;
-    grid-template-columns: 200px 1fr 400px;
+    grid-template-columns: 200px 1fr 360px;
     height: 100%;
     .main-content {
       .login-reminder {
@@ -69,7 +69,6 @@ body {
           }
 
           button:hover {
-            background-color: dodgerblue;
             transition: 0.3s;
           }
         }

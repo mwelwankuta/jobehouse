@@ -74,14 +74,14 @@ app.post('/deletejob', (request, response) => {
   )
 })
 
-app.post('/deleteupcoming', (request, response) => {
-  UpcomingJob.deleteOne(
-    {
-      authorid: request.fbID,
-      _id: request.id,
-    },
-    () => {
-      response.status(200).send({ msg: 'deleted scheduled job' })
-    },
-  )
-})
+
+app.post('/requestnotifications',(request, response) => {
+    const fbId = request.body.fbId
+    JobModel.find({authorid: fbId}, (err, upcomingJobs) => {
+      console.log(upcomingJobs, 'found jobs')
+      if (err) throw err
+      const upcomingJobsWithRequests = upcomingJobs.filter(upcomingJob => upcomingJob.requests.length > 0)
+      console.log(upcomingJobsWithRequests, 'filter')
+      response.status(200).send(upcomingJobsWithRequests)
+    })
+  })

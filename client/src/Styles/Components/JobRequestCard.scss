@@ -1,0 +1,41 @@
+@import '../../Styles/Variables.scss';
+
+.upcoming-card-holder {
+  padding: 5px 10px;
+  border: 1px solid $darkGreyColor;
+  border-radius: 6px;
+  background-color: $lightGreyColor;
+  .upcoming-time {
+    color: $primaryColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .upcoming-title {
+    font-weight: 600;
+    color: $blackColor;
+  }
+  .arrow-down-icon-holder{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    padding: 0;
+    button{
+      @include button($darkGreyColor, $darkBlackColor)
+    }
+  }
+  .requests-list{
+    li{
+      list-style-type: none;
+      border-bottom: .7px solid $darkGreyColor;
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button{
+          @include button($darkGreyColor, $blackColor)
+      }
+    }
+  }
+}

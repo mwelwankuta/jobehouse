@@ -35,7 +35,7 @@ function Auth() {
       localStorage.setItem('client', JSON.stringify(user))
 
       axios
-        .post('https://jobe-house.herokuapp.com/authenticate', user)
+        .post('http://localhost:7000/authenticate', user)
         .then((res) => {
           console.log(res)
           const serverResponse = res.data

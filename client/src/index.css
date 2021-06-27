@@ -21,11 +21,11 @@ body {
 }
 
 .home-container .sections {
-  overflow-y: auto;
+  overflow-y: sc;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 200px 1fr 400px;
-      grid-template-columns: 200px 1fr 400px;
+  -ms-grid-columns: 200px 1fr 360px;
+      grid-template-columns: 200px 1fr 360px;
   height: 100%;
 }
 
@@ -95,7 +95,6 @@ body {
     cursor: pointer;
   }
   .home-container .sections .main-content .button-holder button:hover {
-    background-color: dodgerblue;
     -webkit-transition: 0.3s;
     transition: 0.3s;
   }

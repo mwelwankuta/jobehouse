@@ -25,10 +25,9 @@ nav {
       margin-right: 20px;
       cursor: pointer;
       color: $primaryColor;
+      height: 48px;
     }
-    .job-house-logo-icon {
-      height: 35px;
-    }
+    
   }
   .blue-text {
     color: $primaryColor;
@@ -55,13 +54,12 @@ nav {
 
   .nav-select-holder {
     display: flex;
-
     align-items: center;
     color: $textColor;
     padding: 4px 10px;
     min-width: 300px;
     width: 100%;
-    margin-right: 34%;
+    margin-right: 32%;
     background-color: $darkGreyColor;
     border-radius: 6px;
     transition: 0.2s;

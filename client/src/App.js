@@ -27,6 +27,7 @@ import {
   UpcomingModalContext,
   UpcomingContext,
   jobRequestContext,
+  haveIRequestedContext,
 } from './Contexts/viewContext'
 
 import './index.css'
@@ -41,6 +42,7 @@ function App() {
   const [posts, setPosts] = useState([])
   const [upcomings, setUpcomings] = useState([])
   const [jobRequests, setJobRequests] = useState([])
+  const [haveIRequested, setHaveIRequested] = useState(false)
 
   const phoneView = useMediaQuery({
     query: '(max-device-width: 800px)',
@@ -62,10 +64,20 @@ function App() {
   useEffect(() => {
     if (session) {
       axios
-        .get('https://jobe-house.herokuapp.com/jobs')
+        .get('http://localhost:7000/jobs')
         .then((res) => setPosts(res.data))
     }
   },[posts, session])
+
+  useEffect(() => {
+    axios
+      .post('http://localhost:7000/requestnotifications',{
+        fbId: user.fbID
+      })
+      .then((res) => {
+        setJobRequests(res.data)
+      })
+  })
 
   const Terms = () => {
     return <h1>Terms of Service coming Soon...</h1>
@@ -111,6 +123,7 @@ function App() {
                       <jobRequestContext.Provider
                         value={[jobRequests, setJobRequests]}
                       >
+                        <haveIRequestedContext.Provider value={[haveIRequested, setHaveIRequested]}>
                         <Router>
                           <div className="home-container">
                             {session && (
@@ -135,7 +148,6 @@ function App() {
                                   {!session && (
                                     <Route exact path="/" component={Auth} />
                                   )}
-
                                   <Route
                                     exact
                                     path="/settings"
@@ -199,7 +211,9 @@ function App() {
                             {/* Mobile Bottom Navigation */}
                             {phoneView && session && <MobileBottomNav />}
                           </div>
+                          
                         </Router>
+                        </haveIRequestedContext.Provider>
                       </jobRequestContext.Provider>
                     </UpcomingContext.Provider>
                   </UpcomingModalContext.Provider>

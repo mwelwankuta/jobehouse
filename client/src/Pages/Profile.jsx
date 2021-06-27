@@ -16,6 +16,7 @@ function Profile() {
   const [counter] = useState(0)
   const [logoutCounter, setLogoutCounter] = useState(0)
   const [editBio, setEditBio] = useState(false)
+  //create edit bio route
 
   useEffect(() => {
     if (logoutCounter === 1) {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   HomeIcon,
   CalendarIcon,
@@ -6,10 +6,13 @@ import {
   BellIcon,
 } from '@heroicons/react/solid'
 import { Link, useLocation } from 'react-router-dom'
+import { jobRequestContext } from '../Contexts/viewContext'
 
 import '../Styles/Components/LinksBar.css'
 
 function LinksBar() {
+  const jobRequests = useContext(jobRequestContext)
+  console.log(jobRequests)
   const router = useLocation()
   const linksdata = [
     { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },
@@ -27,7 +30,7 @@ function LinksBar() {
       icon: (
         <div className="requests-holder">
           <BellIcon height="35px" />
-          <p className="notifications-counter">9+</p>
+          <p className="notifications-counter">{jobRequests && jobRequests[0].length}+</p>
         </div>
       ),
       label: 'Requests',

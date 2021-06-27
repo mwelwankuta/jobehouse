@@ -7,9 +7,13 @@
   background-color: $lightGreyColor;
   .upcoming-time {
     color: $primaryColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .upcoming-title {
     font-weight: 600;
     color: $blackColor;
   }
+ 
 }
