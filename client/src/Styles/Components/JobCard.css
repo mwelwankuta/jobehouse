@@ -54,8 +54,16 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   display: flex;
   float: right;
   gap: 4px;
@@ -69,6 +77,16 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .job-card-holder .job-description {

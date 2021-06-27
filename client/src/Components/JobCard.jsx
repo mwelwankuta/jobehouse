@@ -20,6 +20,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
 
     useEffect(() => {
       if(requests){
+        console.log(requests)
         if(requests.length > 0){
           if(requests.filter(request => request.fbID === user.fbID)[0].fbID){
               setHaveIRequested(true)
@@ -33,7 +34,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
 
   const workRequest = () => {
     axios
-      .post('http://localhost:7000/requestwork', {
+      .post('https://jobe-house.herokuapp.com/requestwork', {
         jobId: id,
         userId: user.fbID,
         userName: user.name,

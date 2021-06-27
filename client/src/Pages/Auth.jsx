@@ -35,7 +35,7 @@ function Auth() {
       localStorage.setItem('client', JSON.stringify(user))
 
       axios
-        .post('http://localhost:7000/authenticate', user)
+        .post('https://jobe-house.herokuapp.com/authenticate', user)
         .then((res) => {
           console.log(res)
           const serverResponse = res.data
@@ -83,11 +83,9 @@ function Auth() {
             <FacebookAuth
               appId="1782110335329820"
               callback={authenticate}
-              // autoLoad={true}
               component={MyFacebookButton}
             />
           </div>
-          {/* <p>{loginUser[1].msg ? loginUser[1].msg : ''}</p> */}
         </div>
       </div>
     </ReactModal>

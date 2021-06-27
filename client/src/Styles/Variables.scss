@@ -18,6 +18,10 @@ $greyColor: rgb(128, 128, 128);
   color: $textColor;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin textinput {
