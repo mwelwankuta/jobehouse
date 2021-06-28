@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {
   ModalViewContext,
   PhoneViewContext,
@@ -8,25 +8,21 @@ import {
   UserContext,
 } from '../Contexts/viewContext.js'
 
-import MobileSelect from '../Components/Mobile/MobileSelect/MobileSelect'
 import JobCard from '../Components/JobCard'
 import '../Styles/Pages/Home.css'
 import JobModal from '../Components/JobModal'
+import { SearchIcon } from '@heroicons/react/solid'
+import { useHistory } from 'react-router-dom'
 
 function Home() {
   const phoneView = useContext(PhoneViewContext)
   const session = useContext(SessionContext)
-  const [viewModal, setModalView] = useContext(ModalViewContext)
-  const [postModalIsOpen, setPostModalIsOpen] = useContext(PostModalContext)
+  const [, setModalView] = useContext(ModalViewContext)
+  const [, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts] = useContext(PostsContext)
 
-  const user = useContext(UserContext)
-
-  useEffect(() => {
-    if (viewModal || postModalIsOpen) {
-      console.log(viewModal, postModalIsOpen)
-    }
-  }, [viewModal, postModalIsOpen])
+  const [user] = useContext(UserContext)
+  const router = useHistory()
 
   return (
     <div className="home-container">
@@ -43,7 +39,17 @@ function Home() {
       </div>
 
       <div className="posts-list">
-        {phoneView && <MobileSelect />}
+        {phoneView && (
+          <div className="mobile-select-holder">
+            <SearchIcon height="20px" />
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search for jobs"
+              onClick={(event) => router.push('/search')}
+            />
+          </div>
+        )}
         <small>
           {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
         </small>

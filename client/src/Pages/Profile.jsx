@@ -1,24 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { PhoneViewContext, UserContext } from '../Contexts/viewContext'
+import axios from 'axios'
 
 import '../Styles/Pages/Profile.css'
 
 function Profile() {
-  const user = useContext(UserContext)
+  const [user] = useContext(UserContext)
   const phoneView = useContext(PhoneViewContext)
 
-  
   const [logoutButtonText, setLogoutButtonText] = useState('Logout')
   const [editprofileTextButton, setEditProfileTextButton] = useState(
     'Edit Profile',
   )
-  const [, setBio] = useState('')
-  const [bioText, ] = useState('')
-  
-  const [counter] = useState(0)
+  const [bio, setBio] = useState('')
   const [logoutCounter, setLogoutCounter] = useState(0)
-  
   const [editBio, setEditBio] = useState(false) // is user editing the bio ?
+
+  const [loading, setLoading] = useState(false)
   //create edit bio route
 
   useEffect(() => {
@@ -37,35 +35,67 @@ function Profile() {
     }
   }, [logoutCounter])
 
+  const changeBio = (e) => {
+    if (bio.length === 0) {
+      setEditBio(false)
+    } else {
+      axios
+        .post('https://jobe-house.herokuapp.com/editbio', {
+          fbId: user.fbID,
+          bio: bio,
+        })
+        .then((res) => {
+          if (res) {
+            sessionStorage.setItem('client', JSON.stringify([res.data[0]]))
+            setEditBio(false)
+            setLoading(false)
+          }
+        })
+    }
+  }
+
   return (
     <div className="profile-holder">
       <img src={user.picture} alt="profile" />
       <p className="username-text">{user.name}</p>
       <div className="votes-holder">
         <p>
-          <b>{user.upvotes && user.upvotes.length}</b> Upvotes
+          <b>{user.upvotes && user.upvotes.length}</b> upvotes
         </p>
         <p>
-          <b>{user.downvotes && user.downvotes.length}</b> Downvotes
+          <b>{user.downvotes && user.downvotes.length}</b> downvotes
         </p>
       </div>
-      {counter === 0 || counter !== 1 ? (
-        <small className="bio-text">{bioText} </small>
-      ) : (
-        ''
-      )}
+      <small className="bio-text">
+        {loading ? '...' : user && user.bio ? user.bio : ''}{' '}
+      </small>
       {editBio && (
         <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
       )}
-      <button
-        type="submit"
-        onClick={() => {
-          setEditBio(!editBio)
-        }}
-        className="bio-btn"
-      >
-        {editBio ? 'Done' : 'Edit Bio'}
-      </button>
+      {editBio === false && (
+        <button
+          onClick={() => {
+            setEditBio(!editBio)
+          }}
+          className="bio-btn"
+        >
+          Edit Bio
+        </button>
+      )}
+
+      {editBio === true && (
+        <button
+          onClick={() => {
+            changeBio()
+            if (bio.length > 0) {
+              setLoading(true)
+            }
+          }}
+          className="bio-btn"
+        >
+          Done
+        </button>
+      )}
       {logoutCounter === 1 && (
         <small className="logout-confirmation-text">
           Are you sure you want to logout

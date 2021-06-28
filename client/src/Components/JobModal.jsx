@@ -15,7 +15,7 @@ function PostModal() {
   const [postModalIsOpen, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts, setPosts] = useContext(PostsContext)
 
-  const user = useContext(UserContext)
+  const [user] = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

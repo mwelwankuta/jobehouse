@@ -16,7 +16,7 @@ function CreateUpcomingModal() {
     UpcomingModalContext,
   )
   const [upcomings, setUpcomings] = useContext(UpcomingContext)
-  const user = useContext(UserContext)
+  const [user] = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

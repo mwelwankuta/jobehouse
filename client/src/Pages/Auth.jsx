@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ReactModal from 'react-modal'
 import FacebookAuth from 'react-facebook-auth'
 
@@ -13,9 +13,6 @@ function Auth() {
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
 
-  useEffect(() => {
-    console.log(JSON.parse(sessionStorage.getItem('client'))) // without this run auth gets two instances
-  }, [])
 
   const MyFacebookButton = ({ onClick }) => (
     <button className="login-btn" onClick={onClick}>
@@ -32,35 +29,17 @@ function Auth() {
         picture: response.picture.data.url,
       }
 
-      localStorage.setItem('client', JSON.stringify(user))
-
       axios
         .post('https://jobe-house.herokuapp.com/authenticate', user)
         .then((res) => {
-          console.log(res)
           const serverResponse = res.data
-          if (serverResponse) {
-            if (serverResponse[1]) {
-              sessionStorage.setItem(
-                'isNewUser',
-                JSON.stringify(serverResponse[1].msg),
-              )
-              if (sessionStorage.getItem('isNewUser')) {
-                console.log(serverResponse)
-                sessionStorage.setItem(
-                  'client',
-                  JSON.stringify([serverResponse[0]]), //created user res expected array
-                )
-                window.location.reload()
-                setModalIsOpen(false)
-              }
-            } else {
+          if (serverResponse) {              
               sessionStorage.setItem('client', JSON.stringify(serverResponse))
-              window.location.reload()
               setModalIsOpen(false)
-            }
+              window.location.reload()
           }
-        })
+        }).catch(err => window.location = '/error')
+
     } else {
       window.location = '/error'
     }

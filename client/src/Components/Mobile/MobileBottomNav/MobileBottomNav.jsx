@@ -4,6 +4,7 @@ import {
   CalendarIcon,
   UserIcon,
   BellIcon,
+  SearchIcon,
 } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
 
@@ -26,6 +27,11 @@ function MobileBottomNav() {
           </Link>
         </li>
         <li>
+          <Link to="/search">
+            <SearchIcon height="31px" />
+          </Link>
+        </li>
+        <li>
           <Link to="/profile">
             <UserIcon height="35px" />
           </Link>
@@ -33,7 +39,9 @@ function MobileBottomNav() {
         <li>
           <Link to="/requests">
             <BellIcon height="35px" />
-            <p className="notifications-counter">{notificationCounter && notificationCounter[0].length}+</p>
+            <p className="notifications-counter">
+              {notificationCounter && notificationCounter[0].length}+
+            </p>
           </Link>
         </li>
       </ul>

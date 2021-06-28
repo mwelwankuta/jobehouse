@@ -12,7 +12,6 @@ import '../Styles/Components/LinksBar.css'
 
 function LinksBar() {
   const jobRequests = useContext(jobRequestContext)
-  console.log(jobRequests)
   const router = useLocation()
   const linksdata = [
     { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },

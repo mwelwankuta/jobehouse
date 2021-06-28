@@ -37,6 +37,10 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+select{
+  -moz-appearance:none
+}
+
 a {
   text-decoration: none;
   -webkit-user-drag: none;

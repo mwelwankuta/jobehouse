@@ -51,11 +51,11 @@ function SideBar({ user }) {
               <small>#{user.fbID}</small>
             </div>
             <div className="recommendations-holder">
-              <div className="upvotes-holder">
+              <div id="votes" className="upvotes-holder">
                 <span>{upvotes && upvotes.length}</span>
                 <p>Up votes</p>
               </div>
-              <div className="downvotes-holder">
+              <div id="votes" className="downvotes-holder">
                 <span>{downvotes && downvotes.length}</span>
                 <p>Down votes</p>
               </div>

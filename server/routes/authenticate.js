@@ -23,7 +23,7 @@ router.post('/authenticate', (req, res) => {
       }
       UserModel.create(user, (err, data) => {
         if (err) throw err
-        res.status(201).send([data, { msg: 'new user' }])
+        res.status(201).send(data)
       })
     }
   })

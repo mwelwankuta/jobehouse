@@ -12,7 +12,6 @@ router.post('/requestwork', (request, response, next) => {
     if (err) throw err
     if (data.length !== 0) {
       const previoseWorkRequests = data.requests
-      console.log(JSON.stringify(previoseWorkRequests))
       if (
         previoseWorkRequests.filter((worker) => worker.fbID === userId)
           .length >= 1

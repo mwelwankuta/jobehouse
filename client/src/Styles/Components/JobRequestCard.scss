@@ -15,27 +15,28 @@
     font-weight: 600;
     color: $blackColor;
   }
-  .arrow-down-icon-holder{
+  .arrow-down-icon-holder {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0px;
     padding: 0;
-    button{
+    button {
       @include button($darkGreyColor, $darkBlackColor);
-      width:60px;
+      width: 60px;
     }
   }
-  .requests-list{
-    li{
+  .requests-list {
+    li {
       list-style-type: none;
-      border-bottom: .7px solid $darkGreyColor;
+      border-bottom: 0.7px solid $darkGreyColor;
       padding: 2px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      button{
-          @include button($darkGreyColor, $blackColor);
+      button {
+        @include button($darkGreyColor, $blackColor);
+        width: fit-content;
       }
     }
   }

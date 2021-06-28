@@ -94,7 +94,7 @@
   margin-top: -10px;
 }
 
-@media screen and (max-with: 800px) {
+@media only screen and (max-with: 800px) {
   .job-card-holder {
     margin: 10px 0;
   }

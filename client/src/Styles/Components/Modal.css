@@ -71,6 +71,16 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 15px;
 }
 
@@ -83,7 +93,7 @@
   font-weight: 500;
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .post-modal {
     border: none;
   }
