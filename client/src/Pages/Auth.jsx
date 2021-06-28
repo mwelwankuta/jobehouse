@@ -37,28 +37,11 @@ function Auth() {
       axios
         .post('https://jobe-house.herokuapp.com/authenticate', user)
         .then((res) => {
-          console.log(res)
           const serverResponse = res.data
-          if (serverResponse) {
-            if (serverResponse[1]) {
-              sessionStorage.setItem(
-                'isNewUser',
-                JSON.stringify(serverResponse[1].msg),
-              )
-              if (sessionStorage.getItem('isNewUser')) {
-                console.log(serverResponse)
-                sessionStorage.setItem(
-                  'client',
-                  JSON.stringify([serverResponse[0]]), //created user res expected array
-                )
-                window.location.reload()
-                setModalIsOpen(false)
-              }
-            } else {
+          if (serverResponse) {              
               sessionStorage.setItem('client', JSON.stringify(serverResponse))
               window.location.reload()
               setModalIsOpen(false)
-            }
           }
         })
     } else {
