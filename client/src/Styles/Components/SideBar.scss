@@ -22,8 +22,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 10px;
     .logout-btn {
       @include button(rgba(233, 20, 20, 0.39), rgb(51, 5, 5));
+      width: 100%;
     }
     .logout-btn:hover {
       background-color: $redColor;
@@ -31,6 +33,7 @@
     }
     button {
       @include button($blackColor, white);
+      width: 100%;
     }
     button:hover {
       background-color: #111;
@@ -38,6 +41,7 @@
     }
     a {
       @include button($lightGreyColor, $blackColor);
+      width: 100%;
       font-size: 14px;
     }
     a:hover {

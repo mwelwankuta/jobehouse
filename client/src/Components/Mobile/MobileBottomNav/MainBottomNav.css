@@ -58,7 +58,9 @@
           justify-content: center;
   font-size: 14px;
   padding-left: 4px;
-  width: 17px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   right: 0;
 }
 /*# sourceMappingURL=MainBottomNav.css.map */

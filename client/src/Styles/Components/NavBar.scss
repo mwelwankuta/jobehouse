@@ -50,6 +50,46 @@ nav {
     width: 100%;
     cursor: pointer;
     align-self: center;
+    ::-webkit-scrollbar-thumb{
+        background-color: $greyColor;
+      }
+    .desktop-search-results{
+      padding: 10px0px;
+      border-radius: 6px;
+      background-color: $darkGreyColor;
+       box-shadow: 0px 0px 2px 0px $blackColor;
+      position: absolute;
+      top: 60px;
+      width: 430px;
+      overflow-y: scroll;
+      max-height: 300px;
+      height: fit-content;
+      ul{
+        padding: 0 10px;
+        margin: 0;
+        li{
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          background-color: $lightGreyColor;
+          margin: 2px 0;
+          border-radius: 6px;
+          padding: 0px 10px 10px 10px;
+          display: flex;
+          a{
+            flex-direction: column;
+            align-items: flex-start;
+            color:$blackColor;
+            font-weight: 600;
+            p{
+              text-transform:capitalize;
+              margin-bottom: 3px;
+            }
+            
+          }
+        }
+      }
+    }
   }
 
   .nav-select-holder {
@@ -58,13 +98,13 @@ nav {
     color: $textColor;
     padding: 4px 10px;
     min-width: 300px;
-    width: 100%;
-    margin-right: 32%;
+    width: 500px;
+    // margin-right: 32%;
     background-color: $darkGreyColor;
     border-radius: 6px;
     transition: 0.2s;
     cursor: pointer;
-    select {
+    input {
       padding: 5px 10px;
       width: 100%;
       flex: 1;

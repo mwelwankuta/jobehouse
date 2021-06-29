@@ -36,9 +36,14 @@
       button {
         @include button($primaryColor, white);
         padding: 15px;
+        width: 100%;
+      }
+      select{
+        width: 100%;
       }
       .modal-select {
         @include textinput;
+        
       }
     }
   }

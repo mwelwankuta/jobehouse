@@ -32,6 +32,7 @@ function PostModal() {
       picture: picture,
       id: counter,
       category: category,
+      date: Date.now()
     }
 
     setPosts([...posts, post])
@@ -103,7 +104,6 @@ function PostModal() {
               onChange={(e) => setCategory(e.target.value)}
               className="modal-select"
             >
-              <option value=""></option>
               <option value="">Engineering</option>
               <option value="">Garden</option>
               <option value="">Computers</option>
@@ -119,7 +119,6 @@ function PostModal() {
               onChange={(e) => setPicture(e.target.value)}
             />
           </div>
-
           <button>Add Post</button>
         </form>
       </div>
