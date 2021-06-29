@@ -16,7 +16,7 @@ function CreateUpcomingModal() {
     UpcomingModalContext,
   )
   const [upcomings, setUpcomings] = useContext(UpcomingContext)
-  const user = useContext(UserContext)
+  const [user] = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -43,7 +43,7 @@ function CreateUpcomingModal() {
     setUpcomingModalIsOpen(false)
 
     axios
-      .post('https://jobe-house.herokuapp.com/posts', {
+      .post('http://localhost:7000/posts', {
         title: title,
         description: description,
         date: date,

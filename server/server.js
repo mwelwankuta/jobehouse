@@ -9,6 +9,7 @@ import UpcomingJob from './models/JobModel.js'
 
 import authenticate from './routes/authenticate.js'
 import requestwork from './routes/requestwork.js'
+import UserModel from './models/UserModel.js'
 
 // Init app
 const app = express()
@@ -74,14 +75,25 @@ app.post('/deletejob', (request, response) => {
   )
 })
 
+app.post('/requestnotifications', (request, response) => {
+  const fbId = request.body.fbId
+  JobModel.find({ authorid: fbId }, (err, upcomingJobs) => {
+    if (err) throw err
+    const upcomingJobsWithRequests = upcomingJobs.filter(
+      (upcomingJob) => upcomingJob.requests.length > 0,
+    )
+    response.status(200).send(upcomingJobsWithRequests)
+  })
+})
 
-app.post('/requestnotifications',(request, response) => {
-    const fbId = request.body.fbId
-    JobModel.find({authorid: fbId}, (err, upcomingJobs) => {
-      console.log(upcomingJobs, 'found jobs')
+app.post('/editbio', (request, response) => {
+  const fbId = request.body.fbId
+  const bio = request.body.bio
+  UserModel.updateOne({ fbID: fbId }, { bio: bio }, (err, user) => {
+    if (err) throw err
+    UserModel.find({ fbID: fbId }, (err, data) => {
       if (err) throw err
-      const upcomingJobsWithRequests = upcomingJobs.filter(upcomingJob => upcomingJob.requests.length > 0)
-      console.log(upcomingJobsWithRequests, 'filter')
-      response.status(200).send(upcomingJobsWithRequests)
+      response.status(200).send(data)
     })
   })
+})

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ClockIcon } from '@heroicons/react/solid'
+import { ClockIcon, XIcon } from '@heroicons/react/solid'
 import { ReplyIcon } from '@heroicons/react/outline'
 import moment from 'moment'
 import axios from 'axios'
@@ -11,26 +11,25 @@ import { PostsContext } from '../Contexts/viewContext'
 import '../Styles/Components/JobCard.css'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
-  const [posts, ] = useContext(PostsContext)
+  const [posts] = useContext(PostsContext)
   const [haveIRequested, setHaveIRequested] = useState(false)
-  
+  const [loading, setLoading] = useState(false)
+
   const joblink = `/job/${id}`
   const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm:ss')
   const readableDate = moment(dateFromTimeStamp).fromNow()
 
-    useEffect(() => {
-      if(requests){
-        console.log(requests)
-        if(requests.length > 0){
-          if(requests.filter(request => request.fbID === user.fbID)[0].fbID){
-              setHaveIRequested(true)
-          }
+  useEffect(() => {
+    if (requests) {
+      if (requests.length > 0) {
+        if (requests.filter((request) => request.fbID === user.fbID)[0]) {
+          setHaveIRequested(true)
         }
-        else{
-          setHaveIRequested(false)
-        }
+      } else {
+        setHaveIRequested(false)
+      }
     }
-    },[haveIRequested, requests, user.fbID, posts])
+  }, [haveIRequested, requests, user.fbID, posts])
 
   const workRequest = () => {
     axios
@@ -41,17 +40,20 @@ function PostCard({ id, title, description, status, date, user, requests }) {
       })
       .then((res) => {
         console.log(res)
+        setLoading(false)
       })
   }
 
   const addRequest = () => {
     //
+    setLoading(true)
     setHaveIRequested(true)
     workRequest()
   }
 
   const removeRequest = () => {
     //
+    setLoading(true)
     setHaveIRequested(false)
     workRequest()
   }
@@ -79,18 +81,17 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         </div>
       </Link>
 
-      {status === 'Available'  && haveIRequested === true && (
+      {status === 'Available' && haveIRequested === true && (
         <button onClick={() => removeRequest()} className="cancle-request-btn">
-          <ReplyIcon height="15px" />
-          Cancle
+          {loading === false && <XIcon height="15px" />}
+          {loading === true ? '...' : 'Cancle'}
         </button>
       )}
 
-
       {status === 'Available' && haveIRequested === false && (
         <button onClick={() => addRequest()}>
-          <ReplyIcon height="15px" />
-          Request
+          {loading === false && <ReplyIcon height="15px" />}
+          {loading === true ? '...' : 'Request'}
         </button>
       )}
     </div>

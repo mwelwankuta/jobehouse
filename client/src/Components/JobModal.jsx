@@ -15,7 +15,7 @@ function PostModal() {
   const [postModalIsOpen, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts, setPosts] = useContext(PostsContext)
 
-  const user = useContext(UserContext)
+  const [user] = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -39,7 +39,7 @@ function PostModal() {
     setPostModalIsOpen(false)
 
     axios
-      .post('https://jobe-house.herokuapp.com/jobs', {
+      .post('http://localhost:7000/jobs', {
         title: title,
         description: description,
         picture: picture,
