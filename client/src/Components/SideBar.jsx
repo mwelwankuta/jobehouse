@@ -64,10 +64,8 @@ function SideBar({ user }) {
         </div>
         <p className="bio-text">{user.bio}</p>
         <div className="account-button-holder">
-          {counter === 1 ? (
+          {counter === 1 && (
             <button onClick={() => setCounter(0)}>No</button>
-          ) : (
-            <button>Edit Profile</button>
           )}
           <button
             className="logout-btn"

@@ -67,7 +67,7 @@ function Profile() {
         </p>
       </div>
       <small className="bio-text">
-        {loading ? '...' : user && user.bio ? user.bio : ''}{' '}
+        { user && user.bio ? user.bio : ''}
       </small>
       {editBio && (
         <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
@@ -93,7 +93,7 @@ function Profile() {
           }}
           className="bio-btn"
         >
-          Done
+          {loading ? '...' : 'Done'}
         </button>
       )}
       {logoutCounter === 1 && (

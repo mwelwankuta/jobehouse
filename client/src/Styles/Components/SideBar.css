@@ -31,6 +31,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  gap: 10px;
 }
 
 .side-bar .account-button-holder .logout-btn {
@@ -51,6 +52,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
 }
 
 .side-bar .account-button-holder .logout-btn:hover {
@@ -77,6 +79,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
 }
 
 .side-bar .account-button-holder button:hover {
@@ -103,6 +106,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
   font-size: 14px;
 }
 

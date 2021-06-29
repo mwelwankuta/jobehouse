@@ -10,17 +10,19 @@ ReactModal.setAppElement(document.getElementById('root'))
 
 function Auth() {
   const [modalIsOpen, setModalIsOpen] = useState(true)
+  const [loading, setLoading] = useState(false)
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
 
 
   const MyFacebookButton = ({ onClick }) => (
     <button className="login-btn" onClick={onClick}>
-      Login with facebook
+      {loading ? '...' : "Login with facebook"}
     </button>
   )
 
   const authenticate = (response) => {
+    setLoading(true)
     if (response && !response.status) {
       const user = {
         name: response.name,
@@ -37,6 +39,7 @@ function Auth() {
               sessionStorage.setItem('client', JSON.stringify(serverResponse))
               setModalIsOpen(false)
               window.location.reload()
+              
           }
         }).catch(err => window.location = '/error')
 

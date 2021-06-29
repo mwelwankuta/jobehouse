@@ -85,6 +85,61 @@ nav .select-container {
       align-self: center;
 }
 
+nav .select-container ::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+nav .select-container .desktop-search-results {
+  padding: 10px0px;
+  border-radius: 6px;
+  background-color: #dedede;
+  -webkit-box-shadow: 0px 0px 2px 0px #252525;
+          box-shadow: 0px 0px 2px 0px #252525;
+  position: absolute;
+  top: 60px;
+  width: 430px;
+  overflow-y: scroll;
+  max-height: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+nav .select-container .desktop-search-results ul {
+  padding: 0 10px;
+  margin: 0;
+}
+
+nav .select-container .desktop-search-results ul li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f2f2f2;
+  margin: 2px 0;
+  border-radius: 6px;
+  padding: 0px 10px 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav .select-container .desktop-search-results ul li a {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: #252525;
+  font-weight: 600;
+}
+
+nav .select-container .desktop-search-results ul li a p {
+  text-transform: capitalize;
+  margin-bottom: 3px;
+}
+
 nav .nav-select-holder {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,8 +150,7 @@ nav .nav-select-holder {
   color: #5d7290;
   padding: 4px 10px;
   min-width: 300px;
-  width: 100%;
-  margin-right: 32%;
+  width: 500px;
   background-color: #dedede;
   border-radius: 6px;
   -webkit-transition: 0.2s;
@@ -104,7 +158,7 @@ nav .nav-select-holder {
   cursor: pointer;
 }
 
-nav .nav-select-holder select {
+nav .nav-select-holder input {
   padding: 5px 10px;
   width: 100%;
   -webkit-box-flex: 1;

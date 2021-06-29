@@ -1,36 +1,37 @@
 import React, { useContext } from 'react'
 import {
-  HomeIcon,
   CalendarIcon,
   UserIcon,
   BellIcon,
   SearchIcon,
-} from '@heroicons/react/solid'
+} from '@heroicons/react/outline'
+import storiezIcon from '../../../Resources/mobile/pink-icon.svg'
 import { Link } from 'react-router-dom'
 
 import './MainBottomNav.css'
-import { jobRequestContext } from '../../../Contexts/viewContext'
+import { jobRequestContext, UpcomingContext } from '../../../Contexts/viewContext'
 
 function MobileBottomNav() {
   const notificationCounter = useContext(jobRequestContext)
+  const upcomingCounter = useContext(UpcomingContext)
   return (
     <div className="bottom-nav-holder">
       <ul className="bottom-nav">
         <li>
           <Link to="/">
-            <HomeIcon height="35px" />
+            <img src={storiezIcon} height="27px" alt="jobehouse icon"/>
           </Link>
         </li>
         <li>
           <Link to="/upcoming">
             <CalendarIcon height="35px" />
+            {upcomingCounter[0].length > 0 &&  <p className="notifications-counter">
+              {upcomingCounter && upcomingCounter[0].length}
+              {upcomingCounter[0].length > 9 && '+'}
+            </p>}
           </Link>
         </li>
-        <li>
-          <Link to="/search">
-            <SearchIcon height="31px" />
-          </Link>
-        </li>
+        
         <li>
           <Link to="/profile">
             <UserIcon height="35px" />
@@ -38,10 +39,16 @@ function MobileBottomNav() {
         </li>
         <li>
           <Link to="/requests">
-            <BellIcon height="35px" />
-            <p className="notifications-counter">
-              {notificationCounter && notificationCounter[0].length}+
-            </p>
+            <BellIcon height="34px" />
+            {notificationCounter[0].length > 0 &&  <p className="notifications-counter">
+              {notificationCounter && notificationCounter[0].length}
+              {notificationCounter[0].length > 9 && '+'}
+            </p>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/search">
+            <SearchIcon height="31px" />
           </Link>
         </li>
       </ul>

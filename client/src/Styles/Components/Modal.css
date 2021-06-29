@@ -82,6 +82,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 15px;
+  width: 100%;
+}
+
+.post-modal .modal-child form select {
+  width: 100%;
 }
 
 .post-modal .modal-child form .modal-select {

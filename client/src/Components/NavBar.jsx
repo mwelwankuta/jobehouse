@@ -1,7 +1,7 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
 import { useHistory, Link } from 'react-router-dom'
-import { DesktopViewContext, PhoneViewContext } from '../Contexts/viewContext'
+import { DesktopViewContext, PhoneViewContext, PostsContext } from '../Contexts/viewContext'
 import MobileNav from './Mobile/MobileNav/MobileNav'
 
 import logo from '../Resources/icon-with-text.svg'
@@ -10,8 +10,24 @@ import '../Styles/Components/NavBar.css'
 function NavBar({ user, session, modalView }) {
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
+  const [jobs] = useContext(PostsContext)
 
+  const [filteredJobs, setFilterdJobs] = useState([])
+  const [searchInput, setSearchInput] = useState('')
+  
   const router = useHistory()
+
+  const handleSearch = (event) => {
+    setSearchInput(event.target.value)
+    const searchWord = event.target.value
+    const resultsMatch = jobs.filter((job) =>job.title.toLowerCase().includes(searchWord.toLowerCase()))
+    console.log(event.target.value.split('') > 0)
+    setTimeout(() => {
+      setFilterdJobs(resultsMatch)
+
+    },300)
+  }
+
 
   return (
     <Fragment>
@@ -25,13 +41,26 @@ function NavBar({ user, session, modalView }) {
           <div className="select-container">
             <div className="nav-select-holder">
               <SearchIcon height="20px" />
-              <select>
-                <option value="">Search by category</option>
-                <option value="">Engineering</option>
-                <option value="">Electronics</option>
-                <option value="">Computers</option>
-              </select>
+              <input type="text" 
+              placeholder="Search for jobs" 
+              className="input"
+              onChange={(event) => handleSearch(event)}/>
             </div>
+            {filteredJobs.length > 0 && searchInput.split('').length > 0 && (
+            <div className="desktop-search-results">
+              
+                <ul className="search-results-list">
+                  <h1>Search</h1>
+                  {filteredJobs.map((job) => (
+                    <li key={job._id} className="search-results">
+                      <a href={`/job/${job._id}`}>
+                        <p className="search-result-title">{job.title}</p>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+            </div>
+              )}
 
             {session && (
               <div
