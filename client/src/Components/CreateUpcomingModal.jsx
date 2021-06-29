@@ -43,7 +43,7 @@ function CreateUpcomingModal() {
     setUpcomingModalIsOpen(false)
 
     axios
-      .post('http://localhost:7000/posts', {
+      .post('https://jobe-house.herokuapp.com/posts', {
         title: title,
         description: description,
         date: date,

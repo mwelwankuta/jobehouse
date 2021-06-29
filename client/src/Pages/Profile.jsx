@@ -40,7 +40,7 @@ function Profile() {
       setEditBio(false)
     } else {
       axios
-        .post('http://localhost:7000/editbio', {
+        .post('https://jobe-house.herokuapp.com/editbio', {
           fbId: user.fbID,
           bio: bio,
         })

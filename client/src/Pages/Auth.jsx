@@ -30,7 +30,7 @@ function Auth() {
       }
 
       axios
-        .post('http://localhost:7000/authenticate', user)
+        .post('https://jobe-house.herokuapp.com/authenticate', user)
         .then((res) => {
           const serverResponse = res.data
           if (serverResponse) {              
