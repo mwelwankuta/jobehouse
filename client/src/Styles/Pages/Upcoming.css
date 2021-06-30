@@ -12,7 +12,6 @@
 
 .upcoming-holder .page-title {
   color: #252525;
-  font-size: 30px;
 }
 
 .upcoming-holder .add-upcoming-btn {
@@ -33,6 +32,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid #dedede;
   padding: 2px 4px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -68,6 +68,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
   width: 100%;
 }
 /*# sourceMappingURL=Upcoming.css.map */

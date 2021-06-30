@@ -13,6 +13,7 @@
 
 .react-modal .modal-child {
   height: 100vh;
+  text-align: center;
   background-color: white;
   border-radius: 3px;
   padding: 10px 10px 20px;
@@ -34,14 +35,15 @@
   border-radius: 6px;
 }
 
-.react-modal .modal-child h1 {
+.react-modal .modal-child img {
   text-align: center;
-  color: #fd4d4d;
+  height: 70px;
+  margin-right: 50px;
 }
 
 .react-modal .modal-child .page-title {
   color: #252525;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .react-modal .modal-child .auth-holder {
@@ -87,6 +89,11 @@
 @media only screen and (max-width: 800px) {
   .react-modal .modal-child {
     border: 0.7px solid white;
+  }
+  .react-modal .modal-child img {
+    text-align: center;
+    height: 60px;
+    margin-right: 50px;
   }
   .react-modal button {
     padding: 10px;

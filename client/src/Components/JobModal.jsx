@@ -32,7 +32,8 @@ function PostModal() {
       picture: picture,
       id: counter,
       category: category,
-      date: Date.now()
+      date: Date.now(),
+      status: 'Available',
     }
 
     setPosts([...posts, post])

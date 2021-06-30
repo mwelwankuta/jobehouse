@@ -7,7 +7,7 @@ function MobileSearchPage() {
 
   return (
     <div className="mobile-search-page">
-      <h1 className="page-title">Search</h1>
+      <h2 className="page-title">Search</h2>
       <MobileSearch jobs={posts} />
     </div>
   )

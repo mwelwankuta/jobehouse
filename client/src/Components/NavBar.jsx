@@ -1,7 +1,11 @@
 import React, { Fragment, useContext, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
 import { useHistory, Link } from 'react-router-dom'
-import { DesktopViewContext, PhoneViewContext, PostsContext } from '../Contexts/viewContext'
+import {
+  DesktopViewContext,
+  PhoneViewContext,
+  PostsContext,
+} from '../Contexts/viewContext'
 import MobileNav from './Mobile/MobileNav/MobileNav'
 
 import logo from '../Resources/icon-with-text.svg'
@@ -14,43 +18,49 @@ function NavBar({ user, session, modalView }) {
 
   const [filteredJobs, setFilterdJobs] = useState([])
   const [searchInput, setSearchInput] = useState('')
-  
+
   const router = useHistory()
 
   const handleSearch = (event) => {
     setSearchInput(event.target.value)
     const searchWord = event.target.value
-    const resultsMatch = jobs.filter((job) =>job.title.toLowerCase().includes(searchWord.toLowerCase()))
+    const resultsMatch = jobs.filter((job) =>
+      job.title.toLowerCase().includes(searchWord.toLowerCase()),
+    )
     console.log(event.target.value.split('') > 0)
     setTimeout(() => {
       setFilterdJobs(resultsMatch)
-
-    },300)
+    }, 300)
   }
-
 
   return (
     <Fragment>
       {modalView === false && desktopView && (
         <nav>
           <Link to="/">
-            <img src={logo} alt="logo" className="jobe-house-logo" />
+            <img
+              src={logo}
+              alt="logo"
+              className="jobe-house-logo"
+              loading="eager"
+            />
             {/* <h2 className="jobe-house-logo">JobeHouse</h2> */}
           </Link>
 
           <div className="select-container">
             <div className="nav-select-holder">
               <SearchIcon height="20px" />
-              <input type="text" 
-              placeholder="Search for jobs" 
-              className="input"
-              onChange={(event) => handleSearch(event)}/>
+              <input
+                type="text"
+                placeholder="Search for jobs"
+                className="input"
+                onChange={(event) => handleSearch(event)}
+              />
             </div>
             {filteredJobs.length > 0 && searchInput.split('').length > 0 && (
-            <div className="desktop-search-results">
-              
+              <div className="desktop-search-results">
                 <ul className="search-results-list">
-                  <h1>Search</h1>
+                  <h2>Search</h2>
                   {filteredJobs.map((job) => (
                     <li key={job._id} className="search-results">
                       <a href={`/job/${job._id}`}>
@@ -59,8 +69,8 @@ function NavBar({ user, session, modalView }) {
                     </li>
                   ))}
                 </ul>
-            </div>
-              )}
+              </div>
+            )}
 
             {session && (
               <div

@@ -35,15 +35,15 @@
       }
       button {
         @include button($primaryColor, white);
+        border: 1px solid rgba(206, 35, 35, 0.563);
         padding: 15px;
         width: 100%;
       }
-      select{
+      select {
         width: 100%;
       }
       .modal-select {
         @include textinput;
-        
       }
     }
   }

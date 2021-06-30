@@ -17,16 +17,17 @@ function LinksBar() {
   const linksdata = [
     { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },
     {
-      icon: 
-      <div className="requests-holder">
-        <CalendarIcon height="35px" />
-        {upcomingJobs[0].length > 0 && 
-          <p className="notifications-counter">
-            {upcomingJobs && upcomingJobs[0].length}
-            {upcomingJobs[0].length > 9 && '+'}
-          </p>
-        }
-      </div>,
+      icon: (
+        <div className="requests-holder">
+          <CalendarIcon height="35px" />
+          {upcomingJobs[0].length > 0 && (
+            <p className="notifications-counter">
+              {upcomingJobs && upcomingJobs[0].length}
+              {upcomingJobs[0].length > 9 && '+'}
+            </p>
+          )}
+        </div>
+      ),
       label: 'Scheduled',
       path: '/upcoming',
     },
@@ -39,11 +40,12 @@ function LinksBar() {
       icon: (
         <div className="requests-holder">
           <BellIcon height="35px" />
-          {jobRequests[0].length > 0 && 
-          <p className="notifications-counter">
-            {jobRequests && jobRequests[0].length}
-            {jobRequests[0].length > 9 && '+'}
-          </p>}
+          {jobRequests[0].length > 0 && (
+            <p className="notifications-counter">
+              {jobRequests && jobRequests[0].length}
+              {jobRequests[0].length > 9 && '+'}
+            </p>
+          )}
         </div>
       ),
       label: 'Requests',

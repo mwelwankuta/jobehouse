@@ -17,6 +17,7 @@ function MobileSearch({ jobs }) {
 
   return (
     <Fragment>
+      {/* Input */}
       <div className="mobile-select-holder">
         <SearchIcon height="20px" />
         <input
@@ -27,6 +28,7 @@ function MobileSearch({ jobs }) {
           onChange={(event) => handleSearch(event)}
         />
       </div>
+      {/* Input results */}
       <div className="search-results-holder">
         {filteredJobs.length > 0 && (
           <ul className="search-results-list">
@@ -42,7 +44,6 @@ function MobileSearch({ jobs }) {
             ))}
           </ul>
         )}
-     
       </div>
     </Fragment>
   )

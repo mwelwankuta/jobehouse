@@ -6,6 +6,8 @@ nav {
   padding: 0 10px;
   position: relative;
   border: none;
+  background-color: white;
+  border-bottom: 1px solid #dedede;
 }
 
 nav .login-link {
@@ -151,7 +153,8 @@ nav .nav-select-holder {
   padding: 4px 10px;
   min-width: 300px;
   width: 500px;
-  background-color: #dedede;
+  background-color: #eee;
+  border: 1px solid #dedede;
   border-radius: 6px;
   -webkit-transition: 0.2s;
   transition: 0.2s;

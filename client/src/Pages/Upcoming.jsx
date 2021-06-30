@@ -16,7 +16,7 @@ function Upcoming() {
   return (
     <div className="upcoming-holder">
       <div className="page-header">
-        <h1 className="page-title">Upcoming Jobs</h1>
+        <h2 className="page-title">Upcoming Jobs</h2>
         <button
           onClick={() => {
             setUpcomingModalIsOpen(true)

@@ -52,6 +52,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid rgba(242, 130, 130, 0.563);
   width: 100%;
 }
 
@@ -80,6 +81,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
+  border: 1px solid #111;
 }
 
 .side-bar .account-button-holder button:hover {

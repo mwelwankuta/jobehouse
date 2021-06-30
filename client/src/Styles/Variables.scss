@@ -1,4 +1,5 @@
 $primaryColor: #fd4d4d;
+// $primaryColor: #fd4d4d;
 $blueColor: #2f96d1;
 $blackColor: #252525;
 $darkBlackColor: #1a1a1a;
@@ -13,7 +14,6 @@ $greyColor: rgb(128, 128, 128);
 @mixin button($bgColor, $textColor) {
   background-color: $bgColor;
   padding: 8px 20px;
-  border: $lightGreyColor;
   border-radius: 6px;
   color: $textColor;
   font-weight: 600;

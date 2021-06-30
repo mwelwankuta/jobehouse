@@ -7,20 +7,16 @@ function MobileNav({ session, user }) {
   const router = useHistory()
   return (
     <nav>
-      <a href="/">
+      <Link to="/">
         <h2 className="jobe-house-log">JobeHouse</h2>
-      </a>
+      </Link>
+
+      {/* User Profile Picture */}
       <div>
         {session && (
           <div className="image-holder" onClick={() => router.push('/profile')}>
-            <img src={user.picture} alt="profile" />
+            <img src={user.picture} alt="profile" loading="eager" />
           </div>
-        )}
-
-        {!session && (
-          <Link to="/login" className="login-link">
-            Login
-          </Link>
         )}
       </div>
     </nav>

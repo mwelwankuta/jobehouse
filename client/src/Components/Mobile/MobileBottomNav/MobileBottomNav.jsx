@@ -4,12 +4,15 @@ import {
   UserIcon,
   BellIcon,
   SearchIcon,
-} from '@heroicons/react/outline'
+} from '@heroicons/react/solid'
 import storiezIcon from '../../../Resources/mobile/pink-icon.svg'
 import { Link } from 'react-router-dom'
 
 import './MainBottomNav.css'
-import { jobRequestContext, UpcomingContext } from '../../../Contexts/viewContext'
+import {
+  jobRequestContext,
+  UpcomingContext,
+} from '../../../Contexts/viewContext'
 
 function MobileBottomNav() {
   const notificationCounter = useContext(jobRequestContext)
@@ -17,38 +20,51 @@ function MobileBottomNav() {
   return (
     <div className="bottom-nav-holder">
       <ul className="bottom-nav">
+        {/* Home Icon */}
         <li>
           <Link to="/">
-            <img src={storiezIcon} height="27px" alt="jobehouse icon"/>
+            <img
+              src={storiezIcon}
+              height="22px"
+              alt="jobehouse icon"
+              loading="eager"
+            />
           </Link>
         </li>
+        {/* Upcoming Jobs Icon */}
         <li>
           <Link to="/upcoming">
-            <CalendarIcon height="35px" />
-            {upcomingCounter[0].length > 0 &&  <p className="notifications-counter">
-              {upcomingCounter && upcomingCounter[0].length}
-              {upcomingCounter[0].length > 9 && '+'}
-            </p>}
+            <CalendarIcon height="28px" />
+            {upcomingCounter[0].length > 0 && (
+              <p className="notifications-counter">
+                {upcomingCounter && upcomingCounter[0].length}
+                {upcomingCounter[0].length > 9 && '+'}
+              </p>
+            )}
           </Link>
         </li>
-        
+        {/* Profile Icon */}
         <li>
           <Link to="/profile">
-            <UserIcon height="35px" />
+            <UserIcon height="27px" />
           </Link>
         </li>
-        <li>
+        {/* Job Requets Icon */}
+        <li style={{ marginBottom: '-5px' }}>
           <Link to="/requests">
-            <BellIcon height="34px" />
-            {notificationCounter[0].length > 0 &&  <p className="notifications-counter">
-              {notificationCounter && notificationCounter[0].length}
-              {notificationCounter[0].length > 9 && '+'}
-            </p>}
+            <BellIcon height="28px" />
+            {notificationCounter[0].length > 0 && (
+              <p className="notifications-counter">
+                {notificationCounter && notificationCounter[0].length}
+                {notificationCounter[0].length > 9 && '+'}
+              </p>
+            )}
           </Link>
         </li>
+        {/* Search Icon */}
         <li>
           <Link to="/search">
-            <SearchIcon height="31px" />
+            <SearchIcon height="25px" />
           </Link>
         </li>
       </ul>

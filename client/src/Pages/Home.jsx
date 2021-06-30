@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import {
   ModalViewContext,
   PhoneViewContext,
@@ -13,6 +13,7 @@ import '../Styles/Pages/Home.css'
 import JobModal from '../Components/JobModal'
 import { SearchIcon } from '@heroicons/react/solid'
 import { useHistory } from 'react-router-dom'
+import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
 
 function Home() {
   const phoneView = useContext(PhoneViewContext)
@@ -20,14 +21,14 @@ function Home() {
   const [, setModalView] = useContext(ModalViewContext)
   const [, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts] = useContext(PostsContext)
-
+  console.log(posts)
   const [user] = useContext(UserContext)
   const router = useHistory()
 
   return (
     <div className="home-container">
       <div className="header-holder">
-        <h1 className="page-title">Dash</h1>
+        <h2 className="page-title">Dash</h2>
         <button
           onClick={() => {
             setPostModalIsOpen(true)
@@ -50,9 +51,11 @@ function Home() {
             />
           </div>
         )}
-        <small>
-          {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
-        </small>
+        {posts.length > 0 && (
+          <small>
+            {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
+          </small>
+        )}
         {session && posts.length > 0 ? (
           posts.length > 1 ? (
             posts
@@ -88,9 +91,12 @@ function Home() {
             })
           )
         ) : (
-          <small style={{ textAlign: 'center' }}>
-            There are no posts at the moment, consider adding one
-          </small>
+          // JobCard loaders
+          <Fragment>
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+          </Fragment>
         )}
 
         {!session && (

@@ -13,6 +13,7 @@
   -webkit-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;
+  border: 1px solid #dedede;
 }
 
 .mobile-select-holder .search-bar {

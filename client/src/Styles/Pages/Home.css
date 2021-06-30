@@ -1,3 +1,7 @@
+.home-container {
+  background: #fcfcfc;
+}
+
 .home-container small {
   color: #5d7290;
 }
@@ -25,10 +29,6 @@
           align-items: center;
 }
 
-.home-container .header-holder .page-title {
-  color: #252525;
-}
-
 .home-container .header-holder button {
   background-color: #fd4d4d;
   padding: 8px 20px;
@@ -47,5 +47,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
 }
 /*# sourceMappingURL=Home.css.map */

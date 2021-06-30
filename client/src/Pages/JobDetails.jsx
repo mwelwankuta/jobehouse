@@ -3,7 +3,7 @@ import React from 'react'
 function JobDetails() {
   return (
     <div>
-      <h1>Here are the details</h1>
+      <h2>Here are the details</h2>
     </div>
   )
 }

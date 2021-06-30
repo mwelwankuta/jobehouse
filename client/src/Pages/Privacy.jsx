@@ -3,7 +3,7 @@ import React from 'react'
 function Privacy() {
   return (
     <div>
-      <h1 style={{ color: '#fd4d4d' }}>Information You Share With Us</h1>
+      <h2 style={{ color: '#fd4d4d' }}>Information You Share With Us</h2>
       <h3>Basic Account Information</h3>
       <p>
         You don’t have to create an account to use some of our service features,
@@ -34,9 +34,9 @@ function Privacy() {
         address, and your contact information to respond to your request.
       </p>
 
-      <h1 style={{ color: '#fd4d4d' }}>
+      <h2 style={{ color: '#fd4d4d' }}>
         Additional Information We Receive About You
-      </h1>
+      </h2>
 
       <h3>Location Information</h3>
       <p>

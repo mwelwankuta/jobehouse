@@ -63,32 +63,35 @@ function App() {
   }, [session])
 
   useEffect(() => {
-    if (user) {
-      axios.get('https://jobe-house.herokuapp.com/jobs').then((res) => setPosts(res.data))
+    if (session) {
+      axios
+        .get('https://jobe-house.herokuapp.com/jobs')
+        .then((res) => setPosts(res.data))
     }
   })
 
   useEffect(() => {
-    axios
-      .post('https://jobe-house.herokuapp.com/requestnotifications', {
-        fbId: user.fbID,
-      })
-      .then((res) => {
-        setJobRequests(res.data)
-      })
+    if (user) {
+      axios
+        .post('https://jobe-house.herokuapp.com/requestnotifications', {
+          fbId: user.fbID,
+        })
+        .then((res) => {
+          setJobRequests(res.data)
+        })
+    }
   })
 
   const Terms = () => {
-    return <h1>Terms of Service coming Soon...</h1>
+    return <h2>Terms of Service coming Soon...</h2>
   }
 
-  // 404 Page
   const NotFoundPage = () => {
     return (
       <center>
         <p>Hmm...this page doesn’t exist. Try searching for something else.</p>
         <a href="/" className="go-back-link" style={{ color: '#2d9cdb' }}>
-          go Home
+          go back
         </a>
       </center>
     )
@@ -99,7 +102,7 @@ function App() {
       <center>
         <p>There was a problem with your request. Try again after some time.</p>
         <a href="/" className="go-back-link" style={{ color: '#2d9cdb' }}>
-          go Home
+          go back
         </a>
       </center>
     )

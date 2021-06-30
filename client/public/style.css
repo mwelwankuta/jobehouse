@@ -54,9 +54,7 @@ option {
   background-color: #f2f2f2;
 }
 
-@media only screen and (max-width: 800px) {
-  h1 {
-    font-size: 30px;
-  }
+body {
+  background: #9aa0a6;
 }
 /*# sourceMappingURL=style.css.map */

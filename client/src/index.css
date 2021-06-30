@@ -101,6 +101,7 @@ body {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    border: 1px solid rgba(206, 35, 35, 0.563);
   }
   .home-container .sections .main-content .button-holder button:hover {
     -webkit-transition: 0.3s;

@@ -3,7 +3,7 @@ import React from 'react'
 function Job() {
   return (
     <div>
-      <h1>A Job</h1>
+      <h2>A Job</h2>
       <p>job details page will be coming soon</p>
     </div>
   )

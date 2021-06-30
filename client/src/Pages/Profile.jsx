@@ -56,7 +56,7 @@ function Profile() {
 
   return (
     <div className="profile-holder">
-      <img src={user.picture} alt="profile" />
+      <img src={user.picture} alt="profile" loading="eager" />
       <p className="username-text">{user.name}</p>
       <div className="votes-holder">
         <p>
@@ -66,9 +66,7 @@ function Profile() {
           <b>{user.downvotes && user.downvotes.length}</b> downvotes
         </p>
       </div>
-      <small className="bio-text">
-        { user && user.bio ? user.bio : ''}
-      </small>
+      <small className="bio-text">{user && user.bio ? user.bio : ''}</small>
       {editBio && (
         <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
       )}

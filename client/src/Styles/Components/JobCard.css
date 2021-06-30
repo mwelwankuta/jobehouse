@@ -18,23 +18,12 @@
   font-weight: 700;
   font-size: 17px;
   color: #252525;
-  width: 60%;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.job-card-holder .job-header .job-time {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: gray;
-  gap: 4px;
-}
-
 .job-card-holder .job-bottom {
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,6 +33,17 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.job-card-holder .job-bottom .job-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: gray;
+  gap: 4px;
 }
 
 .job-card-holder button {
@@ -64,6 +64,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
   display: flex;
   float: right;
   gap: 4px;

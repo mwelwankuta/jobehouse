@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import ReactModal from 'react-modal'
 import FacebookAuth from 'react-facebook-auth'
-
-import '../Styles/Pages/Auth.css'
 import { DesktopViewContext, PhoneViewContext } from '../Contexts/viewContext'
 import axios from 'axios'
+
+import bannerImage from '../Resources/icon-with-text.svg'
+
+import '../Styles/Pages/Auth.css'
 
 ReactModal.setAppElement(document.getElementById('root'))
 
@@ -14,10 +16,9 @@ function Auth() {
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
 
-
   const MyFacebookButton = ({ onClick }) => (
     <button className="login-btn" onClick={onClick}>
-      {loading ? '...' : "Login with facebook"}
+      {loading ? '...' : 'Login with facebook'}
     </button>
   )
 
@@ -35,14 +36,13 @@ function Auth() {
         .post('https://jobe-house.herokuapp.com/authenticate', user)
         .then((res) => {
           const serverResponse = res.data
-          if (serverResponse) {              
-              sessionStorage.setItem('client', JSON.stringify(serverResponse))
-              setModalIsOpen(false)
-              window.location.reload()
-              
+          if (serverResponse) {
+            sessionStorage.setItem('client', JSON.stringify(serverResponse))
+            setModalIsOpen(false)
+            window.location.reload()
           }
-        }).catch(err => window.location = '/error')
-
+        })
+        .catch((err) => (window.location = '/error'))
     } else {
       window.location = '/error'
     }
@@ -51,7 +51,7 @@ function Auth() {
   return (
     <ReactModal isOpen={modalIsOpen} className="react-modal">
       <div className="modal-child">
-        <h1>JobeHouse</h1>
+        <img src={bannerImage} alt="doge house logo" />
         <div
           className="buttons"
           style={{ backgroundColor: phoneView ? '' : '#f2f2f2' }}
