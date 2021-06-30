@@ -20,7 +20,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  color: #fd4d4d;
+  color: #444;
   text-decoration: none;
 }
 
@@ -30,6 +30,7 @@
 
 .links-bar ul li .requests-holder .notifications-counter {
   position: absolute;
+  font-size: 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

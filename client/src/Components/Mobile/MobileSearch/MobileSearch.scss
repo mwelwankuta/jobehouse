@@ -10,6 +10,7 @@
   border-radius: 6px;
   transition: 0.2s;
   cursor: pointer;
+  border: 1px solid $darkGreyColor;
   .search-bar {
     padding: 5px 10px;
     width: 100%;
@@ -26,11 +27,11 @@
     flex-direction: column;
     padding: 0;
     li {
-      a{
-        color:$darkBlackColor;
+      a {
+        color: $darkBlackColor;
         .search-result-title {
           font-weight: 600;
-          color:$blackColor;
+          color: $blackColor;
         }
         .search-result-description {
           color: $textColor;
@@ -42,7 +43,6 @@
       margin-bottom: 5px;
       border-radius: 6px;
       border: 1px solid $darkGreyColor;
-      
     }
   }
 }

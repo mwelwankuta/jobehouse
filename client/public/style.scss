@@ -37,8 +37,8 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
-select{
-  -moz-appearance:none
+select {
+  -moz-appearance: none;
 }
 
 a {
@@ -54,8 +54,9 @@ option {
   background-color: $lightGreyColor;
 }
 
-@media only screen and (max-width:800px) {
-    h1{
-    font-size: 30px
+@media only screen and (min-width: 800px) {
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
   }
 }

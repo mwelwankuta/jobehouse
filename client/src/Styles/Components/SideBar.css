@@ -19,101 +19,7 @@
 .side-bar .bio-text {
   color: #5d7290;
   font-size: 15px;
-}
-
-.side-bar .account-button-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  gap: 10px;
-}
-
-.side-bar .account-button-holder .logout-btn {
-  background-color: rgba(233, 20, 20, 0.39);
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: #330505;
-  font-weight: 600;
-  cursor: pointer;
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: 100%;
-}
-
-.side-bar .account-button-holder .logout-btn:hover {
-  background-color: rgba(209, 22, 22, 0.507);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.side-bar .account-button-holder button {
-  background-color: #252525;
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-}
-
-.side-bar .account-button-holder button:hover {
-  background-color: #111;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.side-bar .account-button-holder a {
-  background-color: #f2f2f2;
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: #252525;
-  font-weight: 600;
-  cursor: pointer;
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  font-size: 14px;
-}
-
-.side-bar .account-button-holder a:hover {
-  background-color: #cfcfcf;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
 }
 
 .side-bar .profile-stats-holder {
@@ -135,11 +41,11 @@
 .side-bar .profile-stats-holder .image-holder img {
   width: 70px;
   height: 70px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   cursor: pointer;
-  background-color: #f2f2f2;
-  border-radius: 6px;
+  background-color: white;
 }
 
 .side-bar .profile-stats-holder .profile {
@@ -158,8 +64,9 @@
           flex-direction: column;
 }
 
-.side-bar .profile-stats-holder .profile-name-stats .user-name-holder p {
+.side-bar .profile-stats-holder .profile-name-stats .user-name-holder .username-text {
   margin-bottom: 0px;
+  font-weight: 600;
 }
 
 .side-bar .profile-stats-holder .profile-name-stats .user-name-holder small {

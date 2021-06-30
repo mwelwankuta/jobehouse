@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import {
   ModalViewContext,
   PhoneViewContext,
   PostModalContext,
   PostsContext,
-  SessionContext,
   UserContext,
 } from '../Contexts/viewContext.js'
 
@@ -13,10 +12,10 @@ import '../Styles/Pages/Home.css'
 import JobModal from '../Components/JobModal'
 import { SearchIcon } from '@heroicons/react/solid'
 import { useHistory } from 'react-router-dom'
+import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
 
 function Home() {
   const phoneView = useContext(PhoneViewContext)
-  const session = useContext(SessionContext)
   const [, setModalView] = useContext(ModalViewContext)
   const [, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts] = useContext(PostsContext)
@@ -27,7 +26,7 @@ function Home() {
   return (
     <div className="home-container">
       <div className="header-holder">
-        <h1 className="page-title">Dash</h1>
+        <h2 className="page-title">Dash</h2>
         <button
           onClick={() => {
             setPostModalIsOpen(true)
@@ -46,14 +45,18 @@ function Home() {
               type="text"
               className="search-bar"
               placeholder="Search for jobs"
-              onClick={(event) => router.push('/search')}
+              onClick={() => router.push('/search')}
             />
           </div>
         )}
-        <small>
-          {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
-        </small>
-        {session && posts.length > 0 ? (
+        {posts.length > 0 ? (
+          <small>
+            {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
+          </small>
+        ) : (
+          <small>Loading...</small>
+        )}
+        {user && posts.length > 0 ? (
           posts.length > 1 ? (
             posts
               .sort((a, b) => b.date - a.date)
@@ -87,16 +90,21 @@ function Home() {
               )
             })
           )
+        ) : // JobCard loaders
+        phoneView ? (
+          <Fragment>
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+          </Fragment>
         ) : (
-          <small style={{ textAlign: 'center' }}>
-            There are no posts at the moment, consider adding one
-          </small>
-        )}
-
-        {!session && (
-          <small style={{ textAlign: 'center' }}>
-            You need to be signed in to view posts
-          </small>
+          <Fragment>
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+          </Fragment>
         )}
       </div>
       <JobModal />

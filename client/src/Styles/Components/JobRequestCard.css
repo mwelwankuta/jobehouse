@@ -30,9 +30,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   margin-bottom: 0px;
   padding: 0;
 }
@@ -40,7 +37,6 @@
 .upcoming-card-holder .arrow-down-icon-holder button {
   background-color: #dedede;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: #1a1a1a;
   font-weight: 600;
@@ -55,6 +51,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid #f2f2f2;
   width: 60px;
 }
 
@@ -76,7 +73,6 @@
 .upcoming-card-holder .requests-list li button {
   background-color: #dedede;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: #252525;
   font-weight: 600;
@@ -91,6 +87,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid #252525;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

@@ -18,23 +18,12 @@
   font-weight: 700;
   font-size: 17px;
   color: #252525;
-  width: 60%;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.job-card-holder .job-header .job-time {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: gray;
-  gap: 4px;
-}
-
 .job-card-holder .job-bottom {
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,10 +35,20 @@
           justify-content: space-between;
 }
 
+.job-card-holder .job-bottom .job-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: gray;
+  gap: 4px;
+}
+
 .job-card-holder button {
-  background-color: #fd4d4d;
+  background-color: #252525;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
@@ -64,15 +63,15 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid #1a1a1a;
   display: flex;
   float: right;
   gap: 4px;
 }
 
-.job-card-holder .cancle-request-btn {
+.job-card-holder .cancel-request-btn {
   background-color: gray;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
@@ -87,6 +86,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid #dedede;
 }
 
 .job-card-holder .job-description {

@@ -5,12 +5,12 @@ import CreateUpcomingModal from '../Components/CreateUpcomingModal'
 import JobRequestCard from '../Components/JobRequestCard'
 
 function Requests() {
-  const [jobRequests, ] = useContext(jobRequestContext)
+  const [jobRequests] = useContext(jobRequestContext)
 
   return (
     <div className="upcoming-holder">
       <div className="page-header">
-        <h1 className="page-title">Requests</h1>
+        <h2 className="page-title">Requests</h2>
       </div>
       <div className="upcoming-jobs-list">
         {jobRequests.map((job) => (

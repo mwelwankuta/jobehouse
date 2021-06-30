@@ -79,6 +79,7 @@ function CreateUpcomingModal() {
         </div>
 
         <form onSubmit={(e) => addUpcomingJob(e)}>
+          {/* Title Inpute */}
           <div className="input-holder">
             <label htmlFor="title">
               <small>title</small>
@@ -90,6 +91,7 @@ function CreateUpcomingModal() {
             />
           </div>
 
+          {/* Date-time Picker */}
           <div className="input-holder">
             <input
               type="datetime-local"
@@ -98,7 +100,7 @@ function CreateUpcomingModal() {
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-
+          {/* Title Job Category */}
           <div className="input-holder">
             <label htmlFor="picture">
               <small>Category</small>
