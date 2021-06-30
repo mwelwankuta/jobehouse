@@ -11,7 +11,7 @@ import { PostsContext } from '../Contexts/viewContext'
 import '../Styles/Components/JobCard.css'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
-  const [posts] = useContext(PostsContext)
+  const [posts, setPosts] = useContext(PostsContext)
   const [haveIRequested, setHaveIRequested] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -40,6 +40,8 @@ function PostCard({ id, title, description, status, date, user, requests }) {
       })
       .then((res) => {
         setLoading(false)
+        setPosts(posts)
+        console.log('request', res.data)
       })
   }
 
@@ -64,9 +66,9 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         <p className="job-description">{description}</p>
       </Link>
       {status === 'Available' && haveIRequested === true && (
-        <button onClick={() => removeRequest()} className="cancle-request-btn">
+        <button onClick={() => removeRequest()} className="cancel-request-btn">
           {loading === false && <XIcon height="15px" />}
-          {loading === true ? '...' : 'Cancle'}
+          {loading === true ? '...' : 'Cancel'}
         </button>
       )}
       <small

@@ -1,42 +1,14 @@
-nav {
+.desktop-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0 10px;
   position: relative;
-  border: none;
   background-color: white;
-  border-bottom: 1px solid #dedede;
 }
 
-nav .login-link {
-  background-color: #dedede;
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: #252525;
-  font-weight: 600;
-  cursor: pointer;
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-weight: 300;
-  font-size: 14px;
-}
-
-nav .login-link:hover {
-  color: #1a1a1a;
-}
-
-nav a {
+.desktop-nav a {
   text-decoration: none;
   color: #fd4d4d;
   display: -webkit-box;
@@ -48,71 +20,64 @@ nav a {
   gap: 10px;
 }
 
-nav a .jobe-house-logo {
+.desktop-nav a .jobe-house-logo {
   margin-right: 20px;
   cursor: pointer;
   color: #fd4d4d;
   height: 48px;
 }
 
-nav .blue-text {
-  color: #fd4d4d;
+.desktop-nav .image-holder {
+  margin-left: 20px;
+  margin-right: 310px;
 }
 
-nav .image-holder {
-  margin-right: 15px;
-}
-
-nav .image-holder img {
-  border-radius: 6px;
+.desktop-nav .image-holder img {
   width: 32px;
+  height: 32px;
   -o-object-fit: cover;
      object-fit: cover;
   cursor: pointer;
+  border-radius: 100%;
 }
 
-nav .select-container {
+.desktop-nav .select-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  cursor: text;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   width: 100%;
-  cursor: pointer;
-  -ms-flex-item-align: center;
-      align-self: center;
 }
 
-nav .select-container ::-webkit-scrollbar-thumb {
-  background-color: gray;
-}
-
-nav .select-container .desktop-search-results {
-  padding: 10px0px;
-  border-radius: 6px;
+.desktop-nav .select-container ::-webkit-scrollbar-thumb {
   background-color: #dedede;
-  -webkit-box-shadow: 0px 0px 2px 0px #252525;
-          box-shadow: 0px 0px 2px 0px #252525;
+}
+
+.desktop-nav .select-container .desktop-search-results {
+  padding: 10px 0px;
+  border-radius: 6px;
+  background-color: white;
+  border: 1px solid #dedede;
   position: absolute;
   top: 60px;
-  width: 430px;
+  width: 42%;
   overflow-y: scroll;
   max-height: 300px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  cursor: default;
 }
 
-nav .select-container .desktop-search-results ul {
+.desktop-nav .select-container .desktop-search-results ul {
   padding: 0 10px;
   margin: 0;
 }
 
-nav .select-container .desktop-search-results ul li {
+.desktop-nav .select-container .desktop-search-results ul li {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -123,9 +88,10 @@ nav .select-container .desktop-search-results ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border: 1px solid #dedede;
 }
 
-nav .select-container .desktop-search-results ul li a {
+.desktop-nav .select-container .desktop-search-results ul li a {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -137,12 +103,18 @@ nav .select-container .desktop-search-results ul li a {
   font-weight: 600;
 }
 
-nav .select-container .desktop-search-results ul li a p {
+.desktop-nav .select-container .desktop-search-results ul li a p {
   text-transform: capitalize;
   margin-bottom: 3px;
+  font-weight: 600;
 }
 
-nav .nav-select-holder {
+.desktop-nav .select-container .desktop-search-results ul li a small {
+  font-weight: 400;
+  margin-top: -10px;
+}
+
+.desktop-nav .nav-select-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,17 +123,14 @@ nav .nav-select-holder {
           align-items: center;
   color: #5d7290;
   padding: 4px 10px;
-  min-width: 300px;
-  width: 500px;
-  background-color: #eee;
+  width: 100%;
+  background-color: #f2f2f2;
   border: 1px solid #dedede;
   border-radius: 6px;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  cursor: pointer;
+  cursor: text;
 }
 
-nav .nav-select-holder input {
+.desktop-nav .nav-select-holder input {
   padding: 5px 10px;
   width: 100%;
   -webkit-box-flex: 1;
@@ -171,6 +140,6 @@ nav .nav-select-holder input {
   border: none;
   background-color: transparent;
   outline: 0;
-  cursor: pointer;
+  cursor: text;
 }
 /*# sourceMappingURL=NavBar.css.map */

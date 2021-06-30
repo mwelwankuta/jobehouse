@@ -17,7 +17,7 @@ function Auth() {
   const desktopView = useContext(DesktopViewContext)
 
   const MyFacebookButton = ({ onClick }) => (
-    <button className="login-btn" onClick={onClick}>
+    <button className="auth-login-btn" onClick={onClick}>
       {loading ? '...' : 'Login with facebook'}
     </button>
   )

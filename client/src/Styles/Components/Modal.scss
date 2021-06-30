@@ -11,13 +11,22 @@
     padding: 0px 30px 30px 30px;
     margin: auto;
     .close-btn {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       button {
-        background-color: transparent;
         border: none;
         cursor: pointer;
+        border-radius: 100%;
+        padding: 4px;
+        border: 0.7px solid $darkGreyColor;
+        color: $blackColor;
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        justify-content: space-between;
       }
-      display: flex;
-      justify-content: space-between;
     }
     h2 {
       color: $primaryColor;
@@ -34,8 +43,7 @@
         }
       }
       button {
-        @include button($primaryColor, white);
-        border: 1px solid rgba(206, 35, 35, 0.563);
+        @include button($primaryColor, white, rgba(206, 35, 35, 0.563));
         padding: 15px;
         width: 100%;
       }

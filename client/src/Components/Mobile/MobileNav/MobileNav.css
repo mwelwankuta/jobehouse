@@ -1,5 +1,4 @@
-nav {
-  border-bottom: 0.4px solid #dedede;
+.mobile-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,10 +9,34 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   z-index: 90;
+  padding: 0 10px;
 }
 
-nav .jobe-house-logo {
+.mobile-nav .jobe-house-logo {
   margin-right: 0;
   color: #fd4d4d;
+}
+
+.mobile-nav a {
+  color: #fd4d4d;
+}
+
+.mobile-nav a .jobe-house-logo {
+  color: #fd4d4d;
+}
+
+.mobile-nav .image-holder img {
+  width: 32px;
+  height: 32px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+  .mobile-nav {
+    border-bottom: 0.4px solid #dedede;
+  }
 }
 /*# sourceMappingURL=MobileNav.css.map */

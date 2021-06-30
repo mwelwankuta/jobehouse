@@ -1,10 +1,5 @@
 import React, { useContext } from 'react'
-import {
-  CalendarIcon,
-  UserIcon,
-  BellIcon,
-  SearchIcon,
-} from '@heroicons/react/solid'
+import { CalendarIcon, BellIcon, SearchIcon } from '@heroicons/react/solid'
 import storiezIcon from '../../../Resources/mobile/pink-icon.svg'
 import { Link } from 'react-router-dom'
 
@@ -31,6 +26,12 @@ function MobileBottomNav() {
             />
           </Link>
         </li>
+        <li>
+          <Link to="/search">
+            <SearchIcon height="25px" />
+          </Link>
+        </li>
+
         {/* Upcoming Jobs Icon */}
         <li>
           <Link to="/upcoming">
@@ -44,11 +45,7 @@ function MobileBottomNav() {
           </Link>
         </li>
         {/* Profile Icon */}
-        <li>
-          <Link to="/profile">
-            <UserIcon height="27px" />
-          </Link>
-        </li>
+
         {/* Job Requets Icon */}
         <li style={{ marginBottom: '-5px' }}>
           <Link to="/requests">
@@ -62,11 +59,6 @@ function MobileBottomNav() {
           </Link>
         </li>
         {/* Search Icon */}
-        <li>
-          <Link to="/search">
-            <SearchIcon height="25px" />
-          </Link>
-        </li>
       </ul>
     </div>
   )

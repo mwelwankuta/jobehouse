@@ -1,24 +1,25 @@
-import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useState, Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import NavPopup from './NavPopup'
 
 import './MobileNav.css'
 
-function MobileNav({ session, user }) {
-  const router = useHistory()
+function MobileNav({ user }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
-    <nav>
+    <nav className="mobile-nav">
       <Link to="/">
         <h2 className="jobe-house-log">JobeHouse</h2>
       </Link>
 
-      {/* User Profile Picture */}
-      <div>
-        {session && (
-          <div className="image-holder" onClick={() => router.push('/profile')}>
-            <img src={user.picture} alt="profile" loading="eager" />
+      <Fragment>
+        {user && (
+          <div className="image-holder" onClick={() => setModalIsOpen(true)}>
+            <img src={user && user.picture} alt="profile" loading="eager" />
           </div>
         )}
-      </div>
+      </Fragment>
+      <NavPopup isOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
     </nav>
   )
 }

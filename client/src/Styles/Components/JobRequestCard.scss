@@ -18,11 +18,10 @@
   .arrow-down-icon-holder {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 0px;
     padding: 0;
     button {
-      @include button($darkGreyColor, $darkBlackColor);
+      @include button($darkGreyColor, $darkBlackColor, $lightGreyColor);
       width: 60px;
     }
   }
@@ -35,7 +34,7 @@
       align-items: center;
       justify-content: space-between;
       button {
-        @include button($darkGreyColor, $blackColor);
+        @include button($darkGreyColor, $blackColor, $blackColor);
         width: fit-content;
       }
     }

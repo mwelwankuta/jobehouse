@@ -4,7 +4,6 @@ import {
   PhoneViewContext,
   PostModalContext,
   PostsContext,
-  SessionContext,
   UserContext,
 } from '../Contexts/viewContext.js'
 
@@ -17,11 +16,10 @@ import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
 
 function Home() {
   const phoneView = useContext(PhoneViewContext)
-  const session = useContext(SessionContext)
   const [, setModalView] = useContext(ModalViewContext)
   const [, setPostModalIsOpen] = useContext(PostModalContext)
   const [posts] = useContext(PostsContext)
-  console.log(posts)
+
   const [user] = useContext(UserContext)
   const router = useHistory()
 
@@ -47,16 +45,18 @@ function Home() {
               type="text"
               className="search-bar"
               placeholder="Search for jobs"
-              onClick={(event) => router.push('/search')}
+              onClick={() => router.push('/search')}
             />
           </div>
         )}
-        {posts.length > 0 && (
+        {posts.length > 0 ? (
           <small>
             {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
           </small>
+        ) : (
+          <small>Loading...</small>
         )}
-        {session && posts.length > 0 ? (
+        {user && posts.length > 0 ? (
           posts.length > 1 ? (
             posts
               .sort((a, b) => b.date - a.date)
@@ -90,19 +90,21 @@ function Home() {
               )
             })
           )
-        ) : (
-          // JobCard loaders
+        ) : // JobCard loaders
+        phoneView ? (
           <Fragment>
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
           </Fragment>
-        )}
-
-        {!session && (
-          <small style={{ textAlign: 'center' }}>
-            You need to be signed in to view posts
-          </small>
+        ) : (
+          <Fragment>
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+          </Fragment>
         )}
       </div>
       <JobModal />

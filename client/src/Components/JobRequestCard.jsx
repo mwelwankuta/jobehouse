@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import TimeStampToDate from 'timestamp-to-date'
 import '../Styles/Components/JobRequestCard.css'
 import moment from 'moment'
@@ -44,10 +44,10 @@ function JobRequestCard(props) {
           {showRequestsList && <ArrowUpIcon height="18px" />}
           {!showRequestsList && <ArrowDownIcon height="18px" />}
         </button>
-        <div>
+        <Fragment>
           <UsersIcon height="18px" style={{ color: '#5d7290' }} />
           <small>{requests.length}</small>
-        </div>
+        </Fragment>
       </div>
     </div>
   )

@@ -25,7 +25,7 @@ router.post('/requestwork', (request, response, next) => {
           () => {
             response
               .status(201)
-              .send([data, { msg: 'You have cancled to work' }])
+              .send([data, { msg: 'You have canceled to work' }])
           },
         )
       } else {
@@ -54,7 +54,9 @@ router.post('/unrequestwork', (request, response) => {
   JobModel.findById(jobId, (err, data) => {
     if (err) throw err
     if (data == null || data == undefined) {
-      response.status(200).send({ msg: 'You request has already been cancled' })
+      response
+        .status(200)
+        .send({ msg: 'You request has already been canceled' })
     } else {
       if (data.status === 'Taken') {
         response.send({
@@ -66,7 +68,7 @@ router.post('/unrequestwork', (request, response) => {
           (user) => user.id != userId,
         )
         JobModel.findByIdAndUpdate(jobId, { requests: newWorkRequests }, () => {
-          response.status(200).send({ msg: 'You request has been cancled' })
+          response.status(200).send({ msg: 'You request has been canceled' })
         })
       }
     }

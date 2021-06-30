@@ -31,6 +31,8 @@
   margin-left: auto;
   margin-right: auto;
   border: 3px solid #fd4d4d;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .profile-holder .votes-holder {
@@ -47,7 +49,6 @@
 .profile-holder .bio-btn {
   background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
@@ -80,49 +81,6 @@
           flex-direction: column;
   width: -webkit-fill-available;
   gap: 20px;
-}
-
-.profile-holder .buttons-holder .nologout-btn {
-  background-color: gray;
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  height: 32px;
-}
-
-.profile-holder .buttons-holder .logout-btn {
-  background-color: rgba(209, 22, 22, 0.507);
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
 }
 
 .profile-holder textarea {

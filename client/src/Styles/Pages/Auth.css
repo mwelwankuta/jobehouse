@@ -63,9 +63,8 @@
 
 .react-modal .modal-child .auth-holder button {
   margin-bottom: 10px;
-  background-color: #252525;
+  background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
@@ -80,6 +79,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
   padding: 10px;
   font-size: 16px;
   font-weight: 500;
@@ -98,9 +98,8 @@
   .react-modal button {
     padding: 10px;
     margin-bottom: 50px;
-    background-color: #2f96d1;
+    background-color: #fd4d4d;
     padding: 8px 20px;
-    border: #f2f2f2;
     border-radius: 6px;
     color: white;
     font-weight: 600;
@@ -115,6 +114,7 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    border: 1px solid rgba(206, 35, 35, 0.563);
     padding: 15px;
     font-size: 16px;
   }

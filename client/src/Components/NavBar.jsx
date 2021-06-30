@@ -1,25 +1,25 @@
 import React, { Fragment, useContext, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
-import { useHistory, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
   DesktopViewContext,
   PhoneViewContext,
   PostsContext,
 } from '../Contexts/viewContext'
 import MobileNav from './Mobile/MobileNav/MobileNav'
+import NavBarPopup from './NavBarPopup'
 
 import logo from '../Resources/icon-with-text.svg'
 import '../Styles/Components/NavBar.css'
 
-function NavBar({ user, session, modalView }) {
+function NavBar({ user, modalView }) {
   const phoneView = useContext(PhoneViewContext)
   const desktopView = useContext(DesktopViewContext)
   const [jobs] = useContext(PostsContext)
 
   const [filteredJobs, setFilterdJobs] = useState([])
   const [searchInput, setSearchInput] = useState('')
-
-  const router = useHistory()
+  const [PopupIsOpen, setPopupIsOpen] = useState(false)
 
   const handleSearch = (event) => {
     setSearchInput(event.target.value)
@@ -36,7 +36,7 @@ function NavBar({ user, session, modalView }) {
   return (
     <Fragment>
       {modalView === false && desktopView && (
-        <nav>
+        <nav className="desktop-nav">
           <Link to="/">
             <img
               src={logo}
@@ -65,6 +65,9 @@ function NavBar({ user, session, modalView }) {
                     <li key={job._id} className="search-results">
                       <a href={`/job/${job._id}`}>
                         <p className="search-result-title">{job.title}</p>
+                        <small className="search-result-description">
+                          {job.description}
+                        </small>
                       </a>
                     </li>
                   ))}
@@ -72,21 +75,21 @@ function NavBar({ user, session, modalView }) {
               </div>
             )}
 
-            {session && (
+            {user && (
               <div
-                onClick={() => router.push('/profile')}
+                onClick={() => setPopupIsOpen(!PopupIsOpen)}
                 className="image-holder"
               >
-                <img src={user.picture} alt="profile" />
+                <img src={user && user.picture} alt="profile" />
               </div>
             )}
           </div>
         </nav>
       )}
 
-      {modalView === false && phoneView && (
-        <MobileNav session={session} user={user} />
-      )}
+      {phoneView && <MobileNav user={user} />}
+
+      {PopupIsOpen && <NavBarPopup />}
     </Fragment>
   )
 }

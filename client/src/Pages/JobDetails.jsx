@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 function JobDetails() {
   return (
-    <div>
+    <Fragment>
       <h2>Here are the details</h2>
-    </div>
+    </Fragment>
   )
 }
 

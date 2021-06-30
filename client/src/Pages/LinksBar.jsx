@@ -1,10 +1,5 @@
 import React, { useContext } from 'react'
-import {
-  HomeIcon,
-  CalendarIcon,
-  UserIcon,
-  BellIcon,
-} from '@heroicons/react/solid'
+import { HomeIcon, CalendarIcon, BellIcon } from '@heroicons/react/solid'
 import { Link, useLocation } from 'react-router-dom'
 import { jobRequestContext, UpcomingContext } from '../Contexts/viewContext'
 
@@ -30,11 +25,6 @@ function LinksBar() {
       ),
       label: 'Scheduled',
       path: '/upcoming',
-    },
-    {
-      icon: <UserIcon height="35px" />,
-      label: 'Profile',
-      path: '/profile',
     },
     {
       icon: (

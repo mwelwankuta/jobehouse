@@ -1,21 +1,12 @@
 @import '../Variables.scss';
 
-nav {
+.desktop-nav {
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0 10px;
   position: relative;
-  border: none;
   background-color: white;
-  border-bottom: 1px solid $darkGreyColor;
-  .login-link {
-    @include button($darkGreyColor, $blackColor);
-    font-weight: 300;
-    font-size: 14px;
-  }
-  .login-link:hover {
-    color: $darkBlackColor;
-  }
+
   a {
     text-decoration: none;
     color: $primaryColor;
@@ -29,41 +20,39 @@ nav {
       height: 48px;
     }
   }
-  .blue-text {
-    color: $primaryColor;
-  }
 
   .image-holder {
-    margin-right: 15px;
     img {
-      border-radius: 6px;
       width: 32px;
+      height: 32px;
       object-fit: cover;
       cursor: pointer;
+      border-radius: 100%;
     }
+    margin-left: 20px;
+    margin-right: 310px;
   }
 
   .select-container {
     display: flex;
+    cursor: text;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
-    cursor: pointer;
-    align-self: center;
     ::-webkit-scrollbar-thumb {
-      background-color: $greyColor;
+      background-color: $darkGreyColor;
     }
     .desktop-search-results {
-      padding: 10px0px;
+      padding: 10px 0px;
       border-radius: 6px;
-      background-color: $darkGreyColor;
-      box-shadow: 0px 0px 2px 0px $blackColor;
+      background-color: white;
+      border: 1px solid $darkGreyColor;
       position: absolute;
       top: 60px;
-      width: 430px;
+      width: 42%;
       overflow-y: scroll;
       max-height: 300px;
       height: fit-content;
+      cursor: default;
       ul {
         padding: 0 10px;
         margin: 0;
@@ -76,14 +65,21 @@ nav {
           border-radius: 6px;
           padding: 0px 10px 10px 10px;
           display: flex;
+          border: 1px solid $darkGreyColor;
           a {
             flex-direction: column;
             align-items: flex-start;
             color: $blackColor;
             font-weight: 600;
+
             p {
               text-transform: capitalize;
               margin-bottom: 3px;
+              font-weight: 600;
+            }
+            small {
+              font-weight: 400;
+              margin-top: -10px;
             }
           }
         }
@@ -96,14 +92,11 @@ nav {
     align-items: center;
     color: $textColor;
     padding: 4px 10px;
-    min-width: 300px;
-    width: 500px;
-    // margin-right: 32%;
-    background-color: #eee;
+    width: 100%;
+    background-color: $lightGreyColor;
     border: 1px solid $darkGreyColor;
     border-radius: 6px;
-    transition: 0.2s;
-    cursor: pointer;
+    cursor: text;
     input {
       padding: 5px 10px;
       width: 100%;
@@ -112,7 +105,7 @@ nav {
       border: none;
       background-color: transparent;
       outline: 0;
-      cursor: pointer;
+      cursor: text;
     }
   }
 }

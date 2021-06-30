@@ -17,7 +17,6 @@
 .upcoming-holder .add-upcoming-btn {
   background-color: #f2f2f2;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: #252525;
   font-weight: 600;
@@ -53,7 +52,6 @@
 .upcoming-holder .upcoming-jobs-list button {
   background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;

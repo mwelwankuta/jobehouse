@@ -23,6 +23,7 @@
     margin-left: auto;
     margin-right: auto;
     border: 3px solid $primaryColor;
+    object-fit: cover;
   }
   .votes-holder {
     display: flex;
@@ -31,8 +32,7 @@
     margin: 0 40px;
   }
   .bio-btn {
-    @include button($primaryColor, white);
-    border: 1px solid rgba(206, 35, 35, 0.563);
+    @include button($primaryColor, white, rgba(206, 35, 35, 0.563));
     width: 100%;
   }
   .logout-confirmation-text {
@@ -43,15 +43,6 @@
     flex-direction: column;
     width: -webkit-fill-available;
     gap: 20px;
-    .nologout-btn {
-      @include button($greyColor, white);
-      width: 100%;
-      height: 32px;
-    }
-    .logout-btn {
-      @include button($redColor, white);
-      width: 100%;
-    }
   }
   textarea {
     border: none;

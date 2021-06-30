@@ -19,7 +19,6 @@ import MobileBottomNav from './Components/Mobile/MobileBottomNav/MobileBottomNav
 
 import {
   UserContext,
-  SessionContext,
   DesktopViewContext,
   PhoneViewContext,
   ModalViewContext,
@@ -36,7 +35,7 @@ import axios from 'axios'
 import Requests from './Pages/Requests'
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
   const [modalView, setModalView] = useState(false)
   const [postModalIsOpen, setPostModalIsOpen] = useState(false)
   const [upcomingModalIsOpen, setUpcomingModalIsOpen] = useState(false)
@@ -46,29 +45,27 @@ function App() {
   const [haveIRequested, setHaveIRequested] = useState(false)
 
   const phoneView = useMediaQuery({
-    query: '(max-device-width: 800px)',
+    query: '(max-width: 800px)',
   })
 
   const desktopView = useMediaQuery({
-    query: '(min-device-width: 800px)',
+    query: '(min-width: 800px)',
   })
 
-  const session = sessionStorage.getItem('client')
-
   useEffect(() => {
-    if (session) {
+    if (sessionStorage.getItem('client')) {
       const sessionUser = JSON.parse(sessionStorage.getItem('client'))
       setUser(sessionUser[0])
     }
-  }, [session])
+  }, [])
 
   useEffect(() => {
-    if (session) {
+    if (user) {
       axios
         .get('https://jobe-house.herokuapp.com/jobs')
         .then((res) => setPosts(res.data))
     }
-  })
+  }, [user])
 
   useEffect(() => {
     if (user) {
@@ -80,7 +77,7 @@ function App() {
           setJobRequests(res.data)
         })
     }
-  })
+  }, [user])
 
   const Terms = () => {
     return <h2>Terms of Service coming Soon...</h2>
@@ -112,126 +109,118 @@ function App() {
     <DesktopViewContext.Provider value={desktopView}>
       <PhoneViewContext.Provider value={phoneView}>
         <UserContext.Provider value={[user, setUser]}>
-          <SessionContext.Provider value={session}>
-            <ModalViewContext.Provider value={[modalView, setModalView]}>
-              <PostModalContext.Provider
-                value={[postModalIsOpen, setPostModalIsOpen]}
-              >
-                <PostsContext.Provider value={[posts, setPosts]}>
-                  <UpcomingModalContext.Provider
-                    value={[upcomingModalIsOpen, setUpcomingModalIsOpen]}
-                  >
-                    <UpcomingContext.Provider value={[upcomings, setUpcomings]}>
-                      <jobRequestContext.Provider
-                        value={[jobRequests, setJobRequests]}
+          <ModalViewContext.Provider value={[modalView, setModalView]}>
+            <PostModalContext.Provider
+              value={[postModalIsOpen, setPostModalIsOpen]}
+            >
+              <PostsContext.Provider value={[posts, setPosts]}>
+                <UpcomingModalContext.Provider
+                  value={[upcomingModalIsOpen, setUpcomingModalIsOpen]}
+                >
+                  <UpcomingContext.Provider value={[upcomings, setUpcomings]}>
+                    <jobRequestContext.Provider
+                      value={[jobRequests, setJobRequests]}
+                    >
+                      <haveIRequestedContext.Provider
+                        value={[haveIRequested, setHaveIRequested]}
                       >
-                        <haveIRequestedContext.Provider
-                          value={[haveIRequested, setHaveIRequested]}
-                        >
-                          <Router>
-                            <div className="home-container">
-                              {session && (
-                                <NavBar
-                                  user={user}
-                                  session={session}
-                                  modalView={modalView}
-                                />
+                        <Router>
+                          <div className="home-container">
+                            {user && (
+                              <NavBar user={user} modalView={modalView} />
+                            )}
+                            <div className="sections">
+                              {desktopView && (
+                                <div style={{ position: 'sticky' }}>
+                                  {user && <LinksBar />}
+                                </div>
                               )}
-                              <div className="sections">
-                                {desktopView && (
-                                  <div style={{ position: 'sticky' }}>
-                                    {session && <LinksBar />}
-                                  </div>
-                                )}
 
-                                <main className="main-content">
-                                  <Switch>
-                                    {session && (
-                                      <Route exact path="/" component={Home} />
-                                    )}
-                                    {!session && (
-                                      <Route exact path="/" component={Auth} />
-                                    )}
-                                    <Route
-                                      exact
-                                      path="/settings"
-                                      component={Settings}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/job/:id"
-                                      component={Job}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/upcoming"
-                                      component={Upcoming}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/requests"
-                                      component={Requests}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/terms"
-                                      component={Terms}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/privacy"
-                                      component={Privacy}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/job/:id"
-                                      component={JobDetails}
-                                    />
-                                    <Route
-                                      exact
-                                      path="/profile"
-                                      component={Profile}
-                                    />
+                              <main className="main-content">
+                                <Switch>
+                                  {user && (
+                                    <Route exact path="/" component={Home} />
+                                  )}
+                                  {!user && (
+                                    <Route exact path="/" component={Auth} />
+                                  )}
+                                  <Route
+                                    exact
+                                    path="/settings"
+                                    component={Settings}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/job/:id"
+                                    component={Job}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/upcoming"
+                                    component={Upcoming}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/requests"
+                                    component={Requests}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/terms"
+                                    component={Terms}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/privacy"
+                                    component={Privacy}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/job/:id"
+                                    component={JobDetails}
+                                  />
+                                  <Route
+                                    exact
+                                    path="/profile"
+                                    component={Profile}
+                                  />
 
-                                    {phoneView && (
-                                      <Route
-                                        exact
-                                        path="/search"
-                                        component={MobileSearchPage}
-                                      />
-                                    )}
+                                  {phoneView && (
+                                    <Route
+                                      exact
+                                      path="/search"
+                                      component={MobileSearchPage}
+                                    />
+                                  )}
 
-                                    <Route
-                                      exact
-                                      path="/error"
-                                      component={RequestProblem}
-                                    />
-                                    <Route
-                                      exact
-                                      path="*"
-                                      component={NotFoundPage}
-                                    />
-                                  </Switch>
-                                </main>
-                                {/* Desktop SideBar */}
-                                {desktopView && session && (
-                                  <div className="side-bar">
-                                    <SideBar user={user} />
-                                  </div>
-                                )}
+                                  <Route
+                                    exact
+                                    path="/error"
+                                    component={RequestProblem}
+                                  />
+                                  <Route
+                                    exact
+                                    path="*"
+                                    component={NotFoundPage}
+                                  />
+                                </Switch>
+                              </main>
+                              {/* Desktop SideBar */}
+                              <div className="side-bar">
+                                {desktopView && user && <SideBar user={user} />}
                               </div>
-                              {/* Mobile Bottom Navigation */}
-                              {phoneView && session && <MobileBottomNav />}
                             </div>
-                          </Router>
-                        </haveIRequestedContext.Provider>
-                      </jobRequestContext.Provider>
-                    </UpcomingContext.Provider>
-                  </UpcomingModalContext.Provider>
-                </PostsContext.Provider>
-              </PostModalContext.Provider>
-            </ModalViewContext.Provider>
-          </SessionContext.Provider>
+                            {/* Mobile Bottom Navigation */}
+                            {phoneView && user && <MobileBottomNav />}
+                          </div>
+                        </Router>
+                      </haveIRequestedContext.Provider>
+                    </jobRequestContext.Provider>
+                  </UpcomingContext.Provider>
+                </UpcomingModalContext.Provider>
+              </PostsContext.Provider>
+            </PostModalContext.Provider>
+          </ModalViewContext.Provider>
         </UserContext.Provider>
       </PhoneViewContext.Provider>
     </DesktopViewContext.Provider>

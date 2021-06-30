@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { PlusIcon } from '@heroicons/react/outline'
 import { useHistory } from 'react-router'
 
@@ -13,37 +13,21 @@ import {
 import CreateUpcomingModal from './CreateUpcomingModal'
 
 function SideBar({ user }) {
-  const [setUpcomingModalIsOpen] = useContext(UpcomingModalContext)
-  const [setModalView] = useContext(ModalViewContext)
+  const [, setUpcomingModalIsOpen] = useContext(UpcomingModalContext)
+  const [, setModalView] = useContext(ModalViewContext)
   const [upcomings] = useContext(UpcomingContext)
-
-  const [counter, setCounter] = useState(0)
-  const [logoutButtonText, setLogoutButtonText] = useState('Logout')
 
   const upvotes = user.upvotes
   const downvotes = user.downvotes
 
   const router = useHistory()
 
-  useEffect(() => {
-    if (counter === 0) {
-      setLogoutButtonText('Logout')
-    }
-    if (counter === 1) {
-      setLogoutButtonText('Yes')
-    }
-    if (counter === 2) {
-      sessionStorage.removeItem('client')
-      window.location = '/'
-    }
-  }, [counter, logoutButtonText])
-
   return (
     <div className="side-bar">
       <div className="profile-card">
         <div className="profile-stats-holder">
           <div onClick={() => router.push('/profile')} className="image-holder">
-            <img src={user.picture} alt="profile" />
+            <img src={user && user.picture} alt="profile" />
           </div>
           <div className="profile-name-stats">
             <div className="user-name-holder">
@@ -63,45 +47,29 @@ function SideBar({ user }) {
           </div>
         </div>
         <p className="bio-text">{user.bio}</p>
-        <div className="account-button-holder">
-          {counter === 1 && <button onClick={() => setCounter(0)}>No</button>}
+      </div>
+      <div className="upcoming-holder">
+        <div className="page-header">
+          <h2 className="page-title">Upcoming Jobs</h2>
           <button
-            className="logout-btn"
-            onClick={() => setCounter(counter + 1)}
+            onClick={() => {
+              setUpcomingModalIsOpen(true)
+              setModalView(true)
+            }}
+            className="add-upcoming-btn"
           >
-            {logoutButtonText}
+            <PlusIcon height="24px" />
           </button>
         </div>
-        {counter === 1 && (
-          <small className="logout-text">
-            Are you sure you want to logout?{' '}
-          </small>
-        )}
-      </div>
-      {upcomings.length !== 0 && (
-        <div className="upcoming-holder">
-          <div className="page-header">
-            <h2 className="page-title">Upcoming Jobs</h2>
-            <button
-              onClick={() => {
-                setUpcomingModalIsOpen(true)
-                setModalView(true)
-              }}
-              className="add-upcoming-btn"
-            >
-              <PlusIcon height="24px" />
-            </button>
-          </div>
-          <div className="upcoming-jobs-list-holder">
-            <div className="upcoming-jobs-list">
-              {upcomings.slice(0, 3).map((job) => (
-                <UpcomingJobCard key={job} data={job} />
-              ))}
-              <button onClick={() => router.push('/upcoming')}>See more</button>
-            </div>
+        <div className="upcoming-jobs-list-holder">
+          <div className="upcoming-jobs-list">
+            {upcomings.slice(0, 3).map((job) => (
+              <UpcomingJobCard key={job} data={job} />
+            ))}
+            <button onClick={() => router.push('/upcoming')}>See more</button>
           </div>
         </div>
-      )}
+      </div>
       <CreateUpcomingModal />
     </div>
   )

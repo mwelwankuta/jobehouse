@@ -31,14 +31,13 @@
   }
 
   button {
-    @include button($primaryColor, white);
-    border: 1px solid rgba(206, 35, 35, 0.563);
+    @include button($blackColor, white, $darkBlackColor);
     display: flex;
     float: right;
     gap: 4px;
   }
-  .cancle-request-btn {
-    @include button($greyColor, white);
+  .cancel-request-btn {
+    @include button($greyColor, white, $darkGreyColor);
   }
   .job-description {
     color: $blackColor;

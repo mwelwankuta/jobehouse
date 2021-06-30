@@ -54,12 +54,9 @@ option {
   background-color: $lightGreyColor;
 }
 
-body {
-  background: #9aa0a6;
-}
-
-@media only screen and (max-width: 800px) {
-  //   h2{
-  //   font-size: 30px
-  // }
+@media only screen and (min-width: 800px) {
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+  }
 }

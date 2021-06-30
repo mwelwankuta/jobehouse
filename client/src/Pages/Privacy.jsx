@@ -40,8 +40,8 @@ function Privacy() {
 
       <h3>Location Information</h3>
       <p>
-        We require information about your signup and current location, which we
-        get from from your facebook account.
+        We require information about your signup, which we get from from your
+        facebook account.
       </p>
     </div>
   )
