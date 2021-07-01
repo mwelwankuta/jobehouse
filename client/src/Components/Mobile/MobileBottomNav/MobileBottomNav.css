@@ -1,4 +1,6 @@
 .bottom-nav-holder {
+  border-top: 1px solid #f2f2f2;
+  padding: 2px;
   position: fixed;
   bottom: -2px;
   left: 0;
@@ -6,8 +8,6 @@
 }
 
 .bottom-nav-holder .bottom-nav {
-  border-top: 1px solid #f2f2f2;
-  padding: 2px;
   background-color: white;
   padding: 10px 10px;
   margin: 0;
@@ -47,10 +47,6 @@
   background-color: white;
   border-radius: 100%;
   bottom: 0;
-  font-size: 12px;
-  padding-left: 4px;
-  width: 10px;
-  height: 13.9px;
   right: 0;
 }
-/*# sourceMappingURL=MainBottomNav.css.map */
+/*# sourceMappingURL=MobileBottomNav.css.map */

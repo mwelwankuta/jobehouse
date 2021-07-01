@@ -17,8 +17,8 @@ function SideBar({ user }) {
   const [, setModalView] = useContext(ModalViewContext)
   const [upcomings] = useContext(UpcomingContext)
 
-  const upvotes = user.upvotes
-  const downvotes = user.downvotes
+  // const upvotes = user.upvotes
+  // const downvotes = user.downvotes
 
   const router = useHistory()
 
@@ -34,7 +34,7 @@ function SideBar({ user }) {
               <p className="username-text">{user.name}</p>
               <small>#{user.fbID}</small>
             </div>
-            <div className="recommendations-holder">
+            {/* <div className="recommendations-holder">
               <div id="votes" className="upvotes-holder">
                 <span>{upvotes && upvotes.length}</span>
                 <p>Up votes</p>
@@ -43,7 +43,7 @@ function SideBar({ user }) {
                 <span>{downvotes && downvotes.length}</span>
                 <p>Down votes</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <p className="bio-text">{user.bio}</p>

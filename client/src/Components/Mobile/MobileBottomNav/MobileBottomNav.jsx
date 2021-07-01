@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { CalendarIcon, BellIcon, SearchIcon } from '@heroicons/react/solid'
-import storiezIcon from '../../../Resources/mobile/pink-icon.svg'
 import { Link } from 'react-router-dom'
+import MobileNavBarIcon from '../../../Resources/mobile/MobileNavBarIcon'
 
 import './MainBottomNav.css'
 import {
@@ -18,12 +18,7 @@ function MobileBottomNav() {
         {/* Home Icon */}
         <li>
           <Link to="/">
-            <img
-              src={storiezIcon}
-              height="22px"
-              alt="jobehouse icon"
-              loading="eager"
-            />
+            <MobileNavBarIcon height="22px" />
           </Link>
         </li>
         <li>

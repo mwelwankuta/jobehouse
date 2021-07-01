@@ -70,10 +70,10 @@
 }
 
 .job-card-holder .cancel-request-btn {
-  background-color: gray;
+  background-color: #dedede;
   padding: 8px 20px;
   border-radius: 6px;
-  color: white;
+  color: #252525;
   font-weight: 600;
   cursor: pointer;
   width: 120px;
@@ -86,7 +86,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #dedede;
+  border: 1px solid #f2f2f2;
 }
 
 .job-card-holder .job-description {

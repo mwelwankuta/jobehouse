@@ -1,14 +1,14 @@
 @import '../../../Styles/Variables.scss';
 
 .bottom-nav-holder {
-  border-top: 1px solid $lightGreyColor;
-  padding: 2px;
   position: fixed;
   bottom: -2px;
   left: 0;
   width: 100%;
 
   .bottom-nav {
+    border-top: 1px solid $lightGreyColor;
+    padding: 2px;
     background-color: white;
     padding: 10px 10px;
     margin: 0;

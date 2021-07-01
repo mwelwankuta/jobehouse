@@ -35,7 +35,7 @@
 
   .select-container {
     display: flex;
-    cursor: text;
+    cursor: default;
     align-items: center;
     width: 100%;
     ::-webkit-scrollbar-thumb {

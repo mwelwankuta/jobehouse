@@ -5,7 +5,7 @@ import axios from 'axios'
 import '../Styles/Pages/Profile.css'
 
 function Profile() {
-  const [user] = useContext(UserContext)
+  const [user, setUser] = useContext(UserContext)
 
   const [bio, setBio] = useState('')
   const [editBio, setEditBio] = useState(false)
@@ -15,6 +15,24 @@ function Profile() {
     if (bio.length === 0) {
       setEditBio(false)
     } else {
+      const sessionUser = JSON.parse(localStorage.getItem('client'))
+      const newUser = {
+        upvotes:
+          sessionUser.upvotes && sessionUser.upvotes.length === 0
+            ? []
+            : sessionUser.upvotes,
+        downvotes:
+          sessionUser.downvotes && sessionUser.downvotes.length === 0
+            ? []
+            : sessionUser.downvotes,
+        fbID: sessionUser.fbID,
+        name: sessionUser.name,
+        picture: sessionUser.picture,
+        email: sessionUser.email,
+        bio: bio,
+      }
+      setUser(newUser)
+      setLoading(false)
       axios
         .post('https://jobe-house.herokuapp.com/editbio', {
           fbId: user.fbID,
@@ -34,17 +52,19 @@ function Profile() {
     <div className="profile-holder">
       <img src={user && user.picture} alt="profile" loading="eager" />
       <p className="username-text">{user && user.name}</p>
-      <div className="votes-holder">
+      {/* <div className="votes-holder">
         <p>
           <b>{user && user.upvotes && user.upvotes.length}</b> upvotes
         </p>
         <p>
           <b>{user && user.downvotes && user.downvotes.length}</b> downvotes
         </p>
-      </div>
-      <small className="bio-text">
-        {user && user && user.bio ? user.bio : ''}
-      </small>
+      </div> */}
+      {!editBio && (
+        <small className="bio-text">
+          {user && user && user.bio ? user.bio : ''}
+        </small>
+      )}
       {editBio && (
         <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
       )}
