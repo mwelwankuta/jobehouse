@@ -29,9 +29,10 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         setHaveIRequested(false)
       }
     }
-  }, [haveIRequested, requests, user.fbID, posts])
+  }, [requests, user.fbID, posts])
 
   const workRequest = () => {
+    setLoading(false)
     axios
       .post('https://jobe-house.herokuapp.com/requestwork', {
         jobId: id,
@@ -41,7 +42,6 @@ function PostCard({ id, title, description, status, date, user, requests }) {
       .then((res) => {
         setLoading(false)
         setPosts(posts)
-        console.log('request', res.data)
       })
   }
 
