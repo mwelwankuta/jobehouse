@@ -10,3 +10,5 @@
 
 - staging -> pull request this branch for everything
 - prod -> don't touch, this is what's running in prod
+
+### Discord Server: https://discord.gg/zkSewAZc
