@@ -18,7 +18,7 @@
 | Folder Name | Description|
 |-------------|------------|
 |client       |React.js Frontend|
-|server       |Express.js Server|
+|server       |GraphQL Server|
 
 ## How to Run locally
 
