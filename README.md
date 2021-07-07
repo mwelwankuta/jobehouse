@@ -6,7 +6,6 @@
   <strong>Taking small jobs to the moon 🚀</strong>
 </p>
 
-#### Discord Server: https://discord.gg/zkSewAZc
 
 ## Branches
 
