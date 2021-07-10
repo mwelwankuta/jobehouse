@@ -1,8 +1,8 @@
 .upcoming-card-holder {
-  padding: 5px 10px;
-  border: 1px solid #dedede;
+  background: #f2f2f2;
   border-radius: 6px;
-  background-color: #f2f2f2;
+  border: 1px solid #dedede;
+  padding: 10px;
 }
 .upcoming-card-holder .upcoming-time {
   color: #fd4d4d;
@@ -10,7 +10,10 @@
   justify-content: space-between;
   align-items: center;
 }
+.upcoming-card-holder .upcoming-time p {
+  margin: 0px;
+}
 .upcoming-card-holder .upcoming-title {
   font-weight: 600;
   color: #252525;
-} /*# sourceMappingURL=UpcomingJobCard.css.map */
+}/*# sourceMappingURL=UpcomingJobCard.css.map */

@@ -1,28 +1,28 @@
-.upcoming-card-holder {
+.request-card-holder {
   padding: 0;
   border: 1px solid #dedede;
   border-radius: 6px;
   background-color: #fefefe;
 }
-.upcoming-card-holder .upcoming-header {
+.request-card-holder .request-header {
   border-bottom: 1px solid #a7a7a7;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   padding: 5px 10px;
   background-color: #f2f2f2;
 }
-.upcoming-card-holder .upcoming-header .drop-down-holder {
+.request-card-holder .request-header .drop-down-holder {
   display: flex;
   justify-content: space-between;
 }
-.upcoming-card-holder .upcoming-header .drop-down-holder .arrow-down-icon-holder {
+.request-card-holder .request-header .drop-down-holder .arrow-down-icon-holder {
   display: flex;
   align-items: center;
   margin-bottom: 0px;
   padding: 0;
   justify-content: space-between;
 }
-.upcoming-card-holder .upcoming-header .drop-down-holder .arrow-down-icon-holder button {
+.request-card-holder .request-header .drop-down-holder .arrow-down-icon-holder button {
   background-color: #f2f2f2;
   padding: 8px 20px;
   border-radius: 6px;
@@ -42,13 +42,13 @@
   justify-content: center;
   padding: 15px;
 }
-.upcoming-card-holder .upcoming-header .drop-down-holder .arrow-down-icon-holder button svg {
+.request-card-holder .request-header .drop-down-holder .arrow-down-icon-holder button svg {
   position: absolute;
 }
-.upcoming-card-holder .workers-counter {
+.request-card-holder .workers-counter {
   padding: 5px 10px;
 }
-.upcoming-card-holder .upcoming-time {
+.request-card-holder .request-time {
   color: #fd4d4d;
   display: flex;
   justify-content: space-between;
@@ -56,14 +56,14 @@
   margin-top: -10px;
   margin-bottom: 10px;
 }
-.upcoming-card-holder .upcoming-title {
+.request-card-holder .request-title {
   font-weight: 600;
   color: #252525;
 }
-.upcoming-card-holder .requests-list {
+.request-card-holder .requests-list {
   padding: 0;
 }
-.upcoming-card-holder .requests-list li {
+.request-card-holder .requests-list li {
   list-style-type: none;
   border-bottom: 0.7px solid #dedede;
   display: flex;
@@ -71,7 +71,7 @@
   justify-content: space-between;
   padding: 5px 10px;
 }
-.upcoming-card-holder .requests-list li button {
+.request-card-holder .requests-list li button {
   background-color: #dedede;
   padding: 8px 20px;
   border-radius: 6px;
@@ -87,11 +87,11 @@
   width: -moz-fit-content;
   width: fit-content;
 }
-.upcoming-card-holder .requests-list li .user-profile {
+.request-card-holder .requests-list li .user-profile {
   display: flex;
   align-items: flex-start;
 }
-.upcoming-card-holder .requests-list li .user-profile img {
+.request-card-holder .requests-list li .user-profile img {
   margin-right: 10px;
   width: 40px;
   height: 40px;

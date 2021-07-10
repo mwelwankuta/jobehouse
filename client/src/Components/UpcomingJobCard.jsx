@@ -6,9 +6,10 @@ import '../Styles/Components/UpcomingJobCard.css'
 function UpcomingJobCard({ data }) {
   return (
     <div className="upcoming-card-holder">
-      <p className="upcoming-time">
-        {moment(data.time).fromNow()} {data.date}
-      </p>
+      <div className="upcoming-time">
+        <p>{moment(data.time).fromNow()}</p>
+        <p>{data.date}</p>
+      </div>
       <p className="upcoming-title">{data.title}</p>
     </div>
   )

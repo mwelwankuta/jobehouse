@@ -50,6 +50,7 @@
 .nav-popup-holder .nav-popup button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 .nav-popup-holder .nav-popup a {
   background-color: transparent;

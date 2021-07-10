@@ -1,7 +1,11 @@
 import React from 'react'
 
 const Terms = () => {
-  return <h2>Terms of Service coming Soon...</h2>
+  return (
+    <div>
+      <h2>Terms of Service coming Soon...</h2>
+    </div>
+  )
 }
 
 export default Terms

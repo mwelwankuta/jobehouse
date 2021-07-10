@@ -1,12 +1,12 @@
-@import '../../Styles/Variables.scss';
+@import "../../Styles/Variables.scss";
 
-.upcoming-card-holder {
+.request-card-holder {
   padding: 0;
   border: 1px solid $darkGreyColor;
   border-radius: 6px;
 
   background-color: #fefefe;
-  .upcoming-header {
+  .request-header {
     border-bottom: 1px solid $greyColorLight;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -41,7 +41,7 @@
   .workers-counter {
     padding: 5px 10px;
   }
-  .upcoming-time {
+  .request-time {
     color: $primaryColor;
     display: flex;
     justify-content: space-between;
@@ -49,7 +49,7 @@
     margin-top: -10px;
     margin-bottom: 10px;
   }
-  .upcoming-title {
+  .request-title {
     font-weight: 600;
     color: $blackColor;
   }

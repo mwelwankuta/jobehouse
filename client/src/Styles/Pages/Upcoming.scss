@@ -1,4 +1,4 @@
-@import '../Variables.scss';
+@import "../Variables.scss";
 
 .upcoming-holder {
   .page-header {
@@ -6,11 +6,12 @@
     align-items: center;
     justify-content: space-between;
   }
+
   .page-title {
     color: $blackColor;
   }
   .add-upcoming-btn {
-    @include button($lightGreyColor, $blackColor);
+    @include button($lightGreyColor, $blackColor, none);
     border: 1px solid $darkGreyColor;
     padding: 2px 4px;
     width: fit-content;
@@ -20,7 +21,7 @@
     flex-direction: column;
     gap: 15px;
     button {
-      @include button($primaryColor, white);
+      @include button($primaryColor, white, none);
       border: 1px solid rgba(206, 35, 35, 0.563);
       width: 100%;
     }

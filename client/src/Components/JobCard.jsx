@@ -3,21 +3,33 @@ import { Link } from 'react-router-dom'
 import { ClockIcon, XIcon } from '@heroicons/react/solid'
 import { ReplyIcon } from '@heroicons/react/outline'
 import moment from 'moment'
-import axios from 'axios'
 import TimeStampToDate from 'timestamp-to-date'
 
 import { PostsContext } from '../Contexts/PostsContext/postsContext'
+
+import { useMutation } from '@apollo/client'
+import { REQUEST_WORK } from '../Graphql/Mutations'
 
 import '../Styles/Components/JobCard.css'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
   const { posts, setPosts } = useContext(PostsContext)
-  const { haveIRequested, setHaveIRequested } = useState(false)
-  const { loading, setLoading } = useState(false)
+
+  const [haveIRequested, setHaveIRequested] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const joblink = `/job/${id}`
   const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm:ss')
   const readableDate = moment(dateFromTimeStamp).fromNow()
+
+  const [requestWork, { data }] = useMutation(REQUEST_WORK)
+
+  useEffect(() => {
+    if (data) {
+      setLoading(false)
+      setPosts(posts)
+    }
+  }, [data, setPosts, posts])
 
   useEffect(() => {
     if (requests) {
@@ -33,16 +45,13 @@ function PostCard({ id, title, description, status, date, user, requests }) {
 
   const workRequest = () => {
     setLoading(false)
-    axios
-      .post('https://jobe-house.herokuapp.com/requestwork', {
+    requestWork({
+      variables: {
         jobId: id,
-        userId: user.fbID,
+        userid: user.fbID,
         userName: user.name,
-      })
-      .then((res) => {
-        setLoading(false)
-        setPosts(posts)
-      })
+      }
+    })
   }
 
   const addRequest = () => {

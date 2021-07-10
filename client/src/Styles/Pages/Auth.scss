@@ -1,13 +1,18 @@
-@import '../Variables.scss';
+@import "../Variables.scss";
 
 .react-modal {
   outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
   .modal-child {
     height: 100vh;
     text-align: center;
+
     a {
       color: $primaryColor;
       text-decoration: underline;
@@ -21,9 +26,11 @@
     height: fit-content;
     margin: auto;
 
-    .buttons {
+    .auth-parent {
       padding: 20px;
       border-radius: 6px;
+      border: 1px solid $darkGreyColor;
+      text-align: left;
     }
 
     img {

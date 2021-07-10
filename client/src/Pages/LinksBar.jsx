@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { HomeIcon, CalendarIcon, BellIcon } from '@heroicons/react/solid'
 import { Link, useLocation } from 'react-router-dom'
+
 import { JobRequestContext } from '../Contexts/RequestsContext/jobRequestContext'
 import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
 
@@ -10,12 +12,20 @@ function LinksBar() {
   const { jobRequests } = useContext(JobRequestContext)
   const { upcomingJobs } = useContext(UpcomingContext)
   const router = useLocation()
+
+  const hideLabels = useMediaQuery({
+    query: '(min-width:950px)',
+  })
+
   const linksdata = [
-    { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },
+    {
+      icon: <HomeIcon height="35px" color="#fd4d4d" />,
+      label: 'Home', path: '/'
+    },
     {
       icon: (
         <div className="requests-holder">
-          <CalendarIcon height="35px" />
+          <CalendarIcon height="35px" color="#fd4d4d" />
           {upcomingJobs &&
             upcomingJobs[0].length > 0 && (
               <p className="notifications-counter">
@@ -32,7 +42,7 @@ function LinksBar() {
     {
       icon: (
         <div className="requests-holder">
-          <BellIcon height="35px" />
+          <BellIcon height="35px" color="#fd4d4d" />
           {jobRequests[0] &&
             jobRequests[0].length > 0 && (
               <p className="notifications-counter">
@@ -51,16 +61,15 @@ function LinksBar() {
   return (
     <div className="links-bar">
       <ul>
-        {linksdata.map((linkdata, i) => (
-          <li key={i}>
-            <Link to={linkdata.path}
+        {linksdata.map((linkdata, index) => (
+          <li key={index}>
+            <Link
+              to={linkdata.path}
               style={{
-                backgroundColor: router.pathname === linkdata.path && '#fd4d4d2d',
+                backgroundColor: router.pathname === linkdata.path && hideLabels && '#fd4d4d2d',
               }}>
               {linkdata.icon}
-              <p>
-                {linkdata.label}
-              </p>
+              {hideLabels && <p>{linkdata.label}</p>}
             </Link>
           </li>
         ))}

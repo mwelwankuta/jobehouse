@@ -6,7 +6,6 @@ import Auth from './Pages/Auth'
 import Job from './Pages/Job'
 import Settings from './Pages/Settings'
 import Privacy from './Pages/Privacy'
-import JobDetails from './Pages/JobDetails'
 import Upcoming from './Pages/Upcoming'
 import Profile from './Pages/Profile'
 import Requests from './Pages/Requests'
@@ -57,7 +56,6 @@ function AppRouter() {
               <Route exact path="/terms" component={Terms} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/job/:id" component={Job} />
-              <Route exact path="/job/:id" component={JobDetails} />
               <Route exact path="/profile" component={Profile} />
               {phoneView && <Route exact path="/search" component={MobileSearchPage} />}
               <Route exact path="/error" component={RequestProblem} />

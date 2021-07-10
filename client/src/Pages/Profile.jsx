@@ -11,15 +11,10 @@ function Profile() {
 
   const [bio, setBio] = useState('')
   const [editTheBio, setEditBio] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false) // not related to user
 
-  const [editBio, { error, data }] = useMutation(EDIT_BIO)
+  const [editBio, { data }] = useMutation(EDIT_BIO)
   const sessionUser = JSON.parse(sessionStorage.getItem('client'))[0]
-
-  if (error) {
-    console.error(error)
-
-  }
 
   useEffect(() => {
     if (data) {
@@ -39,7 +34,7 @@ function Profile() {
       setEditBio(false)
       setLoading(false)
     }
-  }, [data])
+  }, [data, sessionUser, bio])
 
   const changeBio = () => {
     if (bio.length === 0) {

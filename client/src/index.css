@@ -10,7 +10,7 @@ body {
 
 .home-container {
   display: grid;
-  grid-template-rows: 70px 1fr;
+  grid-template-rows: 50px 1fr;
   height: 100vh;
 }
 .home-container small {
@@ -36,7 +36,7 @@ body {
 @media only screen and (max-width: 800px) {
   .home-container {
     display: grid;
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 50px 1fr;
   }
   .home-container .sections {
     overflow-y: scroll;
@@ -77,5 +77,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-bottom: 70px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .home-container .sections {
+    grid-template-columns: 100px 1fr 360px;
   }
 }/*# sourceMappingURL=index.css.map */

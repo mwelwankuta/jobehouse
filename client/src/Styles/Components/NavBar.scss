@@ -1,4 +1,4 @@
-@import '../Variables.scss';
+@import "../Variables.scss";
 
 .desktop-nav {
   display: flex;
@@ -30,16 +30,20 @@
       border-radius: 100%;
     }
     margin-left: 20px;
-    margin-right: 310px;
+    margin-right: 300px;
   }
 
-  .select-container {
+  .search-container {
     display: flex;
     cursor: default;
     align-items: center;
     width: 100%;
     ::-webkit-scrollbar-thumb {
       background-color: $darkGreyColor;
+    }
+    img {
+      user-select: none;
+      -webkit-user-drag: none;
     }
     .desktop-search-results {
       padding: 10px 0px;
@@ -87,7 +91,7 @@
     }
   }
 
-  .nav-select-holder {
+  .nav-search-holder {
     display: flex;
     align-items: center;
     color: $textColor;

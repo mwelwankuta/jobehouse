@@ -49,8 +49,8 @@ function NavBar({ user, modalView }) {
             {/* <h2 className="jobe-house-logo">JobeHouse</h2> */}
           </Link>
 
-          <div className="select-container">
-            <div className="nav-select-holder">
+          <div className="search-container">
+            <div className="nav-search-holder">
               <SearchIcon height="20px" />
               <input
                 type="text"

@@ -1,4 +1,4 @@
-@import '../../../Styles/Variables.scss';
+@import "../../../Styles/Variables.scss";
 
 .nav-popup-holder {
   position: relative;
@@ -50,6 +50,7 @@
     button {
       background-color: transparent;
       border: none;
+      cursor: pointer;
     }
     a {
       background-color: transparent;

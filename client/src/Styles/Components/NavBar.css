@@ -20,7 +20,7 @@
 }
 .desktop-nav .image-holder {
   margin-left: 20px;
-  margin-right: 310px;
+  margin-right: 300px;
 }
 .desktop-nav .image-holder img {
   width: 32px;
@@ -30,16 +30,23 @@
   cursor: pointer;
   border-radius: 100%;
 }
-.desktop-nav .select-container {
+.desktop-nav .search-container {
   display: flex;
   cursor: default;
   align-items: center;
   width: 100%;
 }
-.desktop-nav .select-container ::-webkit-scrollbar-thumb {
+.desktop-nav .search-container ::-webkit-scrollbar-thumb {
   background-color: #dedede;
 }
-.desktop-nav .select-container .desktop-search-results {
+.desktop-nav .search-container img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+}
+.desktop-nav .search-container .desktop-search-results {
   padding: 10px 0px;
   border-radius: 6px;
   background-color: white;
@@ -54,11 +61,11 @@
   height: fit-content;
   cursor: default;
 }
-.desktop-nav .select-container .desktop-search-results ul {
+.desktop-nav .search-container .desktop-search-results ul {
   padding: 0 10px;
   margin: 0;
 }
-.desktop-nav .select-container .desktop-search-results ul li {
+.desktop-nav .search-container .desktop-search-results ul li {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -69,22 +76,22 @@
   display: flex;
   border: 1px solid #dedede;
 }
-.desktop-nav .select-container .desktop-search-results ul li a {
+.desktop-nav .search-container .desktop-search-results ul li a {
   flex-direction: column;
   align-items: flex-start;
   color: #252525;
   font-weight: 600;
 }
-.desktop-nav .select-container .desktop-search-results ul li a p {
+.desktop-nav .search-container .desktop-search-results ul li a p {
   text-transform: capitalize;
   margin-bottom: 3px;
   font-weight: 600;
 }
-.desktop-nav .select-container .desktop-search-results ul li a small {
+.desktop-nav .search-container .desktop-search-results ul li a small {
   font-weight: 400;
   margin-top: -10px;
 }
-.desktop-nav .nav-select-holder {
+.desktop-nav .nav-search-holder {
   display: flex;
   align-items: center;
   color: #5d7290;
@@ -95,7 +102,7 @@
   border-radius: 6px;
   cursor: text;
 }
-.desktop-nav .nav-select-holder input {
+.desktop-nav .nav-search-holder input {
   padding: 5px 10px;
   width: 100%;
   flex: 1;

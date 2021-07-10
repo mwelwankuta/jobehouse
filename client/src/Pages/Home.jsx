@@ -2,16 +2,17 @@ import React, { useContext } from 'react'
 import { SearchIcon } from '@heroicons/react/solid'
 import { useMediaQuery } from 'react-responsive'
 
-import JobCard from '../Components/JobCard'
-import JobModal from '../Components/JobModal'
-import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
-
 import { PostsContext } from '../Contexts/PostsContext/postsContext'
 import { UserContext } from '../Contexts/UserContext/userContext'
 import { PostModalContext } from '../Contexts/ModalViewContext/postModalContext'
 import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
 
+import JobCard from '../Components/JobCard'
+import JobModal from '../Components/JobModal'
+import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
+
 import '../Styles/Pages/Home.css'
+
 function Home() {
   const phoneView = useMediaQuery({
     query: '(max-width: 800px)',
@@ -32,13 +33,11 @@ function Home() {
             setPostModalIsOpen(true)
             setModalView(true)
           }}
-        >
-          Post Job
-        </button>
+        >Post Job</button>
       </div>
 
       <div className="posts-list">
-        {phoneView && (
+        {phoneView &&
           <div className="mobile-select-holder">
             <SearchIcon height="20px" />
             <input
@@ -48,23 +47,21 @@ function Home() {
               onClick={() => window.location = '/search'}
             />
           </div>
-        )}
-        {posts.length > 0 ? (
+        }
+        {posts.length > 0 ?
           <small>
             {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
           </small>
-        ) : (
-          <small>Loading...</small>
-        )}
-        {user.fbID && posts.length > 0 &&
-
+          : <small>Loading...</small>}
+        {user.fbID &&
+          posts.length > 0 &&
           posts.map((post) => {
             return (
               <JobCard
-                key={post._id}
+                key={post.id}
                 description={post.description}
                 title={post.title}
-                id={post._id}
+                id={post.id}
                 status={post.status}
                 requests={post.requests}
                 date={post.date}

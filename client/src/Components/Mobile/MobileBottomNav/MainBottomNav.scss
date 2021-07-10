@@ -1,4 +1,4 @@
-@import '../../../Styles/Variables.scss';
+@import "../../../Styles/Variables.scss";
 
 .bottom-nav-holder {
   position: fixed;
@@ -7,7 +7,7 @@
   width: 100%;
 
   .bottom-nav {
-    border-top: 1px solid $lightGreyColor;
+    border-top: 1px solid $darkGreyColor;
     padding: 2px;
     background-color: white;
     padding: 10px 10px;

@@ -1,16 +1,21 @@
 import React, { useContext } from 'react'
 import { PlusIcon } from '@heroicons/react/outline'
 
-import '../Styles/Components/SideBar.css'
-
 import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
 import { UpcomingModalContext } from '../Contexts/ModalViewContext/upcomingModalContext'
+import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
 
 import CreateUpcomingModal from './CreateUpcomingModal'
+
+import UpcomingJobCard from './UpcomingJobCard'
+
+import '../Styles/Components/SideBar.css'
 
 function SideBar({ user }) {
   const { setUpcomingModalIsOpen } = useContext(UpcomingModalContext)
   const { setModalView } = useContext(ModalViewContext)
+
+  const { upcomings } = useContext(UpcomingContext)
 
   // const upvotes = user.upvotes
   // const downvotes = user.downvotes
@@ -56,9 +61,9 @@ function SideBar({ user }) {
         </div>
         <div className="upcoming-jobs-list-holder">
           <div className="upcoming-jobs-list">
-            {/* {upcomings.slice(0, 3).map((job) => (
+            {upcomings.slice(0, 3).map((job) => (
               <UpcomingJobCard key={job} data={job} />
-            ))} */}
+            ))}
             <button onClick={() => window.location = '/upcoming'}>See more</button>
           </div>
         </div>

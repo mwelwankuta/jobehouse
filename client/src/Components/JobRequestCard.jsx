@@ -14,12 +14,12 @@ function JobRequestCard(props) {
 
   return (
     <div
-      className="upcoming-card-holder"
+      className="request-card-holder"
       onClick={() => setShowRequetsList(!showRequestsList)}
     >
-      <div className="upcoming-header">
+      <div className="request-header">
         <div className="drop-down-holder">
-          <p className="upcoming-title">{title}</p>
+          <p className="request-title">{title}</p>
           <div className="arrow-down-icon-holder">
             <button onClick={() => setShowRequetsList(!showRequestsList)}>
               {showRequestsList && <ArrowUpIcon height="15px" />}
@@ -27,7 +27,7 @@ function JobRequestCard(props) {
             </button>
           </div>
         </div>
-        <small className="upcoming-time">
+        <small className="request-time">
           <span>added {moment(readableDate).fromNow()}</span>{' '}
           <span>{time}</span>
         </small>

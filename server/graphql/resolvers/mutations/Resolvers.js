@@ -59,7 +59,7 @@ export const deletePostResolver = (jobId) => {
 
 export const requestWorkResolver = (userId, userName, jobId) => {
     return JobModel.findById(jobId, (err, data) => {
-        if (data !== null) {
+        if (data) {
             const previoseWorkRequests = data.requests
 
             //removes woker

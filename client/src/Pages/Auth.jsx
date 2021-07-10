@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import ReactModal from 'react-modal'
 import FacebookAuth from 'react-facebook-auth'
-import axios from 'axios'
 
 import logo from '../Resources/icon-with-text.svg'
 
@@ -63,9 +62,9 @@ function Auth() {
   return (
     <ReactModal isOpen={modalIsOpen} className="react-modal">
       <div className="modal-child">
-        <img src={logo} alt="house logo" />
+        <img src={logo} alt="jobe house logo" />
         <div
-          className="buttons"
+          className="auth-parent"
           style={{ backgroundColor: phoneView ? '' : '#f2f2f2' }}
         >
           {desktopView && <h2 className="page-title">Welcome to JobeHouse</h2>}
