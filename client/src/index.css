@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
@@ -9,59 +9,39 @@ body {
 }
 
 .home-container {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 70px 1fr;
-      grid-template-rows: 70px 1fr;
+  grid-template-rows: 70px 1fr;
   height: 100vh;
 }
-
 .home-container small {
   color: #5d7290;
 }
-
 .home-container .sections {
   overflow-y: scroll;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 200px 1fr 360px;
-      grid-template-columns: 200px 1fr 360px;
+  grid-template-columns: 200px 1fr 360px;
   height: 100%;
 }
-
 .home-container .sections .main-content .login-reminder {
   text-align: center;
   font-weight: 500;
   color: #252525;
 }
-
 .home-container .sections .main-content .posts-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 20px;
 }
 
 @media only screen and (max-width: 800px) {
   .home-container {
-    display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 60px 1fr;
-        grid-template-rows: 60px 1fr;
+    grid-template-rows: 60px 1fr;
   }
   .home-container .sections {
     overflow-y: scroll;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     width: 100%;
   }
   .home-container .sections .main-content {
@@ -70,15 +50,9 @@ body {
   }
   .home-container .sections .main-content .button-holder {
     margin-top: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: space-between;
+    align-items: center;
   }
   .home-container .sections .main-content .button-holder .page-title {
     color: #252525;
@@ -91,30 +65,17 @@ body {
     font-weight: 600;
     cursor: pointer;
     width: 120px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgba(206, 35, 35, 0.563);
   }
   .home-container .sections .main-content .button-holder button:hover {
-    -webkit-transition: 0.3s;
     transition: 0.3s;
   }
   .home-container .sections .main-content .posts-list {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     gap: 20px;
   }
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

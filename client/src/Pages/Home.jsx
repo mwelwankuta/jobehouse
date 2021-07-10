@@ -1,27 +1,27 @@
-import React, { useContext, Fragment } from 'react'
-import {
-  ModalViewContext,
-  PhoneViewContext,
-  PostModalContext,
-  PostsContext,
-  UserContext,
-} from '../Contexts/viewContext.js'
+import React, { useContext } from 'react'
+import { SearchIcon } from '@heroicons/react/solid'
+import { useMediaQuery } from 'react-responsive'
 
 import JobCard from '../Components/JobCard'
-import '../Styles/Pages/Home.css'
 import JobModal from '../Components/JobModal'
-import { SearchIcon } from '@heroicons/react/solid'
-import { useHistory } from 'react-router-dom'
 import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
 
-function Home() {
-  const phoneView = useContext(PhoneViewContext)
-  const [, setModalView] = useContext(ModalViewContext)
-  const [, setPostModalIsOpen] = useContext(PostModalContext)
-  const [posts] = useContext(PostsContext)
+import { PostsContext } from '../Contexts/PostsContext/postsContext'
+import { UserContext } from '../Contexts/UserContext/userContext'
+import { PostModalContext } from '../Contexts/ModalViewContext/postModalContext'
+import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
 
-  const [user] = useContext(UserContext)
-  const router = useHistory()
+import '../Styles/Pages/Home.css'
+function Home() {
+  const phoneView = useMediaQuery({
+    query: '(max-width: 800px)',
+  })
+
+  const { setModalView } = useContext(ModalViewContext)
+  const { setPostModalIsOpen } = useContext(PostModalContext)
+  const { posts } = useContext(PostsContext)
+
+  const { user } = useContext(UserContext)
 
   return (
     <div className="home-container">
@@ -45,7 +45,7 @@ function Home() {
               type="text"
               className="search-bar"
               placeholder="Search for jobs"
-              onClick={() => router.push('/search')}
+              onClick={() => window.location = '/search'}
             />
           </div>
         )}
@@ -56,56 +56,34 @@ function Home() {
         ) : (
           <small>Loading...</small>
         )}
-        {user && posts.length > 0 ? (
-          posts.length > 1 ? (
-            posts
-              .sort((a, b) => b.date - a.date)
-              .map((post) => {
-                return (
-                  <JobCard
-                    key={post._id}
-                    description={post.description}
-                    title={post.title}
-                    id={post._id}
-                    status={post.status}
-                    requests={post.requests}
-                    date={post.date}
-                    user={user}
-                  />
-                )
-              })
-          ) : (
-            posts.map((post) => {
-              return (
-                <JobCard
-                  key={post._id}
-                  description={post.description}
-                  title={post.title}
-                  id={post._id}
-                  status={post.status}
-                  requests={post.requests}
-                  date={post.date}
-                  user={user}
-                />
-              )
-            })
-          )
-        ) : // JobCard loaders
-        phoneView ? (
-          <Fragment>
-            <JobCardLoader />
-            <JobCardLoader />
-            <JobCardLoader />
-          </Fragment>
-        ) : (
-          <Fragment>
+        {user.fbID && posts.length > 0 &&
+
+          posts.map((post) => {
+            return (
+              <JobCard
+                key={post._id}
+                description={post.description}
+                title={post.title}
+                id={post._id}
+                status={post.status}
+                requests={post.requests}
+                date={post.date}
+                user={user}
+              />
+            )
+          })
+        }
+        {posts.length === 0 &&
+          <>
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
-          </Fragment>
-        )}
+            <JobCardLoader />
+          </>
+        }
+
       </div>
       <JobModal />
     </div>

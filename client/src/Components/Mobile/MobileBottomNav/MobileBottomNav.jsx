@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom'
 import MobileNavBarIcon from '../../../Resources/mobile/MobileNavBarIcon'
 
 import './MainBottomNav.css'
-import {
-  jobRequestContext,
-  UpcomingContext,
-} from '../../../Contexts/viewContext'
+import { UpcomingContext } from '../../../Contexts/PostsContext/upcomingContext'
+import { JobRequestContext } from '../../../Contexts/RequestsContext/jobRequestContext'
 
 function MobileBottomNav() {
-  const notificationCounter = useContext(jobRequestContext)
-  const upcomingCounter = useContext(UpcomingContext)
+  const { jobRequests } = useContext(JobRequestContext)
+  const { upcomings } = useContext(UpcomingContext)
   return (
     <div className="bottom-nav-holder">
       <ul className="bottom-nav">
@@ -31,10 +29,10 @@ function MobileBottomNav() {
         <li>
           <Link to="/upcoming">
             <CalendarIcon height="28px" />
-            {upcomingCounter[0].length > 0 && (
+            {upcomings && (
               <p className="notifications-counter">
-                {upcomingCounter && upcomingCounter[0].length}
-                {upcomingCounter[0].length > 9 && '+'}
+                {upcomings && upcomings.length}
+                {upcomings.length > 9 && '+'}
               </p>
             )}
           </Link>
@@ -45,10 +43,10 @@ function MobileBottomNav() {
         <li style={{ marginBottom: '-5px' }}>
           <Link to="/requests">
             <BellIcon height="28px" />
-            {notificationCounter[0].length > 0 && (
+            {jobRequests.length > 0 && (
               <p className="notifications-counter">
-                {notificationCounter && notificationCounter[0].length}
-                {notificationCounter[0].length > 9 && '+'}
+                {jobRequests && jobRequests.length}
+                {jobRequests.length > 9 && '+'}
               </p>
             )}
           </Link>

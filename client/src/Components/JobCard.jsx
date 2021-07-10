@@ -6,14 +6,14 @@ import moment from 'moment'
 import axios from 'axios'
 import TimeStampToDate from 'timestamp-to-date'
 
-import { PostsContext } from '../Contexts/viewContext'
+import { PostsContext } from '../Contexts/PostsContext/postsContext'
 
 import '../Styles/Components/JobCard.css'
 
 function PostCard({ id, title, description, status, date, user, requests }) {
-  const [posts, setPosts] = useContext(PostsContext)
-  const [haveIRequested, setHaveIRequested] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const { posts, setPosts } = useContext(PostsContext)
+  const { haveIRequested, setHaveIRequested } = useState(false)
+  const { loading, setLoading } = useState(false)
 
   const joblink = `/job/${id}`
   const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm:ss')
@@ -29,7 +29,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         setHaveIRequested(false)
       }
     }
-  }, [requests, user.fbID, posts])
+  }, [requests, user.fbID, posts, setHaveIRequested])
 
   const workRequest = () => {
     setLoading(false)

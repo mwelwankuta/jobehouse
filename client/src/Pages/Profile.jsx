@@ -1,21 +1,51 @@
 import React, { useContext, useState } from 'react'
-import { UserContext } from '../Contexts/viewContext'
-import axios from 'axios'
+import { UserContext } from '../Contexts/UserContext/userContext'
 
 import '../Styles/Pages/Profile.css'
+import { useMutation } from '@apollo/client'
+import { EDIT_BIO } from '../Graphql/Mutations'
+import { useEffect } from 'react'
 
 function Profile() {
-  const [user, setUser] = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
   const [bio, setBio] = useState('')
-  const [editBio, setEditBio] = useState(false)
+  const [editTheBio, setEditBio] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const changeBio = (e) => {
+  const [editBio, { error, data }] = useMutation(EDIT_BIO)
+  const sessionUser = JSON.parse(sessionStorage.getItem('client'))[0]
+
+  if (error) {
+    console.error(error)
+
+  }
+
+  useEffect(() => {
+    if (data) {
+      console.log(data)
+
+      const newUser = {
+        upvotes: sessionUser.upvotes,
+        downvotes: sessionUser.downvotes,
+        fbID: sessionUser.fbID,
+        name: sessionUser.name,
+        picture: sessionUser.picture,
+        email: sessionUser.email,
+        bio: bio,
+      }
+      sessionStorage.setItem('client', JSON.stringify([newUser]))
+
+      setEditBio(false)
+      setLoading(false)
+    }
+  }, [data])
+
+  const changeBio = () => {
     if (bio.length === 0) {
       setEditBio(false)
     } else {
-      const sessionUser = JSON.parse(localStorage.getItem('client'))
+
       const newUser = {
         upvotes:
           sessionUser.upvotes && sessionUser.upvotes.length === 0
@@ -33,45 +63,41 @@ function Profile() {
       }
       setUser(newUser)
       setLoading(false)
-      axios
-        .post('https://jobe-house.herokuapp.com/editbio', {
-          fbId: user.fbID,
-          bio: bio,
-        })
-        .then((res) => {
-          if (res) {
-            sessionStorage.setItem('client', JSON.stringify([res.data[0]]))
-            setEditBio(false)
-            setLoading(false)
-          }
-        })
+
+      editBio({
+        variables: {
+          fbID: user.fbID,
+          bio: bio
+        }
+      })
     }
   }
 
   return (
     <div className="profile-holder">
-      <img src={user && user.picture} alt="profile" loading="eager" />
-      <p className="username-text">{user && user.name}</p>
+      <img src={user.fbID && user.picture} alt="profile" loading="eager" />
+      <p className="username-text">{user.fbID && user.name}</p>
       {/* <div className="votes-holder">
         <p>
-          <b>{user && user.upvotes && user.upvotes.length}</b> upvotes
+          <b>{user.fbID && user.upvotes && user.upvotes.length}</b> upvotes
         </p>
         <p>
-          <b>{user && user.downvotes && user.downvotes.length}</b> downvotes
+          <b>{user.fbID && user.downvotes && user.downvotes.length}</b> downvotes
         </p>
       </div> */}
-      {!editBio && (
+      {!editTheBio && (
         <small className="bio-text">
-          {user && user && user.bio ? user.bio : ''}
+          {user.fbID && user.fbID && user.bio ? user.bio : ''}
         </small>
       )}
-      {editBio && (
+      {editTheBio && (
         <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
       )}
-      {editBio === false && (
+      {editTheBio === false && (
+
         <button
           onClick={() => {
-            setEditBio(!editBio)
+            setEditBio(!editTheBio)
           }}
           className="bio-btn"
         >
@@ -79,7 +105,7 @@ function Profile() {
         </button>
       )}
 
-      {editBio === true && (
+      {editTheBio === true && (
         <button
           onClick={() => {
             changeBio()

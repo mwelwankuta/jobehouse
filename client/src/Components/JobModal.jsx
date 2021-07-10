@@ -1,21 +1,22 @@
 import React, { useState, useContext } from 'react'
-import {
-  ModalViewContext,
-  PostModalContext,
-  PostsContext,
-  UserContext,
-} from '../Contexts/viewContext'
-import ReactModal from 'react-modal'
-import '../Styles/Components/Modal.css'
+import { useMutation } from '@apollo/client'
 import { XIcon } from '@heroicons/react/outline'
-import axios from 'axios'
+import ReactModal from 'react-modal'
+
+import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
+import { PostsContext } from '../Contexts/PostsContext/postsContext'
+import { PostModalContext } from '../Contexts/ModalViewContext/postModalContext'
+import { UserContext } from '../Contexts/UserContext/userContext'
+import { ADD_POST } from '../Graphql/Mutations'
+
+import '../Styles/Components/Modal.css'
 
 function PostModal() {
-  const [, setModalView] = useContext(ModalViewContext)
-  const [postModalIsOpen, setPostModalIsOpen] = useContext(PostModalContext)
-  const [posts, setPosts] = useContext(PostsContext)
+  const { setModalView } = useContext(ModalViewContext)
+  const { postModalIsOpen, setPostModalIsOpen } = useContext(PostModalContext)
+  const { posts, setPosts } = useContext(PostsContext)
 
-  const [user] = useContext(UserContext)
+  const { user } = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -23,7 +24,9 @@ function PostModal() {
   const [counter, setCounter] = useState(0)
   const [category, setCategory] = useState('')
 
-  const addPost = (e) => {
+  const [addPost, { error }] = useMutation(ADD_POST)
+
+  const createPost = (e) => {
     e.preventDefault()
     setCounter(counter + 1)
     const post = {
@@ -40,17 +43,16 @@ function PostModal() {
     setModalView(false)
     setPostModalIsOpen(false)
 
-    axios
-      .post('https://jobe-house.herokuapp.com/jobs', {
+    addPost({
+      variables: {
         title: title,
         description: description,
         picture: picture,
-        authorid: user.fbID,
-        status: 'Available',
-      })
-      .then((res) => {
-        setPosts(res.data)
-      })
+        authorid: user.fbID
+      }
+    })
+    console.error(error, 'error')
+    // setPosts(res.data)
   }
 
   return (
@@ -76,7 +78,7 @@ function PostModal() {
           </button>
         </div>
 
-        <form onSubmit={(e) => addPost(e)}>
+        <form onSubmit={(e) => createPost(e)}>
           <div className="input-holder">
             <label htmlFor="title">
               <small>title</small>

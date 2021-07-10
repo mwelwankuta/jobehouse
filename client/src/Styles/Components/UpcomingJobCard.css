@@ -4,22 +4,13 @@
   border-radius: 6px;
   background-color: #f2f2f2;
 }
-
 .upcoming-card-holder .upcoming-time {
   color: #fd4d4d;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .upcoming-card-holder .upcoming-title {
   font-weight: 600;
   color: #252525;
-}
-/*# sourceMappingURL=UpcomingJobCard.css.map */
+} /*# sourceMappingURL=UpcomingJobCard.css.map */

@@ -1,20 +1,40 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import ReactModal from 'react-modal'
 import FacebookAuth from 'react-facebook-auth'
-import { DesktopViewContext, PhoneViewContext } from '../Contexts/viewContext'
 import axios from 'axios'
 
-import bannerImage from '../Resources/icon-with-text.svg'
+import logo from '../Resources/icon-with-text.svg'
 
 import '../Styles/Pages/Auth.css'
+import { useMutation } from '@apollo/client'
+import { AUTHENTICATE_USER } from '../Graphql/Mutations'
 
 ReactModal.setAppElement(document.getElementById('root'))
 
 function Auth() {
   const [modalIsOpen, setModalIsOpen] = useState(true)
   const [loading, setLoading] = useState(false)
-  const phoneView = useContext(PhoneViewContext)
-  const desktopView = useContext(DesktopViewContext)
+  const phoneView = useMediaQuery({
+    query: '(max-width: 800px)',
+  })
+
+  const desktopView = useMediaQuery({
+    query: '(min-width: 800px)',
+  })
+
+  const [authenticateUser, { data, error }] = useMutation(AUTHENTICATE_USER)
+
+
+  if (data) {
+    console.log(data)
+    // sessionStorage.setItem('client', JSON.stringify(serverResponse))
+    setModalIsOpen(false)
+    window.location.reload()
+  } else if (error) {
+    window.location = '/error'
+  }
+
 
   const MyFacebookButton = ({ onClick }) => (
     <button className="auth-login-btn" onClick={onClick}>
@@ -24,6 +44,7 @@ function Auth() {
 
   const authenticate = (response) => {
     setLoading(true)
+
     if (response && !response.status) {
       const user = {
         name: response.name,
@@ -32,17 +53,8 @@ function Auth() {
         picture: response.picture.data.url,
       }
 
-      axios
-        .post('https://jobe-house.herokuapp.com/authenticate', user)
-        .then((res) => {
-          const serverResponse = res.data
-          if (serverResponse) {
-            sessionStorage.setItem('client', JSON.stringify(serverResponse))
-            setModalIsOpen(false)
-            window.location.reload()
-          }
-        })
-        .catch((err) => (window.location = '/error'))
+      authenticateUser({ variables: user })
+
     } else {
       window.location = '/error'
     }
@@ -51,7 +63,7 @@ function Auth() {
   return (
     <ReactModal isOpen={modalIsOpen} className="react-modal">
       <div className="modal-child">
-        <img src={bannerImage} alt="doge house logo" />
+        <img src={logo} alt="house logo" />
         <div
           className="buttons"
           style={{ backgroundColor: phoneView ? '' : '#f2f2f2' }}

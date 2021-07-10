@@ -4,7 +4,6 @@
   border-radius: 6px;
   background-color: #fefefe;
 }
-
 .upcoming-card-holder .upcoming-header {
   border-bottom: 1px solid #a7a7a7;
   border-top-left-radius: 6px;
@@ -12,30 +11,17 @@
   padding: 5px 10px;
   background-color: #f2f2f2;
 }
-
 .upcoming-card-holder .upcoming-header .drop-down-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .upcoming-card-holder .upcoming-header .drop-down-holder .arrow-down-icon-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-bottom: 0px;
   padding: 0;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .upcoming-card-holder .upcoming-header .drop-down-holder .arrow-down-icon-holder button {
   background-color: #f2f2f2;
   padding: 8px 20px;
@@ -44,15 +30,9 @@
   font-weight: 600;
   cursor: pointer;
   width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #a7a7a7;
   width: 20px;
   height: 20px;
@@ -62,54 +42,35 @@
   justify-content: center;
   padding: 15px;
 }
-
 .upcoming-card-holder .upcoming-header .drop-down-holder .arrow-down-icon-holder button svg {
   position: absolute;
 }
-
 .upcoming-card-holder .workers-counter {
   padding: 5px 10px;
 }
-
 .upcoming-card-holder .upcoming-time {
   color: #fd4d4d;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   margin-top: -10px;
   margin-bottom: 10px;
 }
-
 .upcoming-card-holder .upcoming-title {
   font-weight: 600;
   color: #252525;
 }
-
 .upcoming-card-holder .requests-list {
   padding: 0;
 }
-
 .upcoming-card-holder .requests-list li {
   list-style-type: none;
   border-bottom: 0.7px solid #dedede;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 5px 10px;
 }
-
 .upcoming-card-holder .requests-list li button {
   background-color: #dedede;
   padding: 8px 20px;
@@ -118,35 +79,22 @@
   font-weight: 600;
   cursor: pointer;
   width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #dedede;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
-
 .upcoming-card-holder .requests-list li .user-profile {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
-
 .upcoming-card-holder .requests-list li .user-profile img {
   margin-right: 10px;
   width: 40px;
   height: 40px;
   border: 1.5px solid #fd4d4d;
   border-radius: 100%;
-}
-/*# sourceMappingURL=JobRequestCard.css.map */
+}/*# sourceMappingURL=JobRequestCard.css.map */

@@ -6,33 +6,23 @@
   border-radius: 6px;
   border: 1px solid #dedede;
 }
-
 .navbar-popup .popup-content {
   padding: 10px;
 }
-
 .navbar-popup .popup-content .popup-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #252525;
 }
-
 .navbar-popup .popup-content .popup-item p {
   margin-left: 10px;
 }
-
 .navbar-popup button {
   background: none;
   border: none;
   border-top: 1px solid #dedede;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background-color: #f2f2f2;
   width: 100%;
   font-weight: 600;
-}
-/*# sourceMappingURL=NavBarPopup.css.map */
+}/*# sourceMappingURL=NavBarPopup.css.map */

@@ -1,30 +1,20 @@
 .mobile-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   z-index: 90;
   padding: 0 10px;
 }
-
 .mobile-nav .jobe-house-logo {
   margin-right: 0;
   color: #fd4d4d;
 }
-
 .mobile-nav a {
   color: #fd4d4d;
 }
-
 .mobile-nav a .jobe-house-logo {
   color: #fd4d4d;
 }
-
 .mobile-nav .image-holder img {
   width: 32px;
   height: 32px;
@@ -38,5 +28,4 @@
   .mobile-nav {
     border-bottom: 0.4px solid #dedede;
   }
-}
-/*# sourceMappingURL=MobileNav.css.map */
+}/*# sourceMappingURL=MobileNav.css.map */

@@ -1,11 +1,9 @@
 import React, { Fragment, useContext, useState } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
-import {
-  DesktopViewContext,
-  PhoneViewContext,
-  PostsContext,
-} from '../Contexts/viewContext'
+import { PostsContext } from '../Contexts/PostsContext/postsContext'
+import { useMediaQuery } from 'react-responsive'
+
 import MobileNav from './Mobile/MobileNav/MobileNav'
 import NavBarPopup from './NavBarPopup'
 
@@ -13,9 +11,14 @@ import logo from '../Resources/icon-with-text.svg'
 import '../Styles/Components/NavBar.css'
 
 function NavBar({ user, modalView }) {
-  const phoneView = useContext(PhoneViewContext)
-  const desktopView = useContext(DesktopViewContext)
-  const [jobs] = useContext(PostsContext)
+  const phoneView = useMediaQuery({
+    query: '(max-width: 800px)',
+  })
+
+  const desktopView = useMediaQuery({
+    query: '(min-width: 800px)',
+  })
+  const { posts } = useContext(PostsContext)
 
   const [filteredJobs, setFilterdJobs] = useState([])
   const [searchInput, setSearchInput] = useState('')
@@ -24,10 +27,9 @@ function NavBar({ user, modalView }) {
   const handleSearch = (event) => {
     setSearchInput(event.target.value)
     const searchWord = event.target.value
-    const resultsMatch = jobs.filter((job) =>
+    const resultsMatch = posts.filter((job) =>
       job.title.toLowerCase().includes(searchWord.toLowerCase()),
     )
-    console.log(event.target.value.split('') > 0)
     setTimeout(() => {
       setFilterdJobs(resultsMatch)
     }, 300)
@@ -75,12 +77,12 @@ function NavBar({ user, modalView }) {
               </div>
             )}
 
-            {user && (
+            {user.fbID && (
               <div
                 onClick={() => setPopupIsOpen(!PopupIsOpen)}
                 className="image-holder"
               >
-                <img src={user && user.picture} alt="profile" />
+                <img src={user.fbID && user.picture} alt="profile" />
               </div>
             )}
           </div>

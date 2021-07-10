@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import { HomeIcon, CalendarIcon, BellIcon } from '@heroicons/react/solid'
 import { Link, useLocation } from 'react-router-dom'
-import { jobRequestContext, UpcomingContext } from '../Contexts/viewContext'
+import { JobRequestContext } from '../Contexts/RequestsContext/jobRequestContext'
+import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
 
 import '../Styles/Components/LinksBar.css'
 
 function LinksBar() {
-  const jobRequests = useContext(jobRequestContext)
-  const upcomingJobs = useContext(UpcomingContext)
+  const { jobRequests } = useContext(JobRequestContext)
+  const { upcomingJobs } = useContext(UpcomingContext)
   const router = useLocation()
   const linksdata = [
     { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },
@@ -15,12 +16,14 @@ function LinksBar() {
       icon: (
         <div className="requests-holder">
           <CalendarIcon height="35px" />
-          {upcomingJobs[0].length > 0 && (
-            <p className="notifications-counter">
-              {upcomingJobs && upcomingJobs[0].length}
-              {upcomingJobs[0].length > 9 && '+'}
-            </p>
-          )}
+          {upcomingJobs &&
+            upcomingJobs[0].length > 0 && (
+              <p className="notifications-counter">
+                {upcomingJobs && upcomingJobs[0].length}
+                {upcomingJobs[0].length > 9 && '+'}
+              </p>
+            )
+          }
         </div>
       ),
       label: 'Scheduled',
@@ -30,12 +33,14 @@ function LinksBar() {
       icon: (
         <div className="requests-holder">
           <BellIcon height="35px" />
-          {jobRequests[0].length > 0 && (
-            <p className="notifications-counter">
-              {jobRequests && jobRequests[0].length}
-              {jobRequests[0].length > 9 && '+'}
-            </p>
-          )}
+          {jobRequests[0] &&
+            jobRequests[0].length > 0 && (
+              <p className="notifications-counter">
+                {jobRequests && jobRequests[0].length}
+                {jobRequests[0].length > 9 && '+'}
+              </p>
+            )
+          }
         </div>
       ),
       label: 'Requests',
@@ -48,13 +53,12 @@ function LinksBar() {
       <ul>
         {linksdata.map((linkdata, i) => (
           <li key={i}>
-            <Link to={linkdata.path}>
+            <Link to={linkdata.path}
+              style={{
+                backgroundColor: router.pathname === linkdata.path && '#fd4d4d2d',
+              }}>
               {linkdata.icon}
-              <p
-                style={{
-                  fontWeight: router.pathname === linkdata.path && '700',
-                }}
-              >
+              <p>
                 {linkdata.label}
               </p>
             </Link>
