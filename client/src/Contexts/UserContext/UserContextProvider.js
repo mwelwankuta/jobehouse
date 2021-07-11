@@ -5,9 +5,9 @@ function UserContextProvider({ children }) {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    if (sessionStorage.getItem('client')) {
-      const sessionUser = JSON.parse(sessionStorage.getItem('client'))
-      setUser(sessionUser[0])
+    if (localStorage.getItem('client')) {
+      const sessionUser = JSON.parse(localStorage.getItem('client'))
+      setUser(sessionUser)
     }
   }, [])
 

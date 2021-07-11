@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import Home from './Pages/Home'
@@ -37,9 +37,9 @@ function AppRouter() {
     <BrowserRouter>
       <div className="home-container">
         {user.fbID && (
-          <div>
+          <Fragment>
             <NavBar user={user} modalView={modalView} />
-          </div>
+          </Fragment>
         )}
         <div className="sections">
           {desktopView && (
@@ -68,6 +68,7 @@ function AppRouter() {
               <Route exact path="*" component={NotFoundPage} />
             </Switch>
           </main>
+
           {/* Desktop SideBar */}
           <div className="side-bar">
             {desktopView && user.fbID && <SideBar user={user} />}

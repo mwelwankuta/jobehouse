@@ -78,6 +78,9 @@
     height: 60px;
     margin-right: 50px;
   }
+  .react-modal .modal-child .auth-parent {
+    border: none;
+  }
   .react-modal button {
     padding: 10px;
     margin-bottom: 50px;

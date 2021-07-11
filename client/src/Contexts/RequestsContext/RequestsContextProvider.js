@@ -1,13 +1,9 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import { UserContext } from '../UserContext/userContext'
 import { haveIRequestedContext } from './haveIRequestedContext'
 import { JobRequestContext } from './jobRequestContext'
 
 function RequestsContextProvider({ children }) {
-
-  const { user } = useContext(UserContext)
 
   const [jobRequests, setJobRequests] = useState([])
   const [haveIRequested, setHaveIRequested] = useState(false)
@@ -15,17 +11,17 @@ function RequestsContextProvider({ children }) {
   const jobRequestContextValue = { jobRequests, setJobRequests }
   const haveIRequestedContextValue = { haveIRequested, setHaveIRequested }
 
-  useEffect(() => {
-    if (user) {
-      axios
-        .post('https://jobe-house.herokuapp.com/requestnotifications', {
-          fbId: user.fbID,
-        })
-        .then((res) => {
-          setJobRequests(res.data)
-        })
-    }
-  }, [user])
+  // useEffect(() => {
+  //   if (user) {
+  //     axios
+  //       .post('https://jobe-house.herokuapp.com/requestnotifications', {
+  //         fbId: user.fbID,
+  //       })
+  //       .then((res) => {
+  //         setJobRequests(res.data)
+  //       })
+  //   }
+  // }, [user])
 
 
   return (
