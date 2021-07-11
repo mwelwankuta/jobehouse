@@ -2,7 +2,7 @@ import JobModel from "../../../models/JobModel.js"
 import UserModel from "../../../models/UserModel.js"
 
 export const authenticateUserResolver = (fbID, name, picture, email) => {
-    return UserModel.findOne({ fbID: args.fbID }, (err, data) => {
+    return UserModel.findOne({ fbID: fbID }, (err, data) => {
         const user = {
             fbID: fbID,
             name: name,
