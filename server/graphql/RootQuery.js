@@ -42,6 +42,7 @@ const RootQuery = new GraphQLObjectType({
         return JobModel.find({})
       },
     },
+
   },
 })
 

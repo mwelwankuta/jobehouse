@@ -30,14 +30,15 @@ export const editBioResolver = (fbID, bio) => {
     return UserModel.findOne({ fbID: fbID })
 }
 
-export const addPostResolver = (title, description, authorid, picture) => {
+export const addPostResolver = (title, description, authorid, picture, comments) => {
     const post = {
         title: title,
         description: description,
         authorid: authorid,
         date: Date.now(),
         status: "Available",
-        picture: picture
+        picture: picture,
+        comments: comments
     }
 
     let createdPostId = '';
@@ -79,3 +80,24 @@ export const requestWorkResolver = (userId, userName, jobId) => {
         }
     })
 }
+
+
+/* Fix this commenting system and add like sys  : BELOW*/
+
+export const addCommentResolver = (fbId, comment, postId) => {
+    JobModel.findOne({ _id: postId }).then(data => {
+        console.log(data)
+        const newComment = { comment: comment, fbID: fbId, likes: 0 }
+        if (data) {
+            if (data.comments === undefined) {
+                JobModel.updateOne({ _id: postId }, { comments: [newComment] })
+                return JobModel.findOne({ _id: postId })
+            } else {
+                JobModel.updateOne({ _id: postId }, { comments: [...data.comments, newComment] })
+                return JobModel.findOne({ _id: postId })
+            }
+        }
+    })
+}
+
+/* Fix this commenting system and add like sys : ABOVE*/

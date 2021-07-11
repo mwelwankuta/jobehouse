@@ -4,9 +4,12 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
+
 import UserModel from '../../../models/UserModel.js'
+
 import UserType from '../UserType/UserType.js'
 import RequestType from './RequestType.js'
+import CommentType from './CommentType.js'
 
 const PostType = new GraphQLObjectType({
   name: 'Post',
@@ -19,6 +22,7 @@ const PostType = new GraphQLObjectType({
     image: { type: GraphQLString },
     status: { type: GraphQLString },
     date: { type: GraphQLString },
+    comments: { type: new GraphQLList(CommentType) },
     user: {
       type: UserType,
       resolve(parent, args) {

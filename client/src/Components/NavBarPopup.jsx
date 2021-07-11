@@ -15,7 +15,7 @@ function NavBarPopup() {
           <UserIcon height="24px" />
           <p>Profile</p>
         </Link>
-        <a href="https://github.com/mwelwankuta" className="popup-item">
+        <a href="https://github.com/mwelwankuta/jobehouse/issues" className="popup-item">
           <InformationCircleIcon height="24px" />
           <p>Report A Bug</p>
         </a>

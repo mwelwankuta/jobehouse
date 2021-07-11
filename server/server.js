@@ -14,7 +14,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 
 const { MONGODB_CONNECTION_URI, OFFLINE_CONNECTION_URI } = process.env
 
-mongoose.connect(OFFLINE_CONNECTION_URI, {
+mongoose.connect(MONGODB_CONNECTION_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,

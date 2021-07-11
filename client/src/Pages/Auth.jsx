@@ -27,11 +27,12 @@ function Auth() {
 
   if (data) {
     console.log(data)
-    // sessionStorage.setItem('client', JSON.stringify(serverResponse))
+    sessionStorage.setItem('client', JSON.stringify(data))
     setModalIsOpen(false)
     window.location.reload()
   } else if (error) {
-    window.location = '/error'
+    // window.location = '/error'
+    console.log(error)
   }
 
 
@@ -45,14 +46,12 @@ function Auth() {
     setLoading(true)
 
     if (response && !response.status) {
-      const user = {
+      authenticateUser({
         name: response.name,
         fbID: response.id,
         email: response.email ? response.email : '',
         picture: response.picture.data.url,
-      }
-
-      authenticateUser({ variables: user })
+      })
 
     } else {
       window.location = '/error'
