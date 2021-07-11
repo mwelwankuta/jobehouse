@@ -26,13 +26,11 @@ function Auth() {
 
 
   if (data) {
-    console.log(data)
-    sessionStorage.setItem('client', JSON.stringify([data]))
+    sessionStorage.setItem('client', JSON.stringify([data.authenticateUser]))
     setModalIsOpen(false)
     window.location.reload()
   } else if (error) {
-    // window.location = '/error'
-    console.log(error)
+    window.location = '/error'
   }
 
 
