@@ -30,7 +30,7 @@ function Auth() {
     setModalIsOpen(false)
     window.location.reload()
   } else if (error) {
-    // window.location = '/error'
+    window.location = '/error'
   }
 
 

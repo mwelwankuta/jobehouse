@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import { SearchIcon } from '@heroicons/react/solid'
 import { useMediaQuery } from 'react-responsive'
 
@@ -21,7 +21,6 @@ function Home() {
   const { setModalView } = useContext(ModalViewContext)
   const { setPostModalIsOpen } = useContext(PostModalContext)
   const { posts } = useContext(PostsContext)
-
   const { user } = useContext(UserContext)
 
   return (
@@ -32,8 +31,7 @@ function Home() {
           onClick={() => {
             setPostModalIsOpen(true)
             setModalView(true)
-          }}
-        >Post Job</button>
+          }}>Post Job</button>
       </div>
 
       <div className="posts-list">
@@ -46,13 +44,8 @@ function Home() {
               placeholder="Search for jobs"
               onClick={() => window.location = '/search'}
             />
-          </div>
-        }
-        {posts.length > 0 ?
-          <small>
-            {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
-          </small>
-          : <small>Loading...</small>}
+          </div>}
+        {posts.length > 0 ? <small>{posts.length} {posts.length > 1 ? 'jobs' : 'job'}</small> : <small>Loading...</small>}
         {user.fbID &&
           posts.length > 0 &&
           posts.map((post) => {
@@ -71,14 +64,14 @@ function Home() {
           })
         }
         {posts.length === 0 &&
-          <>
+          <Fragment>
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
             <JobCardLoader />
-          </>
+          </Fragment>
         }
 
       </div>
