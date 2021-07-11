@@ -1,97 +1,86 @@
-import React, { useContext, useEffect } from 'react'
-import {
-  ModalViewContext,
-  PhoneViewContext,
-  PostModalContext,
-  PostsContext,
-  SessionContext,
-  UserContext,
-} from '../Contexts/viewContext.js'
+import React, { useContext } from 'react'
+import { SearchIcon } from '@heroicons/react/solid'
+import { useMediaQuery } from 'react-responsive'
 
-import MobileSelect from '../Components/Mobile/MobileSelect/MobileSelect'
+import { PostsContext } from '../Contexts/PostsContext/postsContext'
+import { UserContext } from '../Contexts/UserContext/userContext'
+import { PostModalContext } from '../Contexts/ModalViewContext/postModalContext'
+import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
+
 import JobCard from '../Components/JobCard'
-import '../Styles/Pages/Home.css'
 import JobModal from '../Components/JobModal'
+import JobCardLoader from '../Components/Loaders/JobCardLoader.jsx'
+
+import '../Styles/Pages/Home.css'
 
 function Home() {
-  const phoneView = useContext(PhoneViewContext)
-  const session = useContext(SessionContext)
-  const [viewModal, setModalView] = useContext(ModalViewContext)
-  const [postModalIsOpen, setPostModalIsOpen] = useContext(PostModalContext)
-  const [posts] = useContext(PostsContext)
+  const phoneView = useMediaQuery({
+    query: '(max-width: 800px)',
+  })
 
-  const user = useContext(UserContext)
+  const { setModalView } = useContext(ModalViewContext)
+  const { setPostModalIsOpen } = useContext(PostModalContext)
+  const { posts } = useContext(PostsContext)
 
-  useEffect(() => {
-    if (viewModal || postModalIsOpen) {
-      console.log(viewModal, postModalIsOpen)
-    }
-  }, [viewModal, postModalIsOpen])
+  const { user } = useContext(UserContext)
 
   return (
     <div className="home-container">
       <div className="header-holder">
-        <h1 className="page-title">Dash</h1>
+        <h2 className="page-title">Dash</h2>
         <button
           onClick={() => {
             setPostModalIsOpen(true)
             setModalView(true)
           }}
-        >
-          Post Job
-        </button>
+        >Post Job</button>
       </div>
 
       <div className="posts-list">
-        {phoneView && <MobileSelect />}
-        <small>
-          {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
-        </small>
-        {session && posts.length > 0 ? (
-          posts.length > 1 ? (
-            posts
-              .sort((a, b) => b.date - a.date)
-              .map((post) => {
-                return (
-                  <JobCard
-                    key={post._id}
-                    description={post.description}
-                    title={post.title}
-                    id={post._id}
-                    status={post.status}
-                    requests={post.requests}
-                    date={post.date}
-                    user={user}
-                  />
-                )
-              })
-          ) : (
-            posts.map((post) => {
-              return (
-                <JobCard
-                  key={post._id}
-                  description={post.description}
-                  title={post.title}
-                  id={post._id}
-                  status={post.status}
-                  requests={post.requests}
-                  date={post.date}
-                  user={user}
-                />
-              )
-            })
-          )
-        ) : (
-          <small style={{ textAlign: 'center' }}>
-            There are no posts at the moment, consider adding one
+        {phoneView &&
+          <div className="mobile-select-holder">
+            <SearchIcon height="20px" />
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search for jobs"
+              onClick={() => window.location = '/search'}
+            />
+          </div>
+        }
+        {posts.length > 0 ?
+          <small>
+            {posts.length} {posts.length > 1 ? 'jobs' : 'job'}
           </small>
-        )}
+          : <small>Loading...</small>}
+        {user.fbID &&
+          posts.length > 0 &&
+          posts.map((post) => {
+            return (
+              <JobCard
+                key={post.id}
+                description={post.description}
+                title={post.title}
+                id={post.id}
+                status={post.status}
+                requests={post.requests}
+                date={post.date}
+                user={user}
+              />
+            )
+          })
+        }
+        {posts.length === 0 &&
+          <>
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+            <JobCardLoader />
+          </>
+        }
 
-        {!session && (
-          <small style={{ textAlign: 'center' }}>
-            You need to be signed in to view posts
-          </small>
-        )}
       </div>
       <JobModal />
     </div>

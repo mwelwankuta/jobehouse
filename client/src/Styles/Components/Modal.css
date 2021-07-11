@@ -1,11 +1,8 @@
 .post-modal {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 100vh;
   background-color: white;
 }
-
 .post-modal .modal-child {
   border: 1px solid #dedede;
   width: 600px;
@@ -13,46 +10,39 @@
   padding: 0px 30px 30px 30px;
   margin: auto;
 }
-
 .post-modal .modal-child .close-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  margin-top: 10px;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .post-modal .modal-child .close-btn button {
-  background-color: transparent;
   border: none;
   cursor: pointer;
+  border-radius: 100%;
+  padding: 4px;
+  border: 0.7px solid #dedede;
+  color: #252525;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
 }
-
 .post-modal .modal-child h2 {
   color: #fd4d4d;
 }
-
 .post-modal .modal-child form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .post-modal .modal-child form .input-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .post-modal .modal-child form .input-holder input {
   background-color: #f2f2f2;
   padding: 10px 20px;
@@ -62,18 +52,24 @@
   font-weight: 500;
   margin-bottom: 10px;
 }
-
 .post-modal .modal-child form button {
   background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
   padding: 15px;
+  width: 100%;
 }
-
+.post-modal .modal-child form select {
+  width: 100%;
+}
 .post-modal .modal-child form .modal-select {
   background-color: #f2f2f2;
   padding: 10px 20px;
@@ -83,7 +79,7 @@
   font-weight: 500;
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .post-modal {
     border: none;
   }
@@ -92,5 +88,4 @@
     height: 100vh;
     background-color: white;
   }
-}
-/*# sourceMappingURL=Modal.css.map */
+}/*# sourceMappingURL=Modal.css.map */

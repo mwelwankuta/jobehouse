@@ -1,13 +1,32 @@
-@import '../../../Styles/Variables.scss';
+@import "../../../Styles/Variables.scss";
 
-nav {
-  border-bottom: 0.4px solid $darkGreyColor;
+.mobile-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 90;
+  padding: 0 10px;
+  border-bottom: 0.4px solid $darkGreyColor;
+  height: 50px;
+  z-index: 999;
+  box-shadow: 0px 0px 3px 0px $darkGreyColor;
   .jobe-house-logo {
     margin-right: 0;
     color: $primaryColor;
+  }
+  a {
+    color: $primaryColor;
+    .jobe-house-logo {
+      color: $primaryColor;
+    }
+  }
+
+  .image-holder {
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 100%;
+    }
   }
 }

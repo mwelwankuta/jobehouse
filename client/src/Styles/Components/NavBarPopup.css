@@ -1,0 +1,28 @@
+.navbar-popup {
+  position: absolute;
+  background-color: white;
+  right: 200px;
+  top: 80px;
+  border-radius: 6px;
+  border: 1px solid #dedede;
+}
+.navbar-popup .popup-content {
+  padding: 10px;
+}
+.navbar-popup .popup-content .popup-item {
+  display: flex;
+  align-items: center;
+  color: #252525;
+}
+.navbar-popup .popup-content .popup-item p {
+  margin-left: 10px;
+}
+.navbar-popup button {
+  background: none;
+  border: none;
+  border-top: 1px solid #dedede;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  width: 100%;
+  font-weight: 600;
+}/*# sourceMappingURL=NavBarPopup.css.map */

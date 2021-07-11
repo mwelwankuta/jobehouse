@@ -37,6 +37,10 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+select {
+  -moz-appearance: none;
+}
+
 a {
   text-decoration: none;
   -webkit-user-drag: none;
@@ -48,4 +52,11 @@ textarea {
 
 option {
   background-color: $lightGreyColor;
+}
+
+@media only screen and (min-width: 800px) {
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+  }
 }

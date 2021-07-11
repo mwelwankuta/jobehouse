@@ -2,19 +2,11 @@
   margin: 40px auto;
   max-width: 300px;
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
-
 .profile-holder .username-text {
   margin: 0;
   padding: 0;
@@ -22,7 +14,6 @@
   font-weight: 600;
   color: #1a1a1a;
 }
-
 .profile-holder img {
   border-radius: 100%;
   width: 100px;
@@ -31,67 +22,39 @@
   margin-left: auto;
   margin-right: auto;
   border: 3px solid #fd4d4d;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-
 .profile-holder .votes-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 20px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin: 0 40px;
 }
-
 .profile-holder .bio-btn {
   background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
+  width: 100%;
 }
-
 .profile-holder .logout-confirmation-text {
   margin-top: 20px;
 }
-
 .profile-holder .buttons-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
+  width: -webkit-fill-available;
   gap: 20px;
 }
-
-.profile-holder .buttons-holder .nologout-btn {
-  background-color: gray;
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  height: 32px;
-}
-
-.profile-holder .buttons-holder .logout-btn {
-  background-color: rgba(209, 22, 22, 0.507);
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 .profile-holder textarea {
   border: none;
   text-align: center;
-}
-/*# sourceMappingURL=Profile.css.map */
+}/*# sourceMappingURL=Profile.css.map */

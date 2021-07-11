@@ -12,10 +12,16 @@
       font-weight: 700;
       font-size: 17px;
       color: $blackColor;
-      width: 60%;
       text-overflow: ellipsis;
       overflow: hidden;
     }
+  }
+
+  .job-bottom {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     .job-time {
       display: flex;
       align-items: center;
@@ -24,20 +30,14 @@
     }
   }
 
-  .job-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   button {
-    @include button($primaryColor, white);
+    @include button($blackColor, white, $darkBlackColor);
     display: flex;
     float: right;
     gap: 4px;
   }
-  .cancle-request-btn{
-    @include button($greyColor, white);
+  .cancel-request-btn {
+    @include button($darkGreyColor, $blackColor, $lightGreyColor);
   }
   .job-description {
     color: $blackColor;
@@ -45,8 +45,12 @@
   }
 }
 
-@media screen and (max-with:800px) {
- .job-card-holder{
-   margin: 10px 0;
- } 
+@media only screen and (max-with: 800px) {
+  .job-card-holder {
+    margin: 10px 0;
+  }
+}
+
+a {
+  text-decoration: none;
 }

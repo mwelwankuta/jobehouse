@@ -7,13 +7,13 @@ $lightGreyColor: #f2f2f2;
 $darkGreyColor: #dedede;
 $redColor: rgba(209, 22, 22, 0.507);
 $greyColor: rgb(128, 128, 128);
+$greyColorLight: rgb(167, 167, 167);
 
 // button
 
-@mixin button($bgColor, $textColor) {
+@mixin button($bgColor, $textColor, $borderColor) {
   background-color: $bgColor;
   padding: 8px 20px;
-  border: $lightGreyColor;
   border-radius: 6px;
   color: $textColor;
   font-weight: 600;
@@ -22,6 +22,7 @@ $greyColor: rgb(128, 128, 128);
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid $borderColor;
 }
 
 @mixin textinput {

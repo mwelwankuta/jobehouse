@@ -1,13 +1,14 @@
-@import '../../../Styles/Variables.scss';
+@import "../../../Styles/Variables.scss";
 
 .bottom-nav-holder {
-  padding: 2px;
   position: fixed;
   bottom: -2px;
   left: 0;
   width: 100%;
 
   .bottom-nav {
+    border-top: 1px solid $darkGreyColor;
+    padding: 2px;
     background-color: white;
     padding: 10px 10px;
     margin: 0;
@@ -28,16 +29,15 @@
           position: absolute;
           background-color: white;
           border-radius: 100%;
-          z-index: 4;
           bottom: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 14px;
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
+          font-size: 12px;
           padding-left: 4px;
-          width: 17px;
+          width: 10px;
+          height: 13.9px;
           right: 0;
-          // border: 1px solid $blackColor;
         }
       }
     }

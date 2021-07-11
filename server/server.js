@@ -1,23 +1,20 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import fileUpload from 'express-fileupload'
+import { graphqlHTTP } from 'express-graphql'
+import uploadPostImage from './routes/uploadPostImage.js'
+
+import RootQuery from './graphql/RootQuery.js'
 import 'dotenv/config'
 
-import PostModel from './models/JobModel.js'
-import JobModel from './models/JobModel.js'
-import UpcomingJob from './models/JobModel.js'
-
-import authenticate from './routes/authenticate.js'
-import requestwork from './routes/requestwork.js'
-
-// Init app
 const app = express()
 const port = process.env.PORT || 7000
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
-// Databse Connection
-const databaseUri = process.env.MONGODB_CONNECTION_URI
-mongoose.connect(databaseUri, {
+const { MONGODB_CONNECTION_URI, OFFLINE_CONNECTION_URI } = process.env
+
+mongoose.connect(MONGODB_CONNECTION_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -28,59 +25,25 @@ mongoose.connection.on('error', () =>
   console.log('Failed to connect to database...'),
 )
 
-// Middleware
 app.use(cors())
-app.use(express.json())
+app.use(fileUpload())
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    graphiql: true,
+    schema: RootQuery,
+  }),
+)
 
-app.use(authenticate) // signup and login user
+app.use('upload', uploadPostImage)
 
-app.use(requestwork) // request to work and unrequest
-
-app
-  .route('/jobs')
-  .post((request, response) => {
-    const job = {
-      title: request.body.title,
-      description: request.body.description,
-      requestuests: [],
-      status: request.body.status,
-      image: request.body.image,
-      authorid: request.body.authorid,
-      date: Date.now(),
-    }
-
-    PostModel.create(job, (err, jobs) => {
-      if (err) throw err
-      response.status(201).send(jobs)
-    })
-  })
-  .get((request, response) => {
-    JobModel.find({}, (err, jobs) => {
-      if (err) throw err
-      response.status(200).send(jobs)
-    })
-  })
-
-// Delete Jobs
-app.post('/deletejob', (request, response) => {
-  JobModel.deleteOne(
-    {
-      authorid: request.body.fbID,
-      _id: request.body.id,
-    },
-    () => {
-      response.status(200).send({ msg: 'deleted job' })
-    },
-  )
-})
-
-app.post('/requestnotifications',(request, response) => {
-    const fbId = request.body.fbId
-    JobModel.find({authorid: fbId}, (err, upcomingJobs) => {
-      console.log(upcomingJobs, 'found jobs')
-      if (err) throw err
-      const upcomingJobsWithRequests = upcomingJobs.filter(upcomingJob => upcomingJob.requests.length > 0)
-      console.log(upcomingJobsWithRequests, 'filter')
-      response.status(200).send(upcomingJobsWithRequests)
-    })
-  })
+// app.post('/requestnotifications', (request, response) => {
+//   const fbId = request.body.fbId
+//   JobModel.find({ authorid: fbId }, (err, upcomingJobs) => {
+//     if (err) throw err
+//     const upcominJgobsWithRequests = upcomingJobs.filter(
+//       (upcomingJob) => upcomingJob.requests.length > 0,
+//     )
+//     response.status(200).send(upcomingJobsWithRequests)
+//   })
+// })

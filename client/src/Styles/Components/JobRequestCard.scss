@@ -1,41 +1,82 @@
-@import '../../Styles/Variables.scss';
+@import "../../Styles/Variables.scss";
 
-.upcoming-card-holder {
-  padding: 5px 10px;
+.request-card-holder {
+  padding: 0;
   border: 1px solid $darkGreyColor;
   border-radius: 6px;
-  background-color: $lightGreyColor;
-  .upcoming-time {
+
+  background-color: #fefefe;
+  .request-header {
+    border-bottom: 1px solid $greyColorLight;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 5px 10px;
+    background-color: $lightGreyColor;
+    .drop-down-holder {
+      display: flex;
+      justify-content: space-between;
+      .arrow-down-icon-holder {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0px;
+        padding: 0;
+        justify-content: space-between;
+        button {
+          @include button($lightGreyColor, $darkBlackColor, $greyColorLight);
+
+          width: 20px;
+          height: 20px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 15px;
+          svg {
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+  .workers-counter {
+    padding: 5px 10px;
+  }
+  .request-time {
     color: $primaryColor;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
   }
-  .upcoming-title {
+  .request-title {
     font-weight: 600;
     color: $blackColor;
   }
-  .arrow-down-icon-holder{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0px;
+
+  .requests-list {
     padding: 0;
-    button{
-      @include button($darkGreyColor, $darkBlackColor);
-      width:60px;
-    }
-  }
-  .requests-list{
-    li{
+    li {
       list-style-type: none;
-      border-bottom: .7px solid $darkGreyColor;
-      padding: 2px 0;
+      border-bottom: 0.7px solid $darkGreyColor;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      button{
-          @include button($darkGreyColor, $blackColor);
+      padding: 5px 10px;
+      button {
+        @include button($darkGreyColor, $blackColor, $darkGreyColor);
+        width: fit-content;
+      }
+      .user-profile {
+        display: flex;
+        align-items: flex-start;
+        img {
+          margin-right: 10px;
+          width: 40px;
+          height: 40px;
+          border: 1.5px solid $primaryColor;
+          border-radius: 100%;
+        }
       }
     }
   }

@@ -1,12 +1,18 @@
-@import '../Variables.scss';
+@import "../Variables.scss";
 
 .react-modal {
   outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
   .modal-child {
     height: 100vh;
+    text-align: center;
+
     a {
       color: $primaryColor;
       text-decoration: underline;
@@ -20,19 +26,22 @@
     height: fit-content;
     margin: auto;
 
-    .buttons {
+    .auth-parent {
       padding: 20px;
       border-radius: 6px;
+      border: 1px solid $darkGreyColor;
+      text-align: left;
     }
 
-    h1 {
+    img {
       text-align: center;
-      color: $primaryColor;
+      height: 70px;
+      margin-right: 50px;
     }
 
     .page-title {
       color: $blackColor;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .auth-holder {
@@ -40,28 +49,34 @@
       flex-direction: column;
       padding: 10px;
       background-color: transparent;
-    }
-
-    button {
-      margin-bottom: 10px;
-      @include button($blackColor, white);
-      padding: 10px;
-      font-size: 16px;
-      font-weight: 500;
+      align-items: center;
+      button {
+        margin-bottom: 10px;
+        @include button($primaryColor, white, rgba(206, 35, 35, 0.563));
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        width: 100%;
+      }
     }
   }
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .react-modal {
     .modal-child {
       border: 0.7px solid white;
+      img {
+        text-align: center;
+        height: 60px;
+        margin-right: 50px;
+      }
     }
 
     button {
       padding: 10px;
       margin-bottom: 50px;
-      @include button($blueColor, white);
+      @include button($primaryColor, white, rgba(206, 35, 35, 0.563));
       padding: 15px;
       font-size: 16px;
     }

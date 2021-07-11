@@ -7,6 +7,7 @@ const UpcomingJob = Schema({
   title: String,
   description: String,
   requests: Array,
+  amount: String,
   image: String,
   status: String,
   date: String,

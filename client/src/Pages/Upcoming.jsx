@@ -2,21 +2,23 @@ import React, { useContext } from 'react'
 import { PlusIcon } from '@heroicons/react/outline'
 import UpcomingJobCard from '../Components/UpcomingJobCard'
 import './../Styles/Pages/Upcoming.css'
-import {
-  ModalViewContext,
-  UpcomingContext,
-  UpcomingModalContext,
-} from '../Contexts/viewContext'
+
+import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
+import { UpcomingModalContext } from '../Contexts/ModalViewContext/upcomingModalContext'
+import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
+
 import CreateUpcomingModal from '../Components/CreateUpcomingModal'
 
 function Upcoming() {
-  const [upcomings] = useContext(UpcomingContext)
-  const [, setUpcomingModalIsOpen] = useContext(UpcomingModalContext)
-  const [, setModalView] = useContext(ModalViewContext)
+  const { upcomings } = useContext(UpcomingContext)
+  const { setUpcomingModalIsOpen } = useContext(UpcomingModalContext)
+  const { setModalView } = useContext(ModalViewContext)
+
+
   return (
     <div className="upcoming-holder">
       <div className="page-header">
-        <h1 className="page-title">Upcoming Jobs</h1>
+        <h2 className="page-title">Upcoming Jobs</h2>
         <button
           onClick={() => {
             setUpcomingModalIsOpen(true)
@@ -28,10 +30,12 @@ function Upcoming() {
         </button>
       </div>
       <div className="upcoming-jobs-list">
-        {upcomings.map((job) => (
-          <UpcomingJobCard key={job._id} data={job} />
-        ))}
-        {upcomings.length === 0 && (
+        {upcomings &&
+          upcomings.map((job) => (
+            <UpcomingJobCard key={job._id} data={job} />
+          ))
+        }
+        {upcomings && (
           <small style={{ textAlign: 'center' }}>
             There are no upcoming jobs at the moment, consider adding one
           </small>

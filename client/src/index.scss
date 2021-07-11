@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import './Styles/Variables.scss';
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "./Styles/Variables.scss";
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
@@ -11,13 +11,13 @@ body {
 }
 
 .home-container {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  height: 100vh;
+
   small {
     color: $textColor;
   }
-  display: grid;
-  grid-template-rows: 70px 1fr;
-  height: 100vh;
-  
   .sections {
     overflow-y: scroll;
     display: grid;
@@ -38,10 +38,10 @@ body {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .home-container {
     display: grid;
-    grid-template-rows: 60px 1fr 70px;
+    grid-template-rows: 50px 1fr;
     .sections {
       overflow-y: scroll;
       display: flex;
@@ -63,7 +63,7 @@ body {
           }
 
           button {
-            @include button($primaryColor, white);
+            @include button($primaryColor, white, rgba(206, 35, 35, 0.563));
           }
 
           button:hover {
@@ -75,8 +75,17 @@ body {
           display: flex;
           flex-direction: column;
           gap: 20px;
+          padding-bottom: 70px;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .home-container {
+    .sections {
+      grid-template-columns: 100px 1fr 360px;
     }
   }
 }

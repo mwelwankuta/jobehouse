@@ -1,95 +1,100 @@
-.upcoming-card-holder {
-  padding: 5px 10px;
+.request-card-holder {
+  padding: 0;
   border: 1px solid #dedede;
   border-radius: 6px;
+  background-color: #fefefe;
+}
+.request-card-holder .request-header {
+  border-bottom: 1px solid #a7a7a7;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 5px 10px;
   background-color: #f2f2f2;
 }
-
-.upcoming-card-holder .upcoming-time {
-  color: #fd4d4d;
-  display: -webkit-box;
-  display: -ms-flexbox;
+.request-card-holder .request-header .drop-down-holder {
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
 }
-
-.upcoming-card-holder .upcoming-title {
-  font-weight: 600;
-  color: #252525;
-}
-
-.upcoming-card-holder .arrow-down-icon-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.request-card-holder .request-header .drop-down-holder .arrow-down-icon-holder {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
   margin-bottom: 0px;
   padding: 0;
+  justify-content: space-between;
 }
-
-.upcoming-card-holder .arrow-down-icon-holder button {
-  background-color: #dedede;
+.request-card-holder .request-header .drop-down-holder .arrow-down-icon-holder button {
+  background-color: #f2f2f2;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: #1a1a1a;
   font-weight: 600;
   cursor: pointer;
   width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 60px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #a7a7a7;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
 }
-
-.upcoming-card-holder .requests-list li {
+.request-card-holder .request-header .drop-down-holder .arrow-down-icon-holder button svg {
+  position: absolute;
+}
+.request-card-holder .workers-counter {
+  padding: 5px 10px;
+}
+.request-card-holder .request-time {
+  color: #fd4d4d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+.request-card-holder .request-title {
+  font-weight: 600;
+  color: #252525;
+}
+.request-card-holder .requests-list {
+  padding: 0;
+}
+.request-card-holder .requests-list li {
   list-style-type: none;
   border-bottom: 0.7px solid #dedede;
-  padding: 2px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
 }
-
-.upcoming-card-holder .requests-list li button {
+.request-card-holder .requests-list li button {
   background-color: #dedede;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: #252525;
   font-weight: 600;
   cursor: pointer;
   width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dedede;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-/*# sourceMappingURL=JobRequestCard.css.map */
+.request-card-holder .requests-list li .user-profile {
+  display: flex;
+  align-items: flex-start;
+}
+.request-card-holder .requests-list li .user-profile img {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #fd4d4d;
+  border-radius: 100%;
+}/*# sourceMappingURL=JobRequestCard.css.map */

@@ -1,22 +1,20 @@
 import React, { useState, useContext } from 'react'
-import {
-  ModalViewContext,
-  UpcomingContext,
-  UpcomingModalContext,
-  UserContext,
-} from '../Contexts/viewContext'
-import ReactModal from 'react-modal'
-import '../Styles/Components/Modal.css'
 import { XIcon } from '@heroicons/react/outline'
+import ReactModal from 'react-modal'
 import axios from 'axios'
 
+import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
+import { UpcomingModalContext } from '../Contexts/ModalViewContext/upcomingModalContext'
+import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
+import { UserContext } from '../Contexts/UserContext/userContext'
+
+import '../Styles/Components/Modal.css'
+
 function CreateUpcomingModal() {
-  const [, setModalView] = useContext(ModalViewContext)
-  const [upcomingModalIsOpen, setUpcomingModalIsOpen] = useContext(
-    UpcomingModalContext,
-  )
-  const [upcomings, setUpcomings] = useContext(UpcomingContext)
-  const user = useContext(UserContext)
+  const { setModalView } = useContext(ModalViewContext)
+  const { upcomingModalIsOpen, setUpcomingModalIsOpen } = useContext(UpcomingModalContext)
+  const { upcomings, setUpcomings } = useContext(UpcomingContext)
+  const { user } = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -24,7 +22,6 @@ function CreateUpcomingModal() {
   const [category, setCategory] = useState('')
 
   const addUpcomingJob = (e) => {
-    console.log(date)
 
     e.preventDefault()
     const upcoming = {
@@ -79,6 +76,7 @@ function CreateUpcomingModal() {
         </div>
 
         <form onSubmit={(e) => addUpcomingJob(e)}>
+          {/* Title Inpute */}
           <div className="input-holder">
             <label htmlFor="title">
               <small>title</small>
@@ -86,10 +84,13 @@ function CreateUpcomingModal() {
             <input
               name="title"
               autoComplete="off"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => {
+                setTitle(e.target.value)
+              }}
             />
           </div>
 
+          {/* Date-time Picker */}
           <div className="input-holder">
             <input
               type="datetime-local"
@@ -98,7 +99,7 @@ function CreateUpcomingModal() {
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-
+          {/* Title Job Category */}
           <div className="input-holder">
             <label htmlFor="picture">
               <small>Category</small>

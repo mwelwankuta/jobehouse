@@ -1,66 +1,58 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import ReactModal from 'react-modal'
 import FacebookAuth from 'react-facebook-auth'
 
+import logo from '../Resources/icon-with-text.svg'
+
 import '../Styles/Pages/Auth.css'
-import { DesktopViewContext, PhoneViewContext } from '../Contexts/viewContext'
-import axios from 'axios'
+import { useMutation } from '@apollo/client'
+import { AUTHENTICATE_USER } from '../Graphql/Mutations'
 
 ReactModal.setAppElement(document.getElementById('root'))
 
 function Auth() {
   const [modalIsOpen, setModalIsOpen] = useState(true)
-  const phoneView = useContext(PhoneViewContext)
-  const desktopView = useContext(DesktopViewContext)
+  const [loading, setLoading] = useState(false)
+  const phoneView = useMediaQuery({
+    query: '(max-width: 800px)',
+  })
 
-  useEffect(() => {
-    console.log(JSON.parse(sessionStorage.getItem('client'))) // without this run auth gets two instances
-  }, [])
+  const desktopView = useMediaQuery({
+    query: '(min-width: 800px)',
+  })
+
+  const [authenticateUser, { data, error }] = useMutation(AUTHENTICATE_USER)
+
+
+  if (data) {
+    console.log(data)
+    sessionStorage.setItem('client', JSON.stringify(data))
+    setModalIsOpen(false)
+    window.location.reload()
+  } else if (error) {
+    // window.location = '/error'
+    console.log(error)
+  }
+
 
   const MyFacebookButton = ({ onClick }) => (
-    <button className="login-btn" onClick={onClick}>
-      Login with facebook
+    <button className="auth-login-btn" onClick={onClick}>
+      {loading ? '...' : 'Login with facebook'}
     </button>
   )
 
   const authenticate = (response) => {
+    setLoading(true)
+
     if (response && !response.status) {
-      const user = {
+      authenticateUser({
         name: response.name,
         fbID: response.id,
         email: response.email ? response.email : '',
         picture: response.picture.data.url,
-      }
+      })
 
-      localStorage.setItem('client', JSON.stringify(user))
-
-      axios
-        .post('https://jobe-house.herokuapp.com/authenticate', user)
-        .then((res) => {
-          console.log(res)
-          const serverResponse = res.data
-          if (serverResponse) {
-            if (serverResponse[1]) {
-              sessionStorage.setItem(
-                'isNewUser',
-                JSON.stringify(serverResponse[1].msg),
-              )
-              if (sessionStorage.getItem('isNewUser')) {
-                console.log(serverResponse)
-                sessionStorage.setItem(
-                  'client',
-                  JSON.stringify([serverResponse[0]]), //created user res expected array
-                )
-                window.location.reload()
-                setModalIsOpen(false)
-              }
-            } else {
-              sessionStorage.setItem('client', JSON.stringify(serverResponse))
-              window.location.reload()
-              setModalIsOpen(false)
-            }
-          }
-        })
     } else {
       window.location = '/error'
     }
@@ -69,9 +61,9 @@ function Auth() {
   return (
     <ReactModal isOpen={modalIsOpen} className="react-modal">
       <div className="modal-child">
-        <h1>JobeHouse</h1>
+        <img src={logo} alt="jobe house logo" />
         <div
-          className="buttons"
+          className="auth-parent"
           style={{ backgroundColor: phoneView ? '' : '#f2f2f2' }}
         >
           {desktopView && <h2 className="page-title">Welcome to JobeHouse</h2>}

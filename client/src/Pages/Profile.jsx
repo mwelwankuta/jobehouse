@@ -1,95 +1,117 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { PhoneViewContext, UserContext } from '../Contexts/viewContext'
+import React, { useContext, useState } from 'react'
+import { UserContext } from '../Contexts/UserContext/userContext'
 
 import '../Styles/Pages/Profile.css'
+import { useMutation } from '@apollo/client'
+import { EDIT_BIO } from '../Graphql/Mutations'
+import { useEffect } from 'react'
 
 function Profile() {
-  const user = useContext(UserContext)
-  const phoneView = useContext(PhoneViewContext)
+  const { user, setUser } = useContext(UserContext)
 
-  
-  const [logoutButtonText, setLogoutButtonText] = useState('Logout')
-  const [editprofileTextButton, setEditProfileTextButton] = useState(
-    'Edit Profile',
-  )
-  const [, setBio] = useState('')
-  const [bioText, ] = useState('')
-  
-  const [counter] = useState(0)
-  const [logoutCounter, setLogoutCounter] = useState(0)
-  
-  const [editBio, setEditBio] = useState(false) // is user editing the bio ?
-  //create edit bio route
+  const [bio, setBio] = useState('')
+  const [editTheBio, setEditBio] = useState(false)
+  const [loading, setLoading] = useState(false) // not related to user
+
+  const [editBio, { data }] = useMutation(EDIT_BIO)
+  const sessionUser = JSON.parse(sessionStorage.getItem('client'))[0]
 
   useEffect(() => {
-    if (logoutCounter === 1) {
-      setLogoutButtonText('Yes')
-      setEditProfileTextButton('No')
+    if (data) {
+      console.log(data)
+
+      const newUser = {
+        upvotes: sessionUser.upvotes,
+        downvotes: sessionUser.downvotes,
+        fbID: sessionUser.fbID,
+        name: sessionUser.name,
+        picture: sessionUser.picture,
+        email: sessionUser.email,
+        bio: bio,
+      }
+      sessionStorage.setItem('client', JSON.stringify([newUser]))
+
+      setEditBio(false)
+      setLoading(false)
     }
-    if (logoutCounter === 2) {
-      setLogoutButtonText('Logout')
-      sessionStorage.removeItem('client')
-      window.location = '/'
+  }, [data, sessionUser, bio])
+
+  const changeBio = () => {
+    if (bio.length === 0) {
+      setEditBio(false)
+    } else {
+
+      const newUser = {
+        upvotes:
+          sessionUser.upvotes && sessionUser.upvotes.length === 0
+            ? []
+            : sessionUser.upvotes,
+        downvotes:
+          sessionUser.downvotes && sessionUser.downvotes.length === 0
+            ? []
+            : sessionUser.downvotes,
+        fbID: sessionUser.fbID,
+        name: sessionUser.name,
+        picture: sessionUser.picture,
+        email: sessionUser.email,
+        bio: bio,
+      }
+      setUser(newUser)
+      setLoading(false)
+
+      editBio({
+        variables: {
+          fbID: user.fbID,
+          bio: bio
+        }
+      })
     }
-    if (logoutCounter === 0) {
-      setLogoutButtonText('Logout')
-      setEditProfileTextButton('Edit Profile')
-    }
-  }, [logoutCounter])
+  }
 
   return (
     <div className="profile-holder">
-      <img src={user.picture} alt="profile" />
-      <p className="username-text">{user.name}</p>
-      <div className="votes-holder">
+      <img src={user.fbID && user.picture} alt="profile" loading="eager" />
+      <p className="username-text">{user.fbID && user.name}</p>
+      {/* <div className="votes-holder">
         <p>
-          <b>{user.upvotes && user.upvotes.length}</b> Upvotes
+          <b>{user.fbID && user.upvotes && user.upvotes.length}</b> upvotes
         </p>
         <p>
-          <b>{user.downvotes && user.downvotes.length}</b> Downvotes
+          <b>{user.fbID && user.downvotes && user.downvotes.length}</b> downvotes
         </p>
-      </div>
-      {counter === 0 || counter !== 1 ? (
-        <small className="bio-text">{bioText} </small>
-      ) : (
-        ''
-      )}
-      {editBio && (
-        <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
-      )}
-      <button
-        type="submit"
-        onClick={() => {
-          setEditBio(!editBio)
-        }}
-        className="bio-btn"
-      >
-        {editBio ? 'Done' : 'Edit Bio'}
-      </button>
-      {logoutCounter === 1 && (
-        <small className="logout-confirmation-text">
-          Are you sure you want to logout
+      </div> */}
+      {!editTheBio && (
+        <small className="bio-text">
+          {user.fbID && user.fbID && user.bio ? user.bio : ''}
         </small>
       )}
+      {editTheBio && (
+        <textarea onChange={(e) => setBio(e.target.value)} autoFocus />
+      )}
+      {editTheBio === false && (
 
-      {phoneView && (
-        <div className="buttons-holder">
-          <button
-            onClick={() => setLogoutCounter(logoutCounter + 1)}
-            className="logout-btn"
-          >
-            {logoutButtonText}
-          </button>
+        <button
+          onClick={() => {
+            setEditBio(!editTheBio)
+          }}
+          className="bio-btn"
+        >
+          Edit Bio
+        </button>
+      )}
 
-          {logoutCounter === 1 && (
-            <button
-              onClick={() => logoutCounter === 1 && setLogoutCounter(0)}
-              className="nologout-btn"
-            >
-              {editprofileTextButton}
-            </button>
-          )}
-        </div>
+      {editTheBio === true && (
+        <button
+          onClick={() => {
+            changeBio()
+            if (bio.length > 0) {
+              setLoading(true)
+            }
+          }}
+          className="bio-btn"
+        >
+          {loading ? '...' : 'Done'}
+        </button>
       )}
     </div>
   )

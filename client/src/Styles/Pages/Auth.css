@@ -1,18 +1,19 @@
 .react-modal {
   outline: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
+.react-modal img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+}
 .react-modal .modal-child {
   height: 100vh;
+  text-align: center;
   background-color: white;
   border-radius: 3px;
   padding: 10px 10px 20px;
@@ -22,68 +23,75 @@
   height: fit-content;
   margin: auto;
 }
-
 .react-modal .modal-child a {
   color: #fd4d4d;
   text-decoration: underline;
   text-underline-offset: 5px;
 }
-
-.react-modal .modal-child .buttons {
+.react-modal .modal-child .auth-parent {
   padding: 20px;
   border-radius: 6px;
+  border: 1px solid #dedede;
+  text-align: left;
 }
-
-.react-modal .modal-child h1 {
+.react-modal .modal-child img {
   text-align: center;
-  color: #fd4d4d;
+  height: 70px;
+  margin-right: 50px;
 }
-
 .react-modal .modal-child .page-title {
   color: #252525;
-  font-weight: 500;
+  font-weight: 700;
 }
-
 .react-modal .modal-child .auth-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 10px;
   background-color: transparent;
+  align-items: center;
 }
-
-.react-modal .modal-child button {
+.react-modal .modal-child .auth-holder button {
   margin-bottom: 10px;
-  background-color: #252525;
+  background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(206, 35, 35, 0.563);
   padding: 10px;
   font-size: 16px;
   font-weight: 500;
+  width: 100%;
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .react-modal .modal-child {
     border: 0.7px solid white;
+  }
+  .react-modal .modal-child img {
+    text-align: center;
+    height: 60px;
+    margin-right: 50px;
   }
   .react-modal button {
     padding: 10px;
     margin-bottom: 50px;
-    background-color: #2f96d1;
+    background-color: #fd4d4d;
     padding: 8px 20px;
-    border: #f2f2f2;
     border-radius: 6px;
     color: white;
     font-weight: 600;
     cursor: pointer;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(206, 35, 35, 0.563);
     padding: 15px;
     font-size: 16px;
   }
@@ -91,5 +99,4 @@
     background-color: #f2f2f2;
     padding: 10px;
   }
-}
-/*# sourceMappingURL=Auth.css.map */
+}/*# sourceMappingURL=Auth.css.map */

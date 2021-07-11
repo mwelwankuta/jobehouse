@@ -1,109 +1,114 @@
-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.desktop-nav {
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0 10px;
   position: relative;
-  border: none;
+  background-color: white;
 }
-
-nav .login-link {
-  background-color: #dedede;
-  padding: 8px 20px;
-  border: #f2f2f2;
-  border-radius: 6px;
-  color: #252525;
-  font-weight: 600;
-  cursor: pointer;
-  font-weight: 300;
-  font-size: 14px;
-}
-
-nav .login-link:hover {
-  color: #1a1a1a;
-}
-
-nav a {
+.desktop-nav a {
   text-decoration: none;
   color: #fd4d4d;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 10px;
 }
-
-nav a .jobe-house-logo {
+.desktop-nav a .jobe-house-logo {
   margin-right: 20px;
   cursor: pointer;
   color: #fd4d4d;
   height: 48px;
 }
-
-nav .blue-text {
-  color: #fd4d4d;
+.desktop-nav .image-holder {
+  margin-left: 20px;
+  margin-right: 300px;
 }
-
-nav .image-holder {
-  margin-right: 15px;
-}
-
-nav .image-holder img {
-  border-radius: 6px;
+.desktop-nav .image-holder img {
   width: 32px;
+  height: 32px;
   -o-object-fit: cover;
      object-fit: cover;
   cursor: pointer;
+  border-radius: 100%;
 }
-
-nav .select-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.desktop-nav .search-container {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  cursor: default;
+  align-items: center;
   width: 100%;
-  cursor: pointer;
-  -ms-flex-item-align: center;
-      align-self: center;
 }
-
-nav .nav-select-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.desktop-nav .search-container ::-webkit-scrollbar-thumb {
+  background-color: #dedede;
+}
+.desktop-nav .search-container img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+}
+.desktop-nav .search-container .desktop-search-results {
+  padding: 10px 0px;
+  border-radius: 6px;
+  background-color: white;
+  border: 1px solid #dedede;
+  position: absolute;
+  top: 60px;
+  width: 42%;
+  overflow-y: scroll;
+  max-height: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  cursor: default;
+}
+.desktop-nav .search-container .desktop-search-results ul {
+  padding: 0 10px;
+  margin: 0;
+}
+.desktop-nav .search-container .desktop-search-results ul li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f2f2f2;
+  margin: 2px 0;
+  border-radius: 6px;
+  padding: 0px 10px 10px 10px;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  border: 1px solid #dedede;
+}
+.desktop-nav .search-container .desktop-search-results ul li a {
+  flex-direction: column;
+  align-items: flex-start;
+  color: #252525;
+  font-weight: 600;
+}
+.desktop-nav .search-container .desktop-search-results ul li a p {
+  text-transform: capitalize;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+.desktop-nav .search-container .desktop-search-results ul li a small {
+  font-weight: 400;
+  margin-top: -10px;
+}
+.desktop-nav .nav-search-holder {
+  display: flex;
+  align-items: center;
   color: #5d7290;
   padding: 4px 10px;
-  min-width: 300px;
   width: 100%;
-  margin-right: 32%;
-  background-color: #dedede;
+  background-color: #f2f2f2;
+  border: 1px solid #dedede;
   border-radius: 6px;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  cursor: pointer;
+  cursor: text;
 }
-
-nav .nav-select-holder select {
+.desktop-nav .nav-search-holder input {
   padding: 5px 10px;
   width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   color: #5d7290;
   border: none;
   background-color: transparent;
   outline: 0;
-  cursor: pointer;
-}
-/*# sourceMappingURL=NavBar.css.map */
+  cursor: text;
+}/*# sourceMappingURL=NavBar.css.map */

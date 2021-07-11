@@ -37,16 +37,26 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+select {
+  -moz-appearance: none;
+}
+
 a {
   text-decoration: none;
   -webkit-user-drag: none;
 }
 
 textarea {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
 option {
   background-color: #f2f2f2;
 }
-/*# sourceMappingURL=style.css.map */
+
+@media only screen and (min-width: 800px) {
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+}/*# sourceMappingURL=style.css.map */

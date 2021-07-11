@@ -1,48 +1,46 @@
 .upcoming-holder .page-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .upcoming-holder .page-title {
   color: #252525;
 }
-
 .upcoming-holder .add-upcoming-btn {
   background-color: #f2f2f2;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: #252525;
   font-weight: 600;
   cursor: pointer;
-  padding: 2px 4px;
-}
-
-.upcoming-holder .upcoming-jobs-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  width: 120px;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid none;
+  border: 1px solid #dedede;
+  padding: 2px 4px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.upcoming-holder .upcoming-jobs-list {
+  display: flex;
+  flex-direction: column;
   gap: 15px;
 }
-
 .upcoming-holder .upcoming-jobs-list button {
   background-color: #fd4d4d;
   padding: 8px 20px;
-  border: #f2f2f2;
   border-radius: 6px;
   color: white;
   font-weight: 600;
   cursor: pointer;
-}
-/*# sourceMappingURL=Upcoming.css.map */
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid none;
+  border: 1px solid rgba(206, 35, 35, 0.563);
+  width: 100%;
+}/*# sourceMappingURL=Upcoming.css.map */

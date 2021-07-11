@@ -1,36 +1,56 @@
 import React, { useContext } from 'react'
-import {
-  HomeIcon,
-  CalendarIcon,
-  UserIcon,
-  BellIcon,
-} from '@heroicons/react/solid'
+import { useMediaQuery } from 'react-responsive'
+import { HomeIcon, CalendarIcon, BellIcon } from '@heroicons/react/solid'
 import { Link, useLocation } from 'react-router-dom'
-import { jobRequestContext } from '../Contexts/viewContext'
+
+import { JobRequestContext } from '../Contexts/RequestsContext/jobRequestContext'
+import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
 
 import '../Styles/Components/LinksBar.css'
 
 function LinksBar() {
-  const jobRequests = useContext(jobRequestContext)
-  console.log(jobRequests)
+  const { jobRequests } = useContext(JobRequestContext)
+  const { upcomingJobs } = useContext(UpcomingContext)
   const router = useLocation()
+
+  const hideLabels = useMediaQuery({
+    query: '(min-width:950px)',
+  })
+
   const linksdata = [
-    { icon: <HomeIcon height="35px" />, label: 'Home', path: '/' },
     {
-      icon: <CalendarIcon height="35px" />,
-      label: 'Scheduled',
-      path: '/upcoming',
-    },
-    {
-      icon: <UserIcon height="35px" />,
-      label: 'Profile',
-      path: '/profile',
+      icon: <HomeIcon height="35px" color="#fd4d4d" />,
+      label: 'Home', path: '/'
     },
     {
       icon: (
         <div className="requests-holder">
-          <BellIcon height="35px" />
-          <p className="notifications-counter">{jobRequests && jobRequests[0].length}+</p>
+          <CalendarIcon height="35px" color="#fd4d4d" />
+          {upcomingJobs &&
+            upcomingJobs[0].length > 0 && (
+              <p className="notifications-counter">
+                {upcomingJobs && upcomingJobs[0].length}
+                {upcomingJobs[0].length > 9 && '+'}
+              </p>
+            )
+          }
+        </div>
+      ),
+      label: 'Scheduled',
+      path: '/upcoming',
+    },
+    {
+      icon: (
+        <div className="requests-holder">
+          <BellIcon height="35px" color="#fd4d4d" />
+          {jobRequests[0] &&
+            jobRequests[0].length > 0 && (
+              <p className="notifications-counter">
+                {jobRequests && jobRequests[0].length}
+                {jobRequests[0].length > 9 && '+'}
+              </p>
+            )
+          }
         </div>
       ),
       label: 'Requests',
@@ -41,17 +61,15 @@ function LinksBar() {
   return (
     <div className="links-bar">
       <ul>
-        {linksdata.map((linkdata, i) => (
-          <li key={i}>
-            <Link to={linkdata.path}>
+        {linksdata.map((linkdata, index) => (
+          <li key={index}>
+            <Link
+              to={linkdata.path}
+              style={{
+                backgroundColor: router.pathname === linkdata.path && hideLabels && '#fd4d4d2d',
+              }}>
               {linkdata.icon}
-              <p
-                style={{
-                  fontWeight: router.pathname === linkdata.path && '700',
-                }}
-              >
-                {linkdata.label}
-              </p>
+              {hideLabels && <p>{linkdata.label}</p>}
             </Link>
           </li>
         ))}

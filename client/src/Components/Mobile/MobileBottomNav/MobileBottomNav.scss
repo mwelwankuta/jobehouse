@@ -1,0 +1,45 @@
+@import '../../../Styles/Variables.scss';
+
+.bottom-nav-holder {
+  border-top: 1px solid $lightGreyColor;
+  padding: 2px;
+  position: fixed;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+
+  .bottom-nav {
+    background-color: white;
+    padding: 10px 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    li {
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: $primaryColor;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+        .notifications-counter {
+          position: absolute;
+          background-color: white;
+          border-radius: 100%;
+          bottom: 0;
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
+          // font-size: 12px;
+          // padding-left: 4px;
+          // width: 10px;
+          // height: 13.9px;
+          right: 0;
+        }
+      }
+    }
+  }
+}

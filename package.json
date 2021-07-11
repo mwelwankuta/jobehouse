@@ -1,0 +1,25 @@
+{
+  "name": "jobehouse",
+  "version": "1.0.0",
+  "description": "a realtime social media mern react app",
+  "scripts": {
+    "install": "cd client && npm i && cd ../server && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwelwankuta/jobehouse.git"
+  },
+  "keywords": [
+    "reactjs",
+    "expressjs",
+    "mongodb",
+    "mern",
+    "socket-io"
+  ],
+  "author": "Mwelwa Nkuta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mwelwankuta/jobehouse/issues"
+  },
+  "homepage": "https://github.com/mwelwankuta/jobehouse#readme"
+}
