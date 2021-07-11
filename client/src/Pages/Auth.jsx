@@ -47,10 +47,12 @@ function Auth() {
 
     if (response && !response.status) {
       authenticateUser({
-        name: response.name,
-        fbID: response.id,
-        email: response.email ? response.email : '',
-        picture: response.picture.data.url,
+        variables: {
+          name: response.name,
+          fbID: response.id,
+          email: response.email ? response.email : '',
+          picture: response.picture.data.url,
+        }
       })
 
     } else {
