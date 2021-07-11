@@ -14,7 +14,7 @@ function Profile() {
   const [loading, setLoading] = useState(false) // not related to user
 
   const [editBio, { data }] = useMutation(EDIT_BIO)
-  const sessionUser = JSON.parse(sessionStorage.getItem('client'))[0]
+  const sessionUser = JSON.parse(localStorage.getItem('client'))
 
   useEffect(() => {
     if (data) {
@@ -29,7 +29,7 @@ function Profile() {
         email: sessionUser.email,
         bio: bio,
       }
-      sessionStorage.setItem('client', JSON.stringify([newUser]))
+      localStorage.setItem('client', JSON.stringify(newUser))
 
       setEditBio(false)
       setLoading(false)

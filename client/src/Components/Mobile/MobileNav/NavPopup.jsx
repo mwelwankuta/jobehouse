@@ -42,7 +42,7 @@ function NavPopup({ isOpen, setModalIsOpen }) {
         </div>
         <button
           onClick={() => {
-            sessionStorage.removeItem('client')
+            localStorage.removeItem('client')
             window.location.reload()
           }}
           className="logout-btn"

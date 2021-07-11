@@ -24,13 +24,13 @@ function Auth() {
 
   const [authenticateUser, { data, error }] = useMutation(AUTHENTICATE_USER)
 
-
   if (data) {
-    sessionStorage.setItem('client', JSON.stringify([data.authenticateUser]))
-    setModalIsOpen(false)
+    localStorage.setItem('client', JSON.stringify(data.authenticateUser))
     window.location.reload()
+    setModalIsOpen(false)
   } else if (error) {
-    window.location = '/error'
+    alert('an error occured...')
+    // window.location = '/error'
   }
 
 
