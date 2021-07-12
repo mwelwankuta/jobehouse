@@ -16,7 +16,7 @@
 | Folder Name | Description       |
 | ----------- | ----------------- |
 | client      | React.js Frontend |
-| server      | GraphQL Server    |
+| server      | GraphQL Backend   |
 
 ## How to Run locally
 
