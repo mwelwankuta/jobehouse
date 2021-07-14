@@ -11,7 +11,7 @@ import AppRouter from './AppRouter';
 function App() {
 
   const client = new ApolloClient({
-    uri: "http://localhost:7000/graphql",
+    uri: "https://jobe-house.herokuapp.com/graphql",
     cache: new InMemoryCache()
   });
 
