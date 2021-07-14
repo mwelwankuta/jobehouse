@@ -25,7 +25,6 @@ function Auth() {
   const [authenticateUser, { data, error}] = useMutation(AUTHENTICATE_USER)
 
   useEffect(() => {
-    console.log(data, 'before checking');
     if (data) {
       localStorage.setItem('client', JSON.stringify(data.authenticateUser))
       window.location.reload()

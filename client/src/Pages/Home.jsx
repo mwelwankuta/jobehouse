@@ -1,6 +1,7 @@
 import React, { useContext, Fragment } from 'react'
 import { SearchIcon } from '@heroicons/react/solid'
 import { useMediaQuery } from 'react-responsive'
+import { useHistory } from 'react-router-dom'
 
 import { PostsContext } from '../Contexts/PostsContext/postsContext'
 import { UserContext } from '../Contexts/UserContext/userContext'
@@ -23,6 +24,8 @@ function Home() {
   const { posts } = useContext(PostsContext)
   const { user } = useContext(UserContext)
 
+  const router = useHistory()
+  
   return (
     <div className="home-container">
       <div className="header-holder">
@@ -42,7 +45,7 @@ function Home() {
               type="text"
               className="search-bar"
               placeholder="Search for jobs"
-              onClick={() => window.location = '/search'}
+            onClick={() => router.push('/search')}
             />
           </div>}
         {posts.length > 0 ? <small>{posts.length} {posts.length > 1 ? 'Rooms' : 'Room'}</small> : <small>Loading...</small>}

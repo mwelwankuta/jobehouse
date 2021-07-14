@@ -18,8 +18,6 @@ function Profile() {
 
   useEffect(() => {
     if (data) {
-      console.log(data)
-
       const newUser = {
         upvotes: sessionUser.upvotes,
         downvotes: sessionUser.downvotes,

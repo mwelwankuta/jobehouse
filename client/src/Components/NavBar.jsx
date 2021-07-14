@@ -60,8 +60,8 @@ function NavBar({ user, modalView }) {
                 <ul className="search-results-list">
                   <h2>Search</h2>
                   {filteredJobs.map((job) => (
-                    <li key={job._id} className="search-results">
-                      <a href={`/job/${job._id}`}>
+                    <li key={job.id} className="search-results">
+                      <a href={`/job/${job.id}`}>
                         <p className="search-result-title">{job.title}</p>
                         <small className="search-result-description">
                           {job.description}

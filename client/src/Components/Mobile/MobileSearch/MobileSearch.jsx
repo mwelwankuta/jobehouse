@@ -9,7 +9,6 @@ function MobileSearch({ posts }) {
 
 
   const handleSearch = (e) => {
-    console.log(posts, 'search posts')
     const searchWord = e.target.value
     const resultsMatch = posts.filter((post) =>
       post.description.toLowerCase().includes(searchWord.toLowerCase()),
