@@ -1,5 +1,6 @@
 .side-bar {
   margin: 0 10px;
+  z-index: 0;
 }
 .side-bar .profile-card {
   background-color: #f2f2f2;

@@ -4,6 +4,7 @@
   padding: 0 10px;
   position: relative;
   background-color: white;
+  border-bottom: 1px solid #ddd;
 }
 .desktop-nav a {
   text-decoration: none;
@@ -13,7 +14,7 @@
   gap: 10px;
 }
 .desktop-nav a .jobe-house-logo {
-  margin-right: 20px;
+  margin-right: 50px;
   cursor: pointer;
 }
 .desktop-nav .image-holder {

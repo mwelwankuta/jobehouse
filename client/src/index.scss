@@ -14,16 +14,20 @@ body {
   display: grid;
   grid-template-rows: 50px 1fr;
   height: 100vh;
-
   small {
     color: $textColor;
   }
   .sections {
-    overflow-y: scroll;
+    overflow-y: hidden;
     display: grid;
     grid-template-columns: 200px 1fr 360px;
     height: 100%;
     .main-content {
+      overflow-y: scroll;
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      padding: 5px;
+      padding-bottom: 50px;
       .login-reminder {
         text-align: center;
         font-weight: 500;
@@ -49,8 +53,10 @@ body {
       width: 100%;
 
       .main-content {
-        padding: 0;
-        margin: 20px;
+        padding: 0px;
+        margin: 10px;
+        border-left: none;
+        border-right: none;
 
         .button-holder {
           margin-top: 20px;
@@ -83,6 +89,10 @@ body {
 }
 
 @media only screen and (max-width: 950px) {
+  
+  .desktop-nav {
+    border: none;
+  }
   .home-container {
     .sections {
       grid-template-columns: 100px 1fr 360px;

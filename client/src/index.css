@@ -17,10 +17,17 @@ body {
   color: #5d7290;
 }
 .home-container .sections {
-  overflow-y: scroll;
+  overflow-y: hidden;
   display: grid;
   grid-template-columns: 200px 1fr 360px;
   height: 100%;
+}
+.home-container .sections .main-content {
+  overflow-y: scroll;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 5px;
+  padding-bottom: 50px;
 }
 .home-container .sections .main-content .login-reminder {
   text-align: center;
@@ -45,8 +52,10 @@ body {
     width: 100%;
   }
   .home-container .sections .main-content {
-    padding: 0;
-    margin: 20px;
+    padding: 0px;
+    margin: 10px;
+    border-left: none;
+    border-right: none;
   }
   .home-container .sections .main-content .button-holder {
     margin-top: 20px;
@@ -81,6 +90,10 @@ body {
   }
 }
 @media only screen and (max-width: 950px) {
+  .desktop-nav {
+    border: none;
+  }
+
   .home-container .sections {
     grid-template-columns: 100px 1fr 360px;
   }

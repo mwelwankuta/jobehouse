@@ -6,6 +6,7 @@
   padding: 0 10px;
   position: relative;
   background-color: white;
+  border-bottom: 1px solid #ddd;
 
   a {
     text-decoration: none;
@@ -14,7 +15,7 @@
     align-items: center;
     gap: 10px;
     .jobe-house-logo {
-      margin-right: 20px;
+      margin-right: 50px;
       cursor: pointer;
     }
   }

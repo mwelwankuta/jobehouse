@@ -70,7 +70,7 @@ function AppRouter() {
           </main>
 
           {/* Desktop SideBar */}
-          <div className="side-bar">
+          <div className="side-bar" style={{ position: 'sticky' }}>
             {desktopView && user.fbID && <SideBar user={user} />}
           </div>
         </div>
