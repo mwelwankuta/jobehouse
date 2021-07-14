@@ -36,9 +36,6 @@
   align-items: center;
   width: 100%;
 }
-.desktop-nav .search-container ::-webkit-scrollbar-thumb {
-  background-color: #dedede;
-}
 .desktop-nav .search-container img {
   -webkit-user-select: none;
      -moz-user-select: none;

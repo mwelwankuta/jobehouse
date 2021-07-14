@@ -3,8 +3,7 @@
 ::-webkit-scrollbar {
   width: 8px;
   height: 10px;
-  left: -200px;
-  border-radius: 100px;
+  border-radius: 6px;
 }
 
 
@@ -19,7 +18,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: rgb(226, 226, 226);
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

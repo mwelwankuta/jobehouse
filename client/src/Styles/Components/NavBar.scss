@@ -38,9 +38,7 @@
     cursor: default;
     align-items: center;
     width: 100%;
-    ::-webkit-scrollbar-thumb {
-      background-color: $darkGreyColor;
-    }
+    
     img {
       user-select: none;
       -webkit-user-drag: none;
