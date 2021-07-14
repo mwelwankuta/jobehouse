@@ -6,8 +6,8 @@ import { useMediaQuery } from 'react-responsive'
 
 import MobileNav from './Mobile/MobileNav/MobileNav'
 import NavBarPopup from './NavBarPopup'
+import IconWithText from '../Resources/IconWithText'
 
-import logo from '../Resources/icon-with-text.svg'
 import '../Styles/Components/NavBar.css'
 
 function NavBar({ user, modalView }) {
@@ -40,13 +40,9 @@ function NavBar({ user, modalView }) {
       {modalView === false && desktopView && (
         <nav className="desktop-nav">
           <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              className="jobe-house-logo"
-              loading="eager"
-            />
-            {/* <h2 className="jobe-house-logo">JobeHouse</h2> */}
+            <div className="jobe-house-logo">
+              <IconWithText/>
+            </div>
           </Link>
 
           <div className="search-container">
@@ -78,11 +74,9 @@ function NavBar({ user, modalView }) {
             )}
 
             {user.fbID && (
-              <div
-                onClick={() => setPopupIsOpen(!PopupIsOpen)}
-                className="image-holder"
-              >
-                <img src={user.fbID && user.picture} alt="profile" />
+              <div className="image-holder">
+                <img src={user.fbID && user.picture} alt="profile" 
+                  onClick={() => setPopupIsOpen(!PopupIsOpen)}/>
               </div>
             )}
           </div>
@@ -91,7 +85,7 @@ function NavBar({ user, modalView }) {
 
       {phoneView && <MobileNav user={user} />}
 
-      {PopupIsOpen && <NavBarPopup />}
+      {PopupIsOpen && <NavBarPopup setPopupIsOpen={setPopupIsOpen}/>}
     </Fragment>
   )
 }

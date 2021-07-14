@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import ReactModal from 'react-modal'
 import FacebookAuth from 'react-facebook-auth'
@@ -22,16 +22,20 @@ function Auth() {
     query: '(min-width: 800px)',
   })
 
-  const [authenticateUser, { data, error }] = useMutation(AUTHENTICATE_USER)
+  const [authenticateUser, { data, error}] = useMutation(AUTHENTICATE_USER)
 
-  if (data) {
-    localStorage.setItem('client', JSON.stringify(data.authenticateUser))
-    window.location.reload()
-    setModalIsOpen(false)
-  } else if (error) {
-    alert('an error occured...')
-    // window.location = '/error'
-  }
+  useEffect(() => {
+    console.log(data, 'before checking');
+    if (data) {
+      localStorage.setItem('client', JSON.stringify(data.authenticateUser))
+      window.location.reload()
+      setModalIsOpen(false)
+    } else if (error) {
+      console.error(error)
+      window.location = '/error'
+    }
+  }, [data, error])
+  
 
 
   const MyFacebookButton = ({ onClick }) => (
@@ -43,7 +47,7 @@ function Auth() {
   const authenticate = (response) => {
     setLoading(true)
 
-    if (response && !response.status) {
+    if (response) {
       authenticateUser({
         variables: {
           name: response.name,

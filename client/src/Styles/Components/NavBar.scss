@@ -16,13 +16,12 @@
     .jobe-house-logo {
       margin-right: 20px;
       cursor: pointer;
-      color: $primaryColor;
-      height: 48px;
     }
   }
 
   .image-holder {
     img {
+      border: 2px solid $primaryColor;
       width: 32px;
       height: 32px;
       object-fit: cover;

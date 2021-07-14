@@ -15,14 +15,13 @@
 .desktop-nav a .jobe-house-logo {
   margin-right: 20px;
   cursor: pointer;
-  color: #fd4d4d;
-  height: 48px;
 }
 .desktop-nav .image-holder {
   margin-left: 20px;
   margin-right: 300px;
 }
 .desktop-nav .image-holder img {
+  border: 2px solid #fd4d4d;
   width: 32px;
   height: 32px;
   -o-object-fit: cover;

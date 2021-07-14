@@ -45,7 +45,7 @@ function Home() {
               onClick={() => window.location = '/search'}
             />
           </div>}
-        {posts.length > 0 ? <small>{posts.length} {posts.length > 1 ? 'jobs' : 'job'}</small> : <small>Loading...</small>}
+        {posts.length > 0 ? <small>{posts.length} {posts.length > 1 ? 'Rooms' : 'Room'}</small> : <small>Loading...</small>}
         {user.fbID &&
           posts.length > 0 &&
           posts.map((post) => {

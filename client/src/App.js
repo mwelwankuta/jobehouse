@@ -8,8 +8,6 @@ import RequestContextProvider from './Contexts/RequestsContext';
 
 import AppRouter from './AppRouter';
 
-import './index.css';
-
 function App() {
 
   const client = new ApolloClient({
