@@ -9,7 +9,7 @@ export const GET_POSTS = gql`
       authorid
       status
       date
-      requests {
+      people {
         fbID
         name
       }

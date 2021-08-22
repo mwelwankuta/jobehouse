@@ -6,6 +6,8 @@ import FacebookAuth from 'react-facebook-auth'
 import logo from '../Resources/icon-with-text.svg'
 
 import '../Styles/Pages/Auth.css'
+
+//Apollo Imports
 import { useMutation } from '@apollo/client'
 import { AUTHENTICATE_USER } from '../Graphql/Mutations'
 

@@ -7,8 +7,6 @@ import { ModalViewContext } from '../Contexts/ModalViewContext/modalViewContext'
 import { UpcomingModalContext } from '../Contexts/ModalViewContext/upcomingModalContext'
 import { UpcomingContext } from '../Contexts/PostsContext/upcomingContext'
 
-import CreateUpcomingModal from '../Components/CreateUpcomingModal'
-
 function Upcoming() {
   const { upcomings } = useContext(UpcomingContext)
   const { setUpcomingModalIsOpen } = useContext(UpcomingModalContext)
@@ -41,7 +39,6 @@ function Upcoming() {
           </small>
         )}
       </div>
-      <CreateUpcomingModal />
     </div>
   )
 }

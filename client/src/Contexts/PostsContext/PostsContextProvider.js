@@ -1,9 +1,10 @@
 import { useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
-import { GET_POSTS } from '../../Graphql/Queries'
 
 import { PostsContext } from './postsContext'
 import { UpcomingContext } from './upcomingContext'
+
+import { GET_POSTS } from '../../Graphql/Queries'
 
 function PostsContextProvider({ children }) {
 

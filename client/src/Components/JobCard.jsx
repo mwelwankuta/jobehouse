@@ -1,18 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { ClockIcon, XIcon } from '@heroicons/react/solid'
-import { ReplyIcon } from '@heroicons/react/outline'
 import moment from 'moment'
 import TimeStampToDate from 'timestamp-to-date'
+import { ClockIcon } from '@heroicons/react/solid'
+import { useMutation } from '@apollo/client'
+import { JOIN_ROOM } from '../Graphql/Mutations'
 
 import { PostsContext } from '../Contexts/PostsContext/postsContext'
 
-import { useMutation } from '@apollo/client'
-import { REQUEST_WORK } from '../Graphql/Mutations'
-
 import '../Styles/Components/JobCard.css'
 
-function PostCard({ id, title, description, status, date, user, requests }) {
+function PostCard({ id, title, description, status, date, user, people }) {
   const { posts, setPosts } = useContext(PostsContext)
 
   const [haveIRequested, setHaveIRequested] = useState(false)
@@ -22,7 +19,7 @@ function PostCard({ id, title, description, status, date, user, requests }) {
   const dateFromTimeStamp = TimeStampToDate(date, 'yyyy-MM-dd HH:mm:ss')
   const readableDate = moment(dateFromTimeStamp).fromNow()
 
-  const [requestWork, { data }] = useMutation(REQUEST_WORK)
+  const [joinRoom, { data }] = useMutation(JOIN_ROOM)
 
   useEffect(() => {
     if (data) {
@@ -32,52 +29,53 @@ function PostCard({ id, title, description, status, date, user, requests }) {
   }, [data, setPosts, posts])
 
   useEffect(() => {
-    if (requests) {
-      if (requests.length > 0) {
-        if (requests.filter((request) => request.fbID === user.fbID)[0]) {
+    if (people) {
+      if (people.length > 0) {
+        if (people.filter((person) => person.fbID === user.fbID)[0]) {
           setHaveIRequested(true)
         }
       } else {
         setHaveIRequested(false)
       }
     }
-  }, [requests, user.fbID, posts, setHaveIRequested])
+  }, [people, user.fbID, posts, setHaveIRequested])
 
-  const workRequest = () => {
+  const joinRequest = () => {
     setLoading(false)
-    requestWork({
+    joinRoom({
       variables: {
         jobId: id,
-        userid: user.fbID,
+        userId: user.fbID,
         userName: user.name,
+        picture: user.picture
       }
     })
   }
 
-  const addRequest = () => {
+  const joinARoom = () => {
     setLoading(true)
     setHaveIRequested(true)
-    workRequest()
+    joinRequest()
+    window.location = joblink
   }
 
-  const removeRequest = () => {
+  const leaveRoom = () => {
     setLoading(true)
     setHaveIRequested(false)
-    workRequest()
+    joinRequest()
   }
 
   return (
-    <div className="job-card-holder">
-      <Link to={joblink}>
-        <div className="job-header">
-          <p className="job-title">{title}</p>
+    <div className="bg-gray-100 rounded-md border border-gray-200 py-3 px-2.5">
+      <div>
+        <div className="flex justify-between">
+          <p className="font-semibold text-gray-800 text-xl truncate">{title}</p>
         </div>
-        <p className="job-description">{description}</p>
-      </Link>
+        <p className="text-black -mt-1">{description}</p>
+      </div>
       {status === 'Available' && haveIRequested === true && (
-        <button onClick={() => removeRequest()} className="cancel-request-btn">
-          {loading === false && <XIcon height="15px" />}
-          {loading === true ? '...' : 'Cancel'}
+        <button onClick={() => leaveRoom()} className="text-black bg-gray-300 border border-gray-400 w-auto rounded-md py-1.5 px-3">
+          {loading === true ? '...' : 'Leave Room'}
         </button>
       )}
       <small
@@ -88,13 +86,12 @@ function PostCard({ id, title, description, status, date, user, requests }) {
         {status}
       </small>
       {status === 'Available' && haveIRequested === false && (
-        <button onClick={() => addRequest()}>
-          {loading === false && <ReplyIcon height="15px" />}
-          {loading === true ? '...' : 'Request'}
+        <button onClick={() => joinARoom()} className="text-white bg-gray-800 border border-black w-auto rounded-md py-1 px-3">
+          {loading === true ? '...' : 'Join Room'}
         </button>
       )}
-      <div className="job-bottom">
-        <div className="job-time">
+      <div className="mt-4 flex items-center justify-between">
+        <div className="flex items-center text-gray-700 gap-1">
           <ClockIcon height="15px" />
           <small>{readableDate}</small>
         </div>

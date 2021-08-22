@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import './../Styles/Pages/Upcoming.css'
 import { JobRequestContext } from '../Contexts/RequestsContext/jobRequestContext'
-import CreateUpcomingModal from '../Components/CreateUpcomingModal'
 import JobRequestCard from '../Components/JobRequestCard'
 
 function Requests() {
@@ -22,7 +21,6 @@ function Requests() {
           </small>
         )}
       </div>
-      <CreateUpcomingModal />
     </div>
   )
 }

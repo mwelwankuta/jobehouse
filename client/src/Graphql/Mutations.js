@@ -29,11 +29,24 @@ export const ADD_POST = gql`
     }
   }
 `
-export const REQUEST_WORK = gql`
-  mutation requestWork($userid:ID!, $userName:String!, $jobId:ID!){
-    requestWork(userId: $userid, userName:$userName, jobId:$jobId){
+export const JOIN_ROOM = gql`
+  mutation joinRoom($userId: ID!, $userName:String!, $jobId:ID!, $picture:String!){
+    joinRoom(userId: $userId, userName:$userName, jobId:$jobId, picture: $picture){
       fbID
       name
+    }
+  }
+`
+export const GET_ROOM = gql`
+  mutation getRoom($roomid: ID!){
+    getRoom(roomid: $roomid){
+      title
+      description
+      date
+      people{
+        name
+        picture
+      }
     }
   }
 `

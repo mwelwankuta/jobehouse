@@ -1,1 +1,30 @@
 server/.git
+client/node_modules
+server/node_modules
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+/src/Styles/Components/*.css
+/src/Styles/Components/*.css.map
+/src/Styles/Pages/*.css
+/src/Styles/Pages/*.css.map
+/src/Styles/*.css
+/src/Styles/*.css.map
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
