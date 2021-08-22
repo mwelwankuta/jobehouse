@@ -3,7 +3,7 @@
 
 </p></a>
 <p align="center">
-  <strong>a realtime voice conversations react app 🚀</strong>
+  <strong>a social media react app 🚀</strong>
 </p>
 
 ## Branches
